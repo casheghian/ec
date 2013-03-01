@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  title: MyString
+  content: MyText
+  sub_content: MyText
+  cuisine: MyString
+  offer: MyString
+  opening_hours: MyText
+  restrictions: MyString
+
+two:
+  name: MyString
+  title: MyString
+  content: MyText
+  sub_content: MyText
+  cuisine: MyString
+  offer: MyString
+  opening_hours: MyText
+  restrictions: MyString

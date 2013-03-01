@@ -1,0 +1,19 @@
+namespace :db do
+  desc "Erase and fill database"
+  task :populate => :environment do
+    require 'populator'
+    require 'faker'
+    Restaurant.delete_all
+    Restaurant.populate 100 do |restaurant|
+     restaurant.name = Faker::Company.name
+     restaurant.content = Faker::Lorem.paragraph
+     restaurant.sub_content = Faker::Lorem.paragraph
+     restaurant.offer = [241, 50]
+     restaurant.cuisine = ["Spanish", "Asian", "Italian", "Fusion", "German", "American"]
+     restaurant.longitude = Faker::Address.longitude
+     restaurant.latitude = Faker::Address.latitude
+     
+
+    end
+  end
+end

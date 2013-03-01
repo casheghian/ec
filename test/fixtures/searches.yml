@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  keywords: MyString
+  cuisine_id: MyString
+  offer_50: MyString
+  offer_241: MyString
+
+two:
+  keywords: MyString
+  cuisine_id: MyString
+  offer_50: MyString
+  offer_241: MyString
