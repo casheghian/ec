@@ -5,10 +5,22 @@
     <%= f.label :keywords %><br />
     <%= f.text_field :keywords %>
   </div>
+
   <div class="field">
-    <%= f.label :cuisine_id %><br />
-    <%= f.collection_select :cuisine_id, Restaurant.order(:name), :cuisine_list, :cuisine_list, include_blank: true %>
+    <%= f.label :cuisine_input %><br />
+    <%= f.collection_select :cuisine_input, Restaurant.all, :cuisine_list, :cuisine_list, include_blank: true %>
   </div>
+
+  <div class="field">
+  <%= f.radio_button :offer_input, true, :checked => true %> 
+  <%= f.label "Any" %><br />
+
+  <%= f.radio_button :offer_input, "241" %>
+  <%= f.label "241" %><br />
+
+  <%= f.radio_button :offer_input, "50" %>
+  <%= f.label "50" %><br />
+	</div>
   
   <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
