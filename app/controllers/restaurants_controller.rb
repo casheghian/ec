@@ -1,16 +1,20 @@
 class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
-
 def index
+
   if params[:tag]
     @restaurants = Restaurant.tagged_with(params[:tag]).paginate(:page => params[:page])
+    @json = Restaurant.tagged_with(params[:tag]).to_gmaps4rails
       respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @restaurants }   
+      format.json { render json: @restaurants } 
+
     end
   else
 @restaurants = Restaurant.paginate(:page => params[:page])
+@json = Restaurant.all.to_gmaps4rails
+
   end
 end
   # GET /restaurants/1

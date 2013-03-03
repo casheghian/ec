@@ -15,6 +15,7 @@ def find_restaurants
   restaurants = restaurants.tagged_with("#{offer_input}")  if offer_input != 'true'
 
   restaurants
+  
 end
 
 

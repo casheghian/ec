@@ -18,7 +18,12 @@
  		 </tr>
 	<% end %>
 	</table>
-	
+
+  <%= gmaps("map_options" => { :raw => "{scrollwheel: false}", "auto_adjust" => true },"markers" => { "data" => @json }) %>
+
+
+          ) 
+ %>
 </div>
 
 <%= will_paginate @restaurants %>

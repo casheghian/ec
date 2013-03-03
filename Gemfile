@@ -26,6 +26,9 @@ gem "populator", "~> 1.0.0"
 gem "will_paginate", "~> 3.0"
  
 gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'gmaps4rails'
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
