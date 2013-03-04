@@ -58,6 +58,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.21)
     multi_json (1.6.1)
+    pg (0.14.1)
     polyglot (0.3.3)
     populator (1.0.0)
     rack (1.4.5)
@@ -115,6 +116,7 @@ DEPENDENCIES
   faker (~> 1.1.2)
   gmaps4rails
   jquery-rails
+  pg
   populator (~> 1.0.0)
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)

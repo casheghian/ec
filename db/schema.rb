@@ -31,9 +31,8 @@ ActiveRecord::Schema.define(:version => 20130301151053) do
 
   create_table "searches", :force => true do |t|
     t.string   "keywords"
-    t.string   "cuisine_id"
-    t.string   "offer_50"
-    t.string   "offer_241"
+    t.string   "cuisine_input"
+    t.string   "offer_input"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
