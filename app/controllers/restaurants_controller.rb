@@ -5,7 +5,6 @@ def index
 
   if params[:tag]
     @restaurants = Restaurant.tagged_with(params[:tag]).paginate(:page => params[:page])
-    @json = Restaurant.tagged_with(params[:tag]).to_gmaps4rails
       respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @restaurants } 
@@ -13,7 +12,6 @@ def index
     end
   else
 @restaurants = Restaurant.paginate(:page => params[:page])
-@json = Restaurant.all.to_gmaps4rails
 
   end
 end

@@ -1,3 +1,5 @@
 <h1>Search Results</h1>
 
 <%= render @search.restaurants %>
+  <%= gmaps("map_options" => { :raw => "{scrollwheel: false}", "auto_adjust" => true },"markers" => { "data" => @json }) %>
+  
