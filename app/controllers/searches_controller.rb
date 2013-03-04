@@ -1,6 +1,8 @@
 class SearchesController < ApplicationController
 def new
   @search = Search.new
+  @json = Restaurant.all.to_gmaps4rails
+
 end
 
 def create
