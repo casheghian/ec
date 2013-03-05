@@ -3,7 +3,7 @@ class Search < ActiveRecord::Base
 
 def restaurants
   @restaurants ||= find_restaurants
-
+  
 end
 
 private

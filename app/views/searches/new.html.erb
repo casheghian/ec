@@ -1,6 +1,6 @@
 <h1>Restaurant Search</h1>
 
-<%= form_for @search do |f| %>
+<%= form_for @search, :remote => true do |f| %>
   <div class="field">
     <%= f.label :keywords %><br />
     <%= f.text_field :keywords %>
@@ -8,7 +8,7 @@
 
   <div class="field">
     <%= f.label :cuisine_input %><br />
-    <%= f.select :cuisine_input, [['Please select an option', nil], 'Spanish', 'Asian', 'Italian', 'Fusion', 'German', 'American'] %>
+    <%= f.select :cuisine_input, [['Please select an option', nil], 'American', 'Asian', 'Fusion', 'German', 'Italian'] %>
   </div>
 
   <div class="field">
@@ -23,7 +23,8 @@
 	</div>
   
   <div class="actions"><%= f.submit "Search" %></div>
+
 <% end %>
     
-  <%= gmaps("map_options" => { :raw => "{scrollwheel: false}", "auto_adjust" => true },"markers" => { "data" => @json }) %>
+<%= gmaps("map_options" => { :raw => "{scrollwheel: false}", "auto_adjust" => true },"markers" => { "data" => @json }) %>
 
