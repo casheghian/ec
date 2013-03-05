@@ -7,10 +7,6 @@ end
 def create
   @search = Search.create!(params[:search])
    
-    respond_to do |format|
-      format.html { redirect_to @search }
-      format.js 
-   end
   
 end
 

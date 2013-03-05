@@ -12,6 +12,14 @@ def gmaps4rails_infowindow
 	"#{self.name},#{self.content}"
 end
 
+def gmaps4rails_marker_picture
+    {
+    "picture" => '/assets/marker.png', # image_path column has to contain something like '/assets/my_pic.jpg'.
+    "width" => 25, #beware to resize your pictures properly
+    "height" => 39, #beware to resize your pictures properly
+    }
+end
+
 
 end
 
