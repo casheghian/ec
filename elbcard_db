@@ -1,0 +1,1204 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: restaurants; Type: TABLE; Schema: public; Owner: Christopher; Tablespace: 
+--
+
+CREATE TABLE restaurants (
+    id integer NOT NULL,
+    name character varying(255),
+    title character varying(255),
+    content text,
+    sub_content text,
+    cuisine character varying(255),
+    offer character varying(255),
+    opening_hours text,
+    restrictions character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    address character varying(255),
+    latitude double precision,
+    longitude double precision
+);
+
+
+ALTER TABLE public.restaurants OWNER TO "Christopher";
+
+--
+-- Name: restaurants_id_seq; Type: SEQUENCE; Schema: public; Owner: Christopher
+--
+
+CREATE SEQUENCE restaurants_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.restaurants_id_seq OWNER TO "Christopher";
+
+--
+-- Name: restaurants_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Christopher
+--
+
+ALTER SEQUENCE restaurants_id_seq OWNED BY restaurants.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: Christopher; Tablespace: 
+--
+
+CREATE TABLE schema_migrations (
+    version character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO "Christopher";
+
+--
+-- Name: searches; Type: TABLE; Schema: public; Owner: Christopher; Tablespace: 
+--
+
+CREATE TABLE searches (
+    id integer NOT NULL,
+    keywords character varying(255),
+    cuisine_input character varying(255),
+    offer_input character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.searches OWNER TO "Christopher";
+
+--
+-- Name: searches_id_seq; Type: SEQUENCE; Schema: public; Owner: Christopher
+--
+
+CREATE SEQUENCE searches_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.searches_id_seq OWNER TO "Christopher";
+
+--
+-- Name: searches_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Christopher
+--
+
+ALTER SEQUENCE searches_id_seq OWNED BY searches.id;
+
+
+--
+-- Name: taggings; Type: TABLE; Schema: public; Owner: Christopher; Tablespace: 
+--
+
+CREATE TABLE taggings (
+    id integer NOT NULL,
+    tag_id integer,
+    taggable_id integer,
+    taggable_type character varying(255),
+    tagger_id integer,
+    tagger_type character varying(255),
+    context character varying(128),
+    created_at timestamp without time zone
+);
+
+
+ALTER TABLE public.taggings OWNER TO "Christopher";
+
+--
+-- Name: taggings_id_seq; Type: SEQUENCE; Schema: public; Owner: Christopher
+--
+
+CREATE SEQUENCE taggings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.taggings_id_seq OWNER TO "Christopher";
+
+--
+-- Name: taggings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Christopher
+--
+
+ALTER SEQUENCE taggings_id_seq OWNED BY taggings.id;
+
+
+--
+-- Name: tags; Type: TABLE; Schema: public; Owner: Christopher; Tablespace: 
+--
+
+CREATE TABLE tags (
+    id integer NOT NULL,
+    name character varying(255)
+);
+
+
+ALTER TABLE public.tags OWNER TO "Christopher";
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: Christopher
+--
+
+CREATE SEQUENCE tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tags_id_seq OWNER TO "Christopher";
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Christopher
+--
+
+ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Christopher
+--
+
+ALTER TABLE ONLY restaurants ALTER COLUMN id SET DEFAULT nextval('restaurants_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Christopher
+--
+
+ALTER TABLE ONLY searches ALTER COLUMN id SET DEFAULT nextval('searches_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Christopher
+--
+
+ALTER TABLE ONLY taggings ALTER COLUMN id SET DEFAULT nextval('taggings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Christopher
+--
+
+ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
+
+
+--
+-- Data for Name: restaurants; Type: TABLE DATA; Schema: public; Owner: Christopher
+--
+
+COPY restaurants (id, name, title, content, sub_content, cuisine, offer, opening_hours, restrictions, created_at, updated_at, address, latitude, longitude) FROM stdin;
+1	Lakin, Corwin and Heidenreich		Repudiandae similique nam rerum quis ut nobis. Vitae eius ex rerum voluptates. Explicabo debitis vel placeat. Eligendi aperiam tempore voluptas autem sequi.	Quibusdam magnam fugiat eos. Et dolores ratione. Doloremque dolore nostrum impedit neque. Quo fuga soluta repudiandae nostrum autem voluptatem.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5541110899999993	9.96410921000000016
+2	Vandervort-O'Connell		Eos culpa voluptas. Voluptate et deleniti a neque odit. Et doloremque ex dolorum et velit laboriosam. Rerum voluptatum temporibus expedita doloremque. Veritatis sed aliquam veniam.	Ea aspernatur vel exercitationem est nobis eos. Laboriosam blanditiis sint praesentium quibusdam. Enim ratione et cum aut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5684032999999999	9.98188402000000075
+3	Dooley Inc		Dolore enim autem. Dolorem debitis aut omnis similique sit. Non dicta voluptatem ut dolorem. At molestias et eveniet voluptatem totam. Ad ut blanditiis nihil.	Odit natus voluptatem cumque consequatur. Quis unde quos rerum et. Repellendus laborum minus modi architecto. Adipisci ut quisquam veniam velit est autem est. Illum veniam quia.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5049889100000016	9.98020992999999912
+4	Bogan, Hartmann and Langworth		Dolor aperiam voluptatem officia est. Officia et explicabo aperiam est veniam nobis. Maxime nisi in qui quia. Minima hic vitae. Voluptatem nihil deserunt reiciendis consequatur at amet saepe.	Explicabo assumenda qui debitis voluptas. Quia totam ad ea at. Natus maxime qui similique deleniti sequi.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6254450500000033	10.0079510799999998
+5	Simonis-Williamson		Hic distinctio numquam sunt. Eos beatae ratione quibusdam. Exercitationem laudantium qui optio. Enim voluptas aut consequatur non non.	Nihil eos sit temporibus iusto inventore deserunt illum. Quasi eveniet accusantium sapiente vero. Alias minima iure aut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4942790400000021	9.97957846999999987
+6	Dietrich Group		Praesentium tenetur doloremque consequatur totam placeat id. Dolores et quis nulla sit omnis rerum. Dolorem officiis maxime blanditiis et. Iste dolores sed et aut officiis amet.	Voluptatem vel aut. At nostrum aut similique labore sequi autem itaque. Quia cumque dolorem ipsa veniam ducimus explicabo. Non qui quia. Quae voluptatem minus nemo.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.48788184	9.93955837999999936
+7	Williamson, Walsh and Morissette		Velit modi et dignissimos maxime et. Quae earum vel qui et quo ut. Sit non error provident velit et.	Aspernatur qui modi enim. Fugiat sed aut itaque praesentium ex culpa. Magnam dolore architecto nam. Laborum voluptatem nobis iusto illum voluptatem. Quibusdam quisquam id earum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6312741799999984	9.94560056999999986
+8	Johnston, Ebert and Hermann		Non inventore libero corporis aut illo officia fugit. Est voluptatum iusto sit ea et sequi. Excepturi nulla atque. Aut beatae sint eaque est a recusandae impedit. Consequuntur perferendis ea cupiditate quis facere.	Adipisci rerum numquam sit explicabo ut. Voluptas qui consequatur. Laudantium praesentium dicta sint rerum. Reprehenderit sequi tempore ut alias cumque. Animi laborum ut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6280745700000026	9.99364360999999946
+9	Pollich and Sons		Id doloribus consequuntur. Aut quibusdam iste voluptatibus. Excepturi culpa sint natus totam et et reprehenderit. Eius et itaque.	Tempora iusto aperiam maxime ut. Adipisci et amet autem non corporis. Dolore voluptatibus quasi ipsam est mollitia unde totam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5252341599999966	9.98678695000000083
+10	Labadie Group		Aliquam ut possimus recusandae nemo sunt aut. Corrupti saepe et provident vitae inventore distinctio quae. Neque iste soluta doloremque eveniet molestiae eum nobis.	Id ex molestiae at aperiam debitis id consequatur. Enim impedit quod. Aliquid impedit qui est. Explicabo in sint sequi ipsum dolor quo.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6370174899999981	9.97189365000000016
+11	Yundt Group		Occaecati cumque praesentium esse odit aut expedita impedit. Aut cum iure magnam. Dolorem fugiat placeat. Qui deleniti voluptatum delectus. Itaque cupiditate nulla est molestiae quo vitae.	Dicta quos omnis. Velit impedit sint et voluptas blanditiis mollitia placeat. Delectus vero molestiae amet aperiam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5659216900000033	10.0772262500000007
+12	Kertzmann, Langworth and Becker		Voluptas consequatur esse voluptatum ad dolorem est. Ea omnis autem facere. Nemo veritatis blanditiis. Recusandae accusamus quia accusantium qui cum in aut. Molestiae ipsa officiis voluptas laborum.	Numquam illo consequuntur quibusdam occaecati laudantium. Necessitatibus iusto voluptas tempora. Rerum non impedit deleniti. Molestiae ex enim rerum praesentium.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5875360200000017	10.0471331700000004
+13	Wisozk, Russel and Turcotte		Nesciunt ut consequatur. Quo amet sed id ea dolor est aut. Inventore non est.	Et itaque omnis quo et. Modi dolorem et aperiam consectetur dicta. Omnis error distinctio. Sapiente quo eos et.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5682320200000035	9.87843533000000029
+14	Mueller, Hettinger and Mann		Sed ab saepe. Et perferendis et nulla non ut asperiores. Commodi fugiat ipsam. Inventore recusandae fugit. Non nihil autem error laboriosam.	Rem qui voluptatum iure ratione sapiente impedit ut. Et porro officiis. Dolorem iure et.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4913428899999985	9.91677265999999946
+15	Hettinger Inc		Labore quod perferendis consectetur natus enim. Ducimus autem animi ea quis quas porro modi. Quidem nam sint corrupti quo. Molestiae et quia voluptas esse error quia neque.	Aut inventore quo. Illo nulla eos rerum. Labore sed ut aut minus explicabo. Non consequatur ipsum beatae alias et porro sit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5803505800000011	9.92907980000000023
+16	Raynor, Ernser and Koch		Omnis facilis consequuntur. Nesciunt sed eos quibusdam nobis nam. Omnis et dolore voluptas alias laudantium possimus vitae. Ab architecto velit.	Repudiandae dolore laudantium voluptas. Neque et voluptate. Eum atque est maiores culpa laborum. Sit excepturi architecto qui commodi nemo.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6207036699999975	10.0460283100000005
+17	Jacobson, Langworth and Bradtke		Et provident consequatur. Eos est aspernatur reiciendis. Non consequatur illum quae animi similique exercitationem.	Corrupti voluptas ut incidunt. Fugit libero sequi illum quaerat. Cumque non omnis adipisci harum et ab eum. Aut aut eos tempore non eaque alias sit. Inventore est temporibus aspernatur rerum est.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5506240099999999	9.96312196999999955
+18	Schmitt Inc		Blanditiis reiciendis ipsa totam optio debitis corporis voluptates. Non odio sit deserunt quod nam impedit. Adipisci pariatur veniam cum inventore facilis. Atque alias delectus quasi eligendi.	Id laboriosam natus et esse. Eos tempore ipsam quia eligendi accusamus. Alias voluptatem quidem et eaque dolor maxime itaque.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5378312599999973	9.99443873999999965
+19	Marvin LLC		At doloribus excepturi dolore quo. Dolor quo perferendis cum aut deserunt. Laboriosam sed animi et.	Est nihil consequatur occaecati ut explicabo necessitatibus. Et ut error maiores molestiae voluptate. Pariatur corrupti numquam earum dolorem. Ea quo magni eaque nesciunt eius ad.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5681466999999998	10.12574665
+20	Lubowitz Inc		Reprehenderit ullam quae fuga in cupiditate. Vitae sed iusto. Vel aut asperiores laborum quaerat.	Voluptatum doloribus asperiores libero cum quam quas officiis. Harum autem eligendi deserunt tenetur at. Accusamus occaecati libero magni natus. Consequatur est et libero eos voluptates sed porro. Vel eum nemo odit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4999470300000013	9.87097641999999986
+21	Altenwerth-Lockman		Possimus nemo voluptatem. Cum animi reprehenderit. Accusamus nisi et cupiditate rerum ut.	Distinctio sed nostrum. Dolores quibusdam et rerum cumque. Labore provident earum hic sunt. Commodi vel velit error autem quasi numquam dolor. Aut cum debitis architecto quis accusamus sunt.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5612605999999971	9.92900844000000049
+22	Jacobson and Sons		Odit nisi rerum earum id officia vel accusamus. Eos tenetur sint quaerat. Aut aliquid nobis.	Fugit qui dolorem dolores ea velit laudantium. Dolores itaque ad. Enim ipsa et. Dolorum sit ab incidunt repudiandae.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5310042500000023	9.94823285000000013
+23	Cassin-Zulauf		Veniam consectetur quasi. At omnis autem. Dicta ab error sit cumque voluptates recusandae. Saepe quia quos at sit et suscipit dolorem. Molestiae consequuntur est.	Sed est ab inventore. Quo beatae nulla sunt. Et consequatur id libero officiis aut. Tenetur iste vero dolores in.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4649927399999996	9.97355179000000014
+24	Aufderhar, Smith and Maggio		Minus et eos cum aut itaque. Cum quis sint qui eos omnis. Eius dolorem iste reprehenderit quos dolorum aliquid deserunt. Quam nostrum quia. Nihil consequatur modi id saepe tenetur quia.	Eligendi soluta neque a facere nesciunt sed. Doloribus id repudiandae. Nobis voluptatem ut beatae ut earum. Error sed aut at. Soluta at aperiam aut autem natus.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5566344300000026	9.87990354000000082
+25	Hessel Group		Velit omnis harum provident saepe. Assumenda porro dolor omnis nobis ratione eveniet. Sint quo asperiores ut quas minus.	Necessitatibus deserunt qui iusto distinctio. Omnis eum ut ipsam et pariatur. Est laudantium aut minima. Quo aut eligendi.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.557654730000003	9.98707998000000075
+26	Koepp-Kirlin		Est ipsa deleniti nihil quisquam perspiciatis suscipit aliquam. Dolorum labore ea. Dignissimos voluptatem quaerat nulla voluptatibus totam et facilis. Eos et numquam aut.	Molestiae nam consequatur. Debitis similique modi totam nesciunt et. Nobis aut dolorum quasi.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6017000599999989	10.1095657400000007
+27	Walter LLC		Reiciendis voluptatem magni culpa assumenda. Veritatis vel sint dolore corrupti placeat earum. Corrupti voluptate ipsam modi. Temporibus ut itaque ut. Enim molestias ullam ratione id.	Ut esse unde quia corrupti libero sint ut. Similique quasi sunt quia neque fugit assumenda. In et consequatur doloremque magni velit voluptatem laboriosam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5307160300000007	10.0234863300000008
+28	Barrows, O'Hara and Mann		Rerum cum reiciendis et soluta non odio veritatis. Qui ea incidunt nihil totam. Dolor dolores aut eius qui. Et quidem quia repudiandae animi porro.	Voluptatem nesciunt officia cumque quidem. Error pariatur id exercitationem ut nulla quos nihil. Et ipsa perferendis laboriosam. Quos aut nisi id enim fugit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5910774900000035	9.92354701000000006
+29	Zemlak LLC		Maxime amet ullam et quia nostrum. Sint rerum eos aliquam temporibus qui. Eligendi tempore assumenda deserunt. Quam ipsam est sed doloribus explicabo laboriosam quaerat. Ipsam itaque molestias unde nobis a.	Explicabo est dolor ipsa illo facilis consequatur a. Accusamus et tempora vel eligendi laudantium modi iste. Quis nisi tempore eveniet ea veritatis est.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6147958199999977	10.0827855700000004
+30	Wolff, Bechtelar and Ruecker		Consequatur est est ut. Voluptas est quo. Tempora optio expedita minus aliquam. Ut ea ab qui eligendi. Est ut dolore et.	Eos in tempore. Nihil neque libero reiciendis quia dolores. Omnis iste repellendus quod facere at illum. Quia libero tempore quasi eum ullam ex.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6305759700000024	9.98438675999999958
+31	Schoen-Keebler		Quod est repellendus quia cumque quisquam culpa. Ad ut veritatis at. Labore doloribus non sequi. Dicta doloribus ut. Quia esse sed minus voluptas.	Tenetur deleniti culpa odio. Animi velit sit vel sed exercitationem. Ducimus tempore natus cupiditate.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4705745400000012	9.98813481000000003
+32	Monahan, Brown and Mueller		Ab minus vel dolor et. Rerum voluptatem molestiae nesciunt maiores. Est necessitatibus facere inventore voluptas ut omnis cum. Et aliquam omnis. Velit ad dolorem quibusdam vero eos corrupti et.	Vel iusto unde ea. Non vel veritatis voluptas sed. Provident est eum ipsa enim. Eveniet aperiam laudantium.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.469368799999998	9.98071520000000056
+33	Ullrich, Lind and Beier		Voluptas repudiandae ab incidunt. Non id earum consequatur numquam facere. Consequatur et aliquid.	Reiciendis vitae voluptatibus velit labore ad. Dolorum qui harum sint a assumenda. Rem eum quo repellendus voluptas dolorem. Consequuntur minus sit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5467987700000023	9.90259913999999952
+34	Dibbert, Quigley and Medhurst		Mollitia at alias est non repudiandae placeat. Vel qui et. Minus totam assumenda soluta aliquam repellendus voluptas.	Atque qui eaque soluta. Optio libero quas. Et itaque et in quia blanditiis non molestiae. Dolores aperiam nisi nihil explicabo sed repellendus.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5782751599999969	10.0009058500000005
+35	Stark, Schumm and Kessler		Pariatur dolore illo facilis laudantium. Perferendis sunt ea voluptatem ab est ut. Pariatur non molestiae est inventore nihil. Hic fuga et iusto consequatur. Et vel reprehenderit est iusto et.	Quia eius quia quisquam. Aut distinctio ut rem iusto voluptatem molestiae. Est aut blanditiis aut tempora ut. Qui omnis fuga dolorem autem soluta ut at.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5623007700000002	10.0865978100000007
+36	Stamm-Cormier		Deserunt inventore debitis quam cupiditate. Aut voluptatem magnam. Aliquid vero dolorem. Doloremque quis beatae velit consequuntur placeat.	Tenetur aperiam facilis natus laudantium adipisci quibusdam. Dolor quia itaque et. Rerum est ratione nobis omnis quam accusamus dolores. Nihil ea molestiae eveniet dolorem. Saepe qui odit ut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5984396400000023	10.0666394300000004
+37	Denesik, Roberts and Wuckert		Ratione rerum ipsa pariatur vitae qui. Rem ut voluptate optio. Quasi perspiciatis consequuntur. Deleniti fuga placeat eos eos suscipit. Voluptas omnis perferendis asperiores cumque deleniti corporis.	Laborum rerum repellendus ut. Sint velit aut earum et hic. Laborum adipisci incidunt. Voluptatem ullam eum veritatis error fuga deleniti. Dignissimos non dolores ea quis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5468014599999975	10.0073355900000003
+38	Walter, Langworth and Bernhard		Enim sint vero. Voluptatibus similique aut error minima hic doloribus ut. Qui quas at ipsum voluptatem. Veritatis labore ea dolore harum.	Ut et qui est. Quia ea voluptas aut. Perferendis dicta aut. Facere illum ea sit qui.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5227786900000027	9.88940597000000032
+39	Kulas, Greenfelder and Sawayn		Nam doloremque exercitationem fugiat. Qui laudantium sunt et qui. Expedita earum doloremque. Atque facere perferendis voluptatibus et enim. Aut suscipit doloremque voluptatibus consequatur cumque non sed.	Sit voluptatem veniam numquam ab vero quaerat. Vero voluptatibus aliquid nobis est. Voluptas itaque qui laborum sit aliquam. Unde in molestiae animi. Assumenda numquam eos iure asperiores.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.518362230000001	10.1127337799999992
+40	Strosin Inc		Suscipit ipsum quibusdam eum. Ipsa quibusdam sunt. Sapiente esse nesciunt sunt sint architecto. Tempora ut eius optio totam.	Aliquid id sint dicta. Rem et blanditiis dolor sed odio nulla occaecati. Ut tempora illo. Doloribus voluptates praesentium tenetur totam. Et qui facilis voluptas.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5033103199999971	9.99510176999999977
+41	Considine-Altenwerth		Ea maxime sint saepe consequatur. Aperiam repellendus omnis consequuntur a est. Atque aliquid enim. Dolor animi voluptatibus reprehenderit dolore est quas pariatur.	Soluta cum temporibus. Officia corrupti dolor quae. Delectus voluptatibus nisi facere quo non. Consequatur unde excepturi numquam ratione qui. Et ut mollitia impedit eaque odit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4904311499999991	9.89483378999999985
+42	Hoeger, Altenwerth and Mante		Eveniet magni facilis voluptatem. Dolorem sapiente saepe tempora enim. Nesciunt sed labore dolore dignissimos porro non. Sunt et commodi.	Corrupti consequuntur porro dolorem molestiae sunt voluptatum. Ut nesciunt dolorem laborum. Sit quod voluptatum facere aperiam tempore exercitationem laborum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5976268200000021	10.0499985200000008
+43	Mohr, Schiller and Beahan		Laborum nihil tempora repellat quo officia. Maxime fugit veniam ipsa nam. Sed voluptas commodi libero placeat est. Rerum consequatur deserunt. Qui quo vitae aut natus nisi.	Eligendi laborum magnam quo et. Perspiciatis dolores sint culpa minus sed. Voluptas nobis libero quis nisi aperiam. Sint pariatur et voluptas deleniti et voluptatem.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5456875599999975	10.1307301600000006
+44	Wilkinson and Sons		Sit esse qui ratione suscipit enim cumque. Consequatur maiores cum et laboriosam autem. Earum dolore porro facilis repellat. Porro consequuntur quo deleniti.	Quo fuga similique in magnam et aut. Voluptatum eum nostrum laborum vel quia. Delectus ipsum illo eligendi. Ut quis dolor delectus assumenda natus esse.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5612395300000017	9.92460374000000023
+45	Runolfsson, Simonis and Koch		Facere neque vel. Consequatur est possimus dicta voluptate vel. Fugit minus qui pariatur. Voluptatum omnis id corrupti aperiam similique.	Placeat voluptatem natus delectus dolor et neque. Et adipisci quaerat voluptatem itaque necessitatibus. Neque assumenda aut voluptatem. Illum reprehenderit dignissimos molestiae sunt quas omnis nihil. Blanditiis laboriosam praesentium nulla ad hic.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4781045699999993	9.99506292999999957
+46	Emard, Cormier and Russel		Ut provident molestiae et a. Odit numquam eligendi. Asperiores ducimus mollitia.	Quibusdam eaque dolorum sit quod rerum consectetur. Rerum tempora ut impedit. Enim sequi aperiam assumenda rerum voluptate voluptates doloremque. Earum fugit et eligendi vitae aut. Ut sit magnam enim maxime culpa.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4987293499999979	9.94870960000000082
+47	Gorczany, Feest and Hilpert		Ipsam omnis maxime minima aut. Impedit dolorem vel eum sunt sunt atque dignissimos. Sed eligendi quam vero porro fugit aperiam. Ipsam molestiae exercitationem eos dolore ut. Itaque vero expedita officia.	Doloribus possimus tempore sequi rerum sed. Ab enim omnis fugit amet. Amet numquam assumenda explicabo magni. Maiores eum ut sed at ipsam iste.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5347830099999982	10.0517046899999993
+48	Bernhard Group		Optio amet est voluptates quod. Dignissimos soluta non. Tempora rerum et ipsam. Ratione dolores id sit numquam laborum hic.	Dolor sit et enim. Aperiam perferendis atque placeat. Rerum laudantium harum. Asperiores ut tempora facilis quasi et adipisci numquam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5087423700000002	10.1130632499999997
+49	Abernathy-Funk		Velit esse voluptate minus veniam. Officiis vitae aperiam. Ducimus labore quidem nihil aperiam porro aut. Ab omnis officia voluptas ut eos.	Voluptatem beatae neque voluptas. Magni mollitia vel praesentium nemo aut. Sed ratione sit ab. Neque eaque cum quidem officiis sed. Rerum accusantium quibusdam quo voluptatum expedita ad.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6151393999999968	9.9909135899999999
+50	Pacocha, Schroeder and Conroy		Quaerat molestiae nisi. Blanditiis dolorum suscipit perspiciatis. Reprehenderit quidem impedit omnis iusto. Exercitationem quis unde quos culpa facilis dolor.	Neque ea amet rerum. Minus dicta quis voluptas consequatur. Beatae inventore molestiae. Possimus vitae facilis temporibus aut sunt. Temporibus voluptatibus saepe deleniti in.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5283383100000023	10.0681396200000002
+51	Terry LLC		Qui optio similique vero iure laboriosam laudantium quidem. Et dolore est aperiam odio. Ut eos consectetur commodi eos aliquid est et.	Porro et quis iste ab eveniet ipsam. Accusantium voluptas quod. A perspiciatis quia et sed et. Et accusamus quod sit facilis ullam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5257080200000033	10.04877267
+52	Morar-Ratke		Qui dolorum eveniet rerum ut. Doloribus vel nostrum est quia est dolores. Dolore dolores laborum officia labore quibusdam corrupti dolores. Corrupti voluptas minus reprehenderit. Quae deleniti dolor iusto sit aut voluptatibus.	Voluptatem aut perspiciatis placeat magni ex reiciendis rem. Voluptas enim et aut sed repellat. Quisquam tempore id. Et sint et iusto omnis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.532918549999998	9.97614699000000016
+53	Murazik, Doyle and Gusikowski		Et natus velit quos laudantium. Illo iusto aut exercitationem est nobis. Nostrum sed eos qui perspiciatis quis. Cupiditate tenetur vero et omnis nihil sit distinctio. Ullam non occaecati.	Rerum facilis possimus tenetur temporibus. Praesentium tempore neque porro quibusdam culpa. Ab harum cum provident nostrum consequatur et. Fugit animi aperiam at quia.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4777357999999978	10.0465713000000001
+54	Rolfson-Robel		Libero impedit voluptate. Quidem est adipisci rerum molestiae. Et sint hic quod aut asperiores fugiat.	Hic corrupti harum illum est aut dolor. Sint quos non. Ipsum illum rerum eaque ut amet recusandae facilis. Magni quia atque voluptas. Quas commodi dolorum et quisquam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6085492099999996	9.99425807999999982
+55	Kshlerin Inc		Enim minima deleniti non aut totam ducimus. Fuga facilis consequatur quas. Consequatur occaecati nam placeat similique quia commodi. Nesciunt quis deserunt sint veritatis. Excepturi ipsum aut eius dolore laboriosam.	Molestias et doloremque. Quis rerum omnis et recusandae sint. Facilis quis molestias. Sequi exercitationem ut cum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4981856400000026	10.0731192800000002
+56	Jaskolski, Conroy and Ferry		Qui iste numquam ullam omnis sunt. Rerum similique earum excepturi. Excepturi laborum eveniet. Est nulla est atque rem perspiciatis.	Expedita molestias ab officia esse. Qui veritatis voluptas enim dolore magnam. In quis ipsam commodi. Labore voluptatibus voluptatem qui dolorum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5758811600000016	9.89460015999999953
+57	Rau-Leuschke		Fugiat maiores est eum accusantium dolorum est at. Unde quod quos temporibus iusto. Sit autem dolorem maxime saepe. Adipisci quasi nisi.	Tempora et est et sunt quo. Molestiae qui odio sit sed sint. Et nemo tempore reiciendis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6283340100000032	9.93143777999999955
+58	Gusikowski, Boyer and McClure		Est omnis velit dolorem velit. Dicta exercitationem sint. Neque nemo quae.	Vel qui laboriosam voluptate fugiat deserunt eius. Est qui incidunt deserunt quia officia. Voluptate ducimus quod eaque.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5562178200000005	10.1092183700000007
+59	Ebert, Bode and Breitenberg		Consequatur perspiciatis consectetur eos fuga molestiae magni. Earum esse totam. Quasi vel aut voluptatibus accusamus. Sunt similique dolorem voluptas porro quasi rerum. Ducimus quia nesciunt.	Possimus veniam dolores cum aut earum non doloremque. Quo consectetur qui voluptas ipsam iure tenetur fugit. Nostrum illo debitis voluptatum in.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.577338509999997	10.0208497800000007
+60	Rath-Bernhard		Aut omnis voluptatem laboriosam. Praesentium illum officiis quas voluptas hic. Tempora autem qui maxime laudantium ut. Enim soluta et nobis consequatur commodi.	Repudiandae voluptas totam et corporis magnam perferendis. Nostrum dolor distinctio consequatur. Doloremque quia et nostrum est.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5798492600000031	10.0757611399999991
+61	McGlynn, Von and McGlynn		Est qui sunt laboriosam vel perspiciatis molestiae occaecati. Sapiente qui maiores ab soluta rem. Est recusandae dolores consectetur eveniet aliquid ut. Voluptatem in molestias corrupti et vitae et eos.	Temporibus praesentium nostrum beatae. Eos est hic. Dolores nihil ab. Dolores ut autem sunt. Molestias rerum voluptates quasi molestiae voluptatem eveniet nisi.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5471949000000009	9.88043927999999916
+62	Gleichner, Wilkinson and Wehner		Et voluptatem nesciunt quos vitae qui excepturi. Exercitationem aut porro perspiciatis sunt aut ipsa. Ipsum a enim.	Praesentium laboriosam mollitia. Nisi commodi eaque rem in corporis eum. Veritatis quo ducimus soluta quis natus. Perspiciatis ratione fuga consequatur tenetur vitae harum delectus. Molestiae vitae eligendi rem similique aut iusto asperiores.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5755558800000031	9.8467178999999998
+63	Waelchi-Littel		Ex quia officia. Ab tempore omnis repellendus explicabo nobis quaerat molestiae. Non aliquid unde a veniam. Vel id et nisi magni sint. Ea inventore animi exercitationem illo rem vel molestiae.	Dolorem id facere amet expedita ad. Quia nam commodi sed dolore quia. Magnam minima qui accusamus facere id. Blanditiis ad laudantium voluptatem nihil qui deleniti. Nihil id illo dolorem laudantium rerum excepturi dolorem.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5324259599999976	10.1048867300000005
+64	Wiegand, O'Connell and McCullough		Et inventore expedita nihil tempora. Praesentium pariatur nemo architecto tempora. Qui aliquam ut soluta eos in et. In est quaerat officiis.	Laborum quos est corporis consequatur sit consequuntur. Molestias exercitationem eos. Voluptatibus harum a maiores ut dignissimos doloremque vitae. Dolorem non adipisci exercitationem sint iusto aspernatur nisi. Quos ut unde sint.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5176568500000016	10.0907212800000003
+65	Blick and Sons		Ab sint tempora incidunt sed alias. Ex tempore harum sint magni voluptatem ea. Et cumque occaecati.	Soluta quia quam aut. Ullam consequuntur consequatur quia rerum cum. Ut aspernatur harum corrupti dolorem at.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5005376399999975	9.89815394999999931
+66	Raynor, Jacobi and Adams		Officia repudiandae dicta deleniti sit qui error et. Beatae quam aut qui odio rem laudantium quibusdam. Expedita vel iure modi ipsam.	Laborum temporibus laudantium sed. Est perferendis quisquam delectus. Quia aliquid qui quo illo distinctio velit consequatur. Non sed odio optio in. Expedita qui sed qui aperiam dolorem culpa.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6208907199999985	9.97522335000000027
+67	Haley Group		Aperiam cumque quam dolore corporis neque pariatur sequi. Maxime esse accusantium molestiae. Sit est fuga neque praesentium provident et.	Enim et enim dolore voluptas quas mollitia. Atque tempora aperiam. Beatae repudiandae velit enim voluptatum. Accusamus adipisci architecto.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5383155199999976	10.0255592900000003
+68	Roberts-Wunsch		Eos atque ut quaerat unde nisi quod. Voluptate assumenda est consequatur id incidunt. Consectetur nesciunt rerum reprehenderit inventore veniam. Natus explicabo quae deserunt aut accusantium. Error repellat non.	Porro qui non sunt exercitationem. Occaecati minima ducimus impedit ut et. Aperiam quibusdam ex sunt odio ut vero. Fugiat placeat consequatur.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5036761699999985	9.87065854999999992
+69	Ortiz, Mills and Gerlach		Corrupti porro aut sint vel. Omnis nulla in et nihil et. Beatae aut neque voluptate eum in autem. Reiciendis impedit id soluta vero consequatur. Et sunt error vel dicta corrupti ratione qui.	Rem ea dolorum. Ea ex laborum perspiciatis et iure inventore fugiat. Delectus consequatur quisquam accusamus qui non. Quibusdam facilis qui consequatur repellat enim et harum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4808023599999984	9.96480380000000032
+70	Reilly Group		Qui eius eligendi quas nesciunt magnam sit rerum. Neque qui nam enim minima aut nesciunt cum. Autem maxime et suscipit repellat odit. Sint sunt omnis nisi.	Qui ipsa dolor rerum consequatur iste nisi. Magni odit consequuntur optio. Dolorem unde vitae at odio et et fugiat.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.575210460000001	10.0958878399999996
+71	Swaniawski-Farrell		Aliquam qui aut et saepe tempora aut voluptates. Et sit doloribus consequatur laborum nisi rem quia. Libero id rerum voluptatem praesentium atque.	Accusamus ducimus corrupti harum. Quisquam consectetur cupiditate. Sit nam perferendis in aut maxime expedita.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5492242799999971	9.8979261300000001
+72	Steuber-Gerhold		Eos excepturi id numquam et dolores atque. Unde quos repudiandae omnis. Odit velit consequuntur. Nostrum reprehenderit sit eaque quia et necessitatibus. Sunt possimus esse aut aut rerum et provident.	Iure ut deserunt quaerat ab a. Accusantium voluptate impedit officiis provident enim et perferendis. Et sit rem voluptatem. Sit soluta dolore. Dignissimos consequatur ratione aut qui.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5242625200000006	9.99393532999999934
+73	Pouros, Hodkiewicz and Kuhlman		Autem provident corrupti ut dignissimos et cum. Id consectetur dolor et eius sunt rerum eum. Assumenda nesciunt rem velit. Laudantium modi odit atque eum architecto voluptatum. Sapiente alias perferendis perspiciatis.	Id esse vero. Aliquam molestias voluptatem est aperiam et eius consequatur. Reiciendis voluptatem rem perspiciatis natus recusandae.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6284294700000004	9.95686255999999936
+74	Jacobi, Weimann and Frami		Voluptate accusantium ut sed asperiores. Ea voluptas ipsa mollitia et provident nesciunt sapiente. Et veniam vel dolore excepturi enim. Asperiores et quasi voluptatem.	Voluptas et deserunt beatae sed excepturi accusamus eius. Dolorem veniam molestiae. Praesentium et ea eveniet. Unde aut voluptatem consequatur.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5030726900000033	9.90139092000000076
+75	Abshire-Luettgen		Soluta et id id voluptatem ut minima vero. Expedita sit rerum. Pariatur cupiditate laborum quod mollitia.	Eum minima saepe. Esse totam sunt vel ipsa. Aut vel omnis similique velit architecto nulla iure. Voluptas eligendi ut facere. Quia molestiae dolore.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4840245899999971	9.91670195000000021
+76	Spencer, Turcotte and Terry		Aut dolore amet fugit. Dolore laudantium consequatur est numquam rerum iusto velit. Laudantium ut corporis vel architecto cumque. Laborum consequatur eos provident expedita dolor qui.	Natus voluptas voluptate molestias voluptatum. Quae numquam vel similique. Animi ipsa aut dicta provident.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5662477500000023	10.1322244500000007
+77	Kuhn, Koss and Mosciski		Quae soluta ex quibusdam quisquam omnis. Eaque quia est soluta magnam quia. Corrupti at doloribus.	Totam et consequuntur iusto eos. Alias deserunt voluptatem id. Voluptatum eveniet dolorem eligendi laboriosam voluptate dolorem. Accusantium delectus ab in repellat hic repudiandae voluptatem. Consequuntur sequi et fuga qui veniam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5751699799999983	9.9611071399999993
+78	Casper-McClure		Quis ratione commodi. Cumque eum aut quaerat earum voluptatibus unde rerum. Inventore impedit eligendi sunt qui et enim. Magnam suscipit modi sint quae quaerat deserunt similique. Distinctio sit est.	Ducimus consequatur totam quibusdam rerum voluptatem. Ex doloremque sequi quidem sint quod. Iusto rerum minima sint unde.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.572064840000003	10.0982294600000007
+79	Mosciski-Pfeffer		Et nesciunt qui. Eum dolor accusamus ut. Autem inventore dolor sed. Qui maxime reiciendis atque sit.	Nesciunt eaque harum dolores atque ullam id esse. Illum tempore molestias ea rerum. Ex rerum aliquid a est ipsa. Illum aut ut voluptas soluta odit excepturi aut. In ut placeat qui nemo aut ducimus.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.547689830000003	9.98963965000000087
+80	Larson-Howell		Tenetur labore tempora dicta consectetur et sint aliquam. Libero dolorem veniam ipsa. Eum sunt excepturi facilis voluptatem dolorem fugit. Dolores eos non asperiores sunt quaerat ipsum. Amet sed non autem.	Consequatur eum et voluptatem deserunt quia culpa dolorem. Et sit minima et enim ut explicabo. Quia natus rerum ex dolorem dolores consequuntur soluta.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6036701900000025	10.0573357899999998
+81	Stracke, Heller and Hyatt		Voluptatem iure autem quia esse veritatis repudiandae est. Expedita et optio in. Ut inventore et rerum labore.	Ut eius veniam voluptatem voluptatum. Voluptates repellendus sed ut dignissimos. Dolore mollitia deserunt illo.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4980243600000023	9.89269067000000035
+82	D'Amore LLC		Id quisquam possimus. Doloremque sint culpa corporis velit voluptatem sint expedita. Possimus rerum vel et autem dolore ipsa ipsam. Soluta quia quod ad ut.	Tenetur perspiciatis numquam rem et corporis occaecati magni. Mollitia magni et nobis aspernatur incidunt. Pariatur nihil recusandae vel eius. Nesciunt quos in quia pariatur. Sint sequi et quis animi.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5224098099999992	10.0823062799999992
+83	Hudson-Powlowski		Quis expedita nisi qui. Earum nostrum inventore occaecati autem eos dolorum. Sapiente sed molestiae amet hic necessitatibus magnam odit. Velit et praesentium.	Non eaque sint aut excepturi. Corrupti aliquid consequatur aut quia omnis voluptatem. Eaque non explicabo repudiandae similique. Ut aut delectus.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6286299200000016	10.0564414000000006
+84	Ratke-White		Et rerum temporibus. Eaque in autem nam fuga ducimus maiores molestias. Dolore omnis et quia ab dolores et. Pariatur ut numquam beatae dolor odit autem ullam. Dolorem fugit qui occaecati voluptatem itaque.	Beatae quibusdam cumque. Distinctio saepe et a deleniti eaque. Aut omnis tempora repellendus laboriosam ut commodi pariatur. Exercitationem et est odio doloribus alias impedit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5488126199999996	10.1209339099999998
+85	Russel-Schroeder		Occaecati voluptas consequuntur assumenda sit explicabo non iure. Minus accusamus autem velit molestias sunt eveniet sed. Officia quod tempora. Et optio quidem aut.	Magni sed illum. Quisquam ut perspiciatis eos ut quia voluptatem. Autem sit officia. Ut modi quo assumenda beatae qui saepe. Debitis ipsum quibusdam in.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.580010129999998	10.0085352800000003
+86	Boyer-Schulist		Id odit impedit nam itaque sit. Suscipit et numquam nulla. Et modi voluptates sunt. Nisi eligendi vitae esse sequi qui ipsa. Voluptatum voluptatem fugiat rerum quos.	Earum magni nam repellat. Possimus ipsa sed delectus. Quis id provident explicabo veniam voluptatum facilis. Ut ducimus et dolores aut quis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5219028300000019	9.95223415000000067
+87	Steuber, Sanford and Fritsch		Vel qui voluptatem animi quia voluptas quibusdam sapiente. Fuga voluptatem laudantium quos ad earum. Unde ea aspernatur. Animi inventore nostrum facilis quia debitis officiis minima.	Impedit non ea. Iusto et et facere sed fugit. Quia omnis incidunt quae nostrum in ut distinctio. Sit sit illo.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.501186109999999	10.0014652099999992
+88	Beatty Group		Amet nihil quia tenetur. Dolorem cupiditate aliquid saepe voluptate. Tempore sunt et et nesciunt optio.	Deserunt enim sed perspiciatis odit molestiae est. Reprehenderit illum doloribus in. Qui omnis id.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5862795800000029	10.0506952799999993
+89	Toy, Lakin and O'Hara		Reprehenderit eos perspiciatis harum aut. Natus qui sit quis. Aut sequi ullam ut qui.	Numquam quasi deleniti. Velit et quas quia vel mollitia suscipit. Officia eligendi laudantium. In assumenda porro neque vitae modi et voluptatem.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5503783200000001	10.0620485899999998
+90	Mayer Inc		Quae sint iure dolorem illum sunt voluptatem et. Numquam sunt eius cupiditate quas et. Beatae optio minima perspiciatis voluptas quam doloribus.	Qui eius quis occaecati et voluptas sunt. Ut ipsam nostrum odit quam quidem. Qui quis nihil magni dolores fugiat error.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5527293999999969	9.90695662999999982
+91	Rempel, Renner and O'Reilly		Impedit ipsa exercitationem. Est sed temporibus. In dolor omnis dolores id dicta. Id dicta quis odit rerum sapiente harum quo. Adipisci et laudantium atque fugit officia veniam unde.	Repellat assumenda occaecati ratione. Ea aut ipsam illum voluptas sed. Et qui omnis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5350081200000005	9.91225655999999944
+92	Veum Inc		Officia quas doloribus maiores consequuntur. Minus veritatis molestiae reiciendis non sequi nihil. Veritatis culpa aut. Excepturi ipsum repellat.	Ipsa omnis nihil voluptas unde repellendus impedit ullam. Nam ut vel. Cum ipsum eum fugit eos. Libero et hic eligendi.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5239948500000011	9.94348354999999984
+93	Altenwerth, Hansen and Kilback		Qui occaecati aperiam et. Doloribus qui quo. Vel excepturi nesciunt.	Atque ea deserunt. Molestias quasi veniam placeat qui ea sed. Soluta aliquam repudiandae.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6234232300000002	9.98154186999999915
+94	Von Group		Quia quam suscipit dolorem ratione sed. Aperiam quaerat similique qui. Reiciendis aliquid laudantium qui necessitatibus incidunt. Quis adipisci velit natus consequatur occaecati.	Enim cum at et ab. Ut sequi dolor ea reiciendis est sit hic. Quas neque dolor. Quia dolores aliquid fugiat et neque. Asperiores minus aut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4824662899999979	10.0097899699999999
+95	Dare-Tremblay		Est quidem qui officia. Expedita nostrum dolorem enim natus velit ut. Molestias et sint. Commodi et alias quo velit.	Aliquam omnis rerum. Earum quae voluptates dolores fugiat dolore. Ut quam voluptas dolores voluptatem. Dicta autem natus nam quo.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5910186400000015	9.87755384999999997
+96	Walsh Inc		Quis commodi odit quisquam. Voluptas nobis vitae ipsam cum. Qui sapiente laborum explicabo in et. Dolorum sit autem quia. Ducimus quis repellendus occaecati incidunt est.	Labore quam dolorem nostrum sit voluptate aut. Et molestiae vel doloribus accusamus consectetur. Laborum iure vitae. Nobis qui placeat iusto.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4854297400000007	10.0607799
+97	Stark, Powlowski and Tromp		A non aperiam aliquid sapiente eaque. Nesciunt qui qui et excepturi. Deserunt sed debitis aspernatur veritatis molestiae aperiam placeat. Vel exercitationem neque sit. Quia eius fuga at in.	Vel consequuntur dolorum aspernatur qui. Nihil qui quasi aliquid consequatur voluptatum corporis omnis. Facilis omnis molestiae provident qui quod voluptatum. Impedit officiis aperiam quos. Nihil ipsum quis voluptates provident autem odit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5010786400000029	9.88666560000000061
+98	O'Connell-Feeney		Aut dolores provident doloribus est sequi quo quaerat. Eaque corrupti provident vitae. Suscipit natus recusandae aperiam et distinctio. Voluptatibus dolores aut non odit.	Provident suscipit maxime ea corrupti officiis. Quia aut repellat aliquam ut beatae nostrum. Dolore sint non tempore quia expedita nulla. Ad laborum est.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4943734800000001	10.0469507100000008
+99	Torphy-Hessel		Consectetur quidem id tenetur aut dolores. Earum sint cumque perspiciatis tempora. Ut omnis molestiae assumenda asperiores dolores quod dolore. Sed recusandae repellendus vero quis id temporibus quia.	In ex quisquam vel perspiciatis est. Quis dicta ratione. Rerum quam aut sunt fugiat quod.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5641848100000004	10.07982215
+100	Fisher, Ward and Bartoletti		Voluptatem optio voluptatum sequi maxime amet sed. Ut vel qui voluptas nobis voluptatem eum et. Eligendi eos animi pariatur odio quaerat.	Mollitia sunt ex labore ut rerum. Et a ut. Delectus eos suscipit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5643673399999969	9.95919235000000036
+101	Walter-Dickens		Ea molestias laborum nihil a. Quisquam itaque nulla minima voluptates atque et. Est facilis debitis doloremque ipsa ut.	Et ea corporis debitis. Porro molestiae distinctio harum sed mollitia aliquid. Aut consectetur inventore. Voluptates pariatur aut omnis et qui blanditiis error.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4779352299999999	10.0667525500000004
+102	Hickle-Donnelly		Ratione at aliquid delectus itaque alias qui. Natus sunt amet iure. Aspernatur sint est. Et hic delectus molestiae quisquam eius quasi.	Vero sequi deserunt iure corporis ullam. Inventore dignissimos provident quaerat quia rerum. Nostrum hic aliquid voluptatem exercitationem. Natus et et quia libero voluptates. Dolor ea maxime ut rerum impedit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6326199800000012	9.96719928000000088
+103	Hoppe, Lang and Anderson		Inventore necessitatibus ut quia. Odit et id sint aut quam laudantium. In provident aut nesciunt sint consequuntur. Quia in ipsam dignissimos aut molestiae culpa. Velit perspiciatis doloribus.	Harum perspiciatis excepturi non quod eveniet numquam error. Vel dicta numquam occaecati ea est. Quae esse ab rerum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4815079800000035	10.0708791600000005
+104	Dickinson Group		Alias amet voluptatem suscipit harum et dolorem. Autem necessitatibus quis adipisci tempore officiis. Deleniti voluptatum id ex. Facere consequatur ex. Illum cupiditate suscipit aut sed ab in.	Cupiditate fugit veniam facilis adipisci exercitationem optio. Minima et nisi. Tempore itaque dolores et nam deleniti accusamus. Eum perspiciatis doloremque aut quia velit eum et.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5136787699999985	9.97138142999999921
+105	Bode, Schuster and Blick		Excepturi quam eum corporis harum natus. Voluptatem harum et qui adipisci consectetur exercitationem vitae. Voluptas iste et optio perferendis et est. Unde iusto dolor voluptatem sit modi est ut.	Ut minus sed molestias blanditiis in. Qui autem ut magni nisi consequuntur alias impedit. Dolor nobis illum. Placeat debitis cum enim qui. Modi ea qui sapiente.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.52864091	10.0517194199999995
+106	Beier, McDermott and Ruecker		Cum impedit iusto. Possimus optio dolorem quia quae et corrupti. Incidunt expedita ex sunt fugit ut iste praesentium. Voluptate eum suscipit beatae est ducimus. Tempore porro aperiam nisi voluptatem.	Maiores minus quo tempore sit voluptatem qui. Ut repudiandae omnis libero est. Sapiente commodi totam quis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4758929300000005	10.0462763699999993
+107	Bogan-Krajcik		Enim illo ducimus qui dolores iste laudantium aut. Dolorum illum labore. Et soluta voluptatem. Sunt sapiente et.	Quasi provident laboriosam sequi velit ab dicta pariatur. Quia blanditiis provident maxime animi. Labore sunt earum qui eum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5179191599999982	9.90686943000000042
+108	Bashirian and Sons		Quam aspernatur voluptatum rem cum. Nisi sit delectus ut harum voluptates. Voluptas est velit molestias magnam sed officiis non.	Autem iure ratione enim ut et. Ut in quo est necessitatibus quas ipsum rerum. Doloribus nostrum architecto. Molestiae sequi dolores quod. Non odit nam aut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5684444700000029	10.0700241399999992
+109	Miller-McLaughlin		Libero sit tempora iste magnam. Quia labore architecto nihil. Autem modi id ea ut temporibus laudantium qui. Veritatis voluptatem ipsam.	Consequuntur est libero modi. Quod animi consequuntur fugiat sit. Aut voluptatem maiores. Nemo harum omnis blanditiis et id. Quia dolor est.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5480829799999967	9.98494271999999938
+110	Langosh-Cremin		Ad qui possimus quia mollitia. Ut quibusdam unde. Vel voluptas dignissimos sit nesciunt deleniti reprehenderit repellat. Nostrum quia blanditiis dolorum error ea.	Dolorem laborum possimus repudiandae et mollitia voluptate. Laudantium voluptatem ipsa dignissimos. Quasi rerum quis qui hic aut aut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5507982100000035	9.94361746999999951
+111	Fritsch Group		Quis eos nulla consequuntur quisquam rerum voluptate minima. Beatae quod ut. Repellat placeat voluptate ad.	Expedita temporibus pariatur illum culpa totam. Eligendi ipsum aspernatur exercitationem repudiandae. Sunt rerum minima est vero voluptate. Et provident qui.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6204266200000035	9.92043381000000046
+112	Herzog, Kutch and Predovic		Quia quam quia. Sit consequatur voluptatem ipsa. Nulla sunt quia asperiores facilis molestias. At cupiditate pariatur. Sequi totam aut non quas.	Debitis doloribus magni. Aut quo molestiae velit. Temporibus repudiandae odit ut aperiam maxime. Ea aut magnam id et.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5581504299999978	9.93332262000000021
+113	Feest and Sons		Similique pariatur quibusdam ipsam nemo eaque quis. Sed laudantium quis sunt ab fugit deleniti. Sit consectetur rerum fugiat eum voluptate libero. Qui est vel sapiente dolor et voluptatibus. Omnis aliquid dolor dolorum.	Voluptatem voluptatem enim esse. Voluptate expedita mollitia molestiae rem hic accusantium at. Ratione in consectetur et est voluptas quam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5029435000000007	9.89101111999999993
+114	Dibbert-Schuppe		Provident ipsam consequatur dolores velit est et. Distinctio consequatur inventore cum in consectetur. Doloribus sit qui laborum non magnam corporis quia. Ducimus dolores placeat iusto voluptatem illo qui nostrum. Perferendis et natus unde commodi.	Ullam ut quasi aliquid possimus dolorem. Eum non porro illo. Et inventore aliquid. Recusandae nisi animi eos.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5580318199999965	9.96386923000000024
+115	Koelpin Inc		Iusto molestiae qui maiores illo fuga. Corporis consequatur maiores. Voluptate vitae qui sunt at consequatur. Ex assumenda dolorum sit ea non. Voluptatem vero temporibus a.	Tempora cupiditate voluptas consequatur. Dolorum quia tempora ut vitae. Fugiat maiores corrupti facilis id temporibus esse ad. Quam eum qui hic dolore in.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5582999900000019	10.1069611199999994
+116	Rutherford-Schowalter		Voluptas aut quia. Quia eos reiciendis. Voluptas voluptas aut. Modi et nemo. Ducimus ut consequatur sed eligendi id vel.	Quae recusandae aut porro quo et. Excepturi doloribus perferendis ratione a quia qui hic. Aut inventore repellat vero doloribus iusto officia eius.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5079468300000016	10.0951722900000007
+117	Daugherty-Prohaska		Laudantium consequatur sed et tempora velit ut. Magnam nihil aspernatur non placeat. Veritatis exercitationem error. Ut aut ea veniam quod.	Eveniet numquam cupiditate doloribus officiis non blanditiis culpa. In dolorum perspiciatis distinctio saepe rerum. Ratione voluptas suscipit porro ab.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5917693199999974	10.0735424099999999
+118	Ward, Hintz and O'Keefe		Distinctio repellat dicta. Ut aspernatur facilis quia voluptatum libero et. Iusto magnam ut.	Nihil odit excepturi iste ea suscipit quod culpa. Laudantium ratione ab inventore cupiditate voluptas exercitationem aspernatur. Molestiae eaque quos. Consequatur et et quasi ut. Quia quae reprehenderit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5670016199999992	9.92813033000000011
+119	Zemlak-Aufderhar		Qui eveniet illum ipsam quam distinctio et. Ducimus enim porro. Quis et recusandae possimus fugit dolorum.	Vel corporis et non aspernatur facere quia. Ut eligendi eveniet voluptas. Ea ab consequuntur voluptate eligendi sequi cum. Error accusantium sed et quis nemo in accusamus. Quis quam sed aut et quia.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5117114000000029	9.9792318299999998
+120	Konopelski LLC		Perspiciatis non omnis ut sit labore culpa. Recusandae cumque porro atque. Harum voluptatem cupiditate consequuntur. At beatae non dolores omnis. Ut omnis explicabo.	Voluptas suscipit autem a quas et tempore architecto. Doloremque aut omnis praesentium ad molestiae et unde. Iusto sed quaerat qui eum sed quae omnis. Necessitatibus aut non.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5729449000000031	9.85380943000000009
+121	Sporer Group		Porro incidunt ad praesentium nisi iusto. Architecto laborum fugit ea ut iusto debitis dolore. Dolores consequuntur facere.	Aut quisquam exercitationem occaecati nobis iure ut ad. Possimus consequatur corporis architecto maxime dolor aliquid. Quae fugit earum a. Laudantium qui sunt itaque eaque. Vitae cupiditate libero ut dolorem.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5374125199999966	9.93400983000000082
+122	Dach, Blick and Mitchell		Assumenda distinctio et impedit recusandae. Vel voluptas aut sed est ut. Aspernatur veritatis tenetur. Suscipit voluptatem quis velit aut.	Corporis aperiam ab a qui aut. Qui repellat et optio delectus ex consequuntur cum. Voluptas libero laboriosam in qui non dolore voluptas. Ducimus debitis dolorum et minima quia.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5844063099999985	10.0026550299999997
+123	Davis Group		Excepturi commodi illum expedita eius molestiae aliquam. Necessitatibus quo natus aut error. Quia consequatur quas sed. Assumenda reprehenderit nam. Sunt similique consectetur odio ea.	Sapiente ducimus quia. Officiis nesciunt velit. Ab quo aut. Earum fuga voluptatem facere.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5055740800000024	10.0009808800000002
+124	Williamson LLC		Architecto consequatur est officiis. Impedit expedita reiciendis ipsum in enim. Itaque aut nobis non velit qui sit.	Non quia ducimus at ipsam. Voluptates consectetur dolor. Possimus ex iusto ullam quaerat quis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5912759599999973	9.8938780400000006
+125	Dicki-Grimes		Asperiores ut aut consequuntur est inventore tempore voluptate. Ut veritatis quisquam nam reprehenderit fugit nisi. Dolor ad exercitationem qui quia voluptatem et voluptas. Eos beatae perspiciatis qui esse.	Nulla provident est dicta. Aut neque ullam. Rerum quis sit. Delectus vero harum reiciendis quo accusamus. Iure deserunt fugit optio temporibus dolor sint aspernatur.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5814811500000019	9.94890597000000021
+126	Reichert, Paucek and White		Modi inventore culpa error esse voluptates molestiae ullam. Eius natus et. Aut officiis at enim autem repellat dolores.	Ut ut ex omnis. Similique est quam. Et eius illo quod qui quidem. Vel eum ducimus occaecati.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5526714399999975	9.86418150000000082
+127	Lueilwitz LLC		Et odit aperiam aut necessitatibus. Non id nostrum dolorem. Culpa alias dolor libero sunt voluptatum. Atque iusto quo repellendus nesciunt. Illo sit totam sint recusandae et eius voluptas.	Accusantium minima ut laboriosam voluptas. Consequatur porro aut aut eius sunt. Sunt ratione autem est inventore nulla. Dolores incidunt omnis vel voluptatum. Maiores eligendi quia.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.498431570000001	10.0544703299999991
+128	Beatty, Schmeler and Dooley		Porro sequi similique. Aut aperiam quasi. Et illum sint in consequatur qui doloremque.	Voluptatem deleniti quisquam. Ex et voluptatem itaque non. Perspiciatis minima officia. Nulla in provident quos.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5507855700000022	9.97634296999999926
+129	Powlowski, Wuckert and Buckridge		Distinctio velit provident officia ratione voluptatibus. Corrupti minima a neque consequatur id. Velit nesciunt facere. Voluptatem totam cupiditate sint accusamus est. Odio magnam praesentium saepe temporibus maiores eius.	Molestiae voluptatem quo incidunt laboriosam et. Impedit magnam autem optio labore quas facilis voluptatem. Rerum quod voluptates enim voluptatibus. Harum eveniet corporis ut molestiae voluptatem vero voluptatem.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5814643799999999	10.0357435600000002
+130	Dibbert LLC		Ut delectus et inventore qui. Doloremque rerum voluptas incidunt aut veniam suscipit et. Nihil est rem beatae aspernatur sed est vitae. At eos ut rerum officiis corporis animi ratione. Earum at libero facere tempora quia.	Mollitia iste nemo id. Voluptatum deserunt suscipit voluptatem voluptate cum. Sed ut culpa odit assumenda vel. Hic et rerum nihil odit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5272890000000032	9.9033553199999993
+131	Muller Inc		Omnis eum vero tempora. Sed omnis nobis. Voluptas qui culpa est quidem. Doloribus perferendis est reprehenderit perspiciatis ratione ab voluptas.	Illo veniam aut nisi eveniet. Excepturi repellendus et officia qui a eligendi. Itaque soluta distinctio dolorum. Omnis quas quos et praesentium rem qui quo. Modi sunt eius accusantium consequatur laudantium.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5435891600000033	10.0312251099999994
+132	Mayert-Waelchi		Quia aliquam fugiat voluptatem tempora. Sunt similique illum. Et eos in. Id impedit ut expedita illo veniam. Suscipit molestiae itaque nesciunt aut inventore a.	Consequatur eum in et autem. Laborum sit exercitationem commodi praesentium illo. Tempora omnis doloribus beatae. Sunt fugit aut alias minus in. Magnam quia eligendi est eum corrupti ex.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5892141200000012	10.0147856500000003
+133	Stracke LLC		Asperiores reiciendis omnis est et quidem. Ad tenetur ab rerum voluptatem. Quia maiores et repellat. Deserunt quisquam sequi doloremque sunt modi quod autem.	Totam ullam quidem illum ut. Quod voluptas dolor rerum nulla tenetur eligendi. Similique sed distinctio cupiditate. Consequuntur est similique error. Voluptas voluptatem ut est vitae in.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4977021699999966	10.0866641399999999
+134	Considine, Rempel and Schultz		Magnam reprehenderit dolores quam. Animi omnis ipsa sunt sit aspernatur fugiat. Voluptatem molestiae laborum animi eligendi. Pariatur dolor et natus ratione quidem error. Perspiciatis est enim quae molestiae aut blanditiis.	Distinctio excepturi omnis velit consequuntur harum. Odit consequatur rerum consequuntur voluptate quia corrupti. Magni eos mollitia nisi enim sequi eius accusantium.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4877624000000012	10.0660295899999994
+135	Blick, Beahan and Schulist		Doloribus magni alias at nobis. Praesentium unde asperiores quas enim doloremque sed expedita. Dolores nihil dolor velit ut neque.	Quibusdam veritatis aut corporis repellat quia magni. Nostrum illum repudiandae quos. Amet aperiam vitae aut tempora debitis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5264481999999973	9.93550499999999914
+136	Shanahan and Sons		Aut hic deserunt iure omnis non ab nesciunt. Labore voluptatem enim. Sunt facilis repellat deserunt facere corrupti.	Repudiandae fugit quia omnis velit quas provident. Fuga repellat a eveniet cum. In odit temporibus molestiae animi vel aut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5844897899999992	9.97784717999999948
+137	Morar-Terry		Quis esse exercitationem et dolorem. Similique sed dolorum cupiditate repellat consectetur. Ad nobis inventore.	Excepturi ut est quisquam dolores error corrupti. Et debitis reprehenderit quia ex. Ut aperiam et velit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5839463499999979	10.0699817500000002
+138	Schaden LLC		Labore voluptatem minima magni architecto et iste. Sed distinctio exercitationem rerum quia nulla magnam fugiat. Odit reprehenderit aut. Soluta et sunt beatae eveniet quod culpa quia. Nisi doloremque nihil repellat ipsam cum non fugit.	Quo qui harum velit. Minima est et quis numquam perferendis in doloribus. Id facilis eos doloremque. Fugiat delectus eaque repellendus voluptas.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4992554999999967	10.0465068399999993
+139	Rath Inc		Aut numquam doloremque qui iusto fuga voluptatem. Ut voluptas ullam expedita incidunt sint. Quia sint unde ut. Praesentium debitis impedit sapiente aliquam facilis sit. Suscipit et itaque dolorem mollitia ullam excepturi laboriosam.	Porro assumenda excepturi. Hic omnis optio. Molestiae eius iusto iure earum. Nisi exercitationem et similique in minima amet. Reprehenderit aut aut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5043582599999965	9.88416643999999955
+140	Wolf LLC		Soluta doloremque consequatur tenetur tempora est. In quia explicabo sit ratione. Quis at ad tempore est. Sunt sit quidem sed quaerat temporibus quae sapiente.	Ea blanditiis molestiae. Rerum necessitatibus cupiditate. Voluptatem aut aliquam vel facere quia ut qui. Consequatur amet omnis. Similique nobis molestiae natus.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5158408699999981	10.0112089199999996
+141	Walker, Jacobi and Hane		Quae consequatur id et exercitationem. Nemo nam non ut ut ipsam totam. Reiciendis accusamus ut ut. Aspernatur quos expedita rerum saepe. Ut qui impedit fugiat sunt.	Error quia consequatur asperiores quis. Ea in reiciendis. Quam eum deserunt dolorum veritatis nobis ut. Et deserunt aperiam iusto maxime doloremque nostrum nulla.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.601359770000002	9.91034664999999926
+142	Nader, Zieme and Turner		Iusto aut sequi maxime est. Et beatae dolorem eveniet voluptas. Error fugit ipsam eveniet sit iste est. Animi minus consectetur corporis. Voluptas amet reprehenderit cumque.	Dolorem vitae omnis delectus soluta reprehenderit labore sunt. Nobis similique et asperiores sed quos. Repellendus doloremque dicta. In rerum et inventore. Est velit vel.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5800599299999973	9.97924085000000005
+143	Casper LLC		Qui expedita consequatur rem molestiae. Velit nihil est neque tenetur mollitia. Sint est deserunt eum in sit. Earum quia minus at.	Voluptatem sapiente cumque aspernatur. Veritatis in fuga architecto beatae. Et ut sunt laudantium itaque perspiciatis est eos. Quod voluptas perferendis a rerum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6376627400000032	10.0105138700000005
+144	Rice-Abernathy		Et ut in omnis culpa et. Ad quae repellendus a qui. Eum accusamus ut et earum voluptatum aliquam. Accusantium et rerum est aut rerum corrupti odio.	Omnis quia deleniti sunt et et iure. Sint perspiciatis quidem totam nulla aspernatur sed. Non aut eaque enim. Ut aut voluptatem vel harum reiciendis enim.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6152363200000011	9.93382148000000065
+145	Hintz, Tremblay and Satterfield		Aut ullam est cumque ad voluptatem. Sed recusandae qui tenetur. Quasi veritatis laborum aut ad dolores recusandae consequatur. Necessitatibus consequuntur non officia. Et voluptas veritatis autem atque quis ea.	Ut commodi cumque. Non in explicabo et iusto ipsam atque suscipit. Assumenda vel qui maiores. Autem repellendus sapiente eos eaque expedita nisi vel. Qui non sit ea id natus repudiandae voluptas.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5515625800000024	9.93275376000000065
+146	Doyle Inc		Ea nobis quo cum vel minus. Soluta autem ab ratione ut porro expedita et. Rerum eos consequatur eveniet fugiat ratione. Et ut enim repellat quaerat beatae.	Porro incidunt possimus sit voluptates. Ullam odio autem omnis eligendi. Et asperiores voluptas molestias voluptatem et. Consequatur asperiores quia ut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5668029300000015	10.0018838199999998
+147	Abbott Inc		Et sequi occaecati aut minus temporibus placeat. Dolorem voluptatem vel. Quam doloremque non illum aut aliquam. Vel culpa dolores ut. Non rerum asperiores earum.	Qui quos illo amet. Vel neque eveniet necessitatibus perspiciatis. Quasi ad officia. Corrupti non nulla pariatur qui fugiat porro voluptatum. Id ducimus aliquam ullam aperiam porro quaerat.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6214860899999977	10.0393948399999999
+148	Anderson-Batz		Magni laborum mollitia rerum itaque ipsa rerum sit. Consequatur sunt rem fugiat quia sapiente id nihil. Ipsam nulla consequatur ut qui animi. Aperiam commodi enim dolor quasi ipsa molestias illo.	In minus qui pariatur unde autem ipsum explicabo. Rerum et fugiat aperiam impedit perferendis. Optio sint enim aspernatur ipsam nesciunt et. Recusandae cum nisi distinctio nam dolorem iure cumque.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5781723600000035	9.91584137000000077
+149	Howell, Schoen and Flatley		Qui et qui asperiores dolor non. Excepturi laudantium eos voluptatibus aperiam. Modi tenetur harum. Aut enim quo doloremque vero.	Dolorem voluptatibus tenetur nostrum eos. Voluptatem et deserunt similique. Vero ut beatae. Unde sit omnis eius.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5145532599999996	10.0483378800000001
+150	Yundt Group		Soluta aspernatur accusamus commodi est corporis. Ut ut autem sed perferendis et. Sequi dolorem debitis incidunt mollitia.	Natus facilis delectus ut iusto quis non. A corrupti consequatur sapiente consequatur. Dolores eos voluptas repudiandae omnis nemo et omnis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4765559300000035	10.0407930200000006
+151	Bode Group		Natus pariatur animi nemo. Ipsa sequi veniam mollitia ducimus. Recusandae fugiat repellendus suscipit voluptas minima deleniti.	Sint corporis porro fugiat in vel sit et. Ut et blanditiis. Doloremque in cum voluptas possimus amet qui. Nisi optio eos maxime illum nemo ut sit. Quibusdam voluptatem et mollitia et quos.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5977088899999998	10.0750836899999996
+152	Reichert LLC		Nostrum harum omnis nemo ea facere aut. Adipisci et voluptatem ea debitis quam quaerat. Id dolorem magnam sapiente eligendi autem blanditiis. Voluptate similique ut ipsum qui architecto. Temporibus quae enim quaerat.	Neque est qui eligendi laudantium. Id consectetur ad. Tempore ut voluptate enim qui enim sed repellendus. Provident sit et est suscipit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6098940799999966	10.0551995499999993
+153	Marks LLC		Amet inventore alias quod tenetur eum non iste. Rerum sint assumenda soluta saepe et. Molestiae repudiandae aliquam possimus qui.	Voluptatem est voluptas asperiores nobis et repellendus. Et natus sunt. Enim sit quae repudiandae vero delectus numquam. Dolores dignissimos maiores illo eos. Corrupti molestias quaerat qui ducimus dolores.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5601304200000001	10.0281612300000003
+154	Shields, Schoen and Raynor		Rem nulla quisquam sint repellat. Reprehenderit magnam animi. Sit aliquid voluptas corrupti porro deserunt ipsum est. Ut nemo quia. Tempore non molestias sed quod.	Modi expedita vitae alias quia voluptatem et occaecati. Deserunt ut nesciunt dolore optio. Necessitatibus mollitia sapiente modi praesentium in ab. Labore voluptatibus quae debitis aut mollitia nulla. Blanditiis sunt consequatur enim.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5711416600000021	10.0848002700000006
+155	Carroll and Sons		Ut recusandae vero et explicabo fuga vel. Temporibus odit soluta non eligendi architecto quis provident. Sed officiis in dolores eum a.	Consectetur rem provident possimus. Nisi tempore nihil dolorem voluptatum. Necessitatibus eligendi dicta ut voluptatem est. Excepturi et aut voluptatem vel sint voluptatum hic.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5565574199999972	9.86748681000000083
+156	Senger and Sons		Iure eius nostrum rem. Itaque eaque incidunt. Placeat quisquam quas dicta ut consequuntur at. Ad earum id doloribus alias qui.	Cupiditate eum in dolorum officiis alias ad sint. Deleniti non rem omnis ratione odit optio. Omnis corrupti veritatis facilis illum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5781605199999973	10.0959157200000007
+157	Hirthe, Kiehn and Harber		Aspernatur consequatur exercitationem nostrum. Maiores aliquid et at quaerat autem et. Vitae rerum quam aliquam repudiandae itaque quo.	Ab reprehenderit voluptas est id delectus. A quo odit ut adipisci molestias. Sint beatae incidunt libero. Et quae perferendis sit molestiae. Id ad ut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6364744999999985	10.0321977199999992
+158	Thompson-Willms		Non et ad ratione provident quo ut facere. Necessitatibus nulla fuga sit quo perspiciatis velit. Atque enim soluta aut est. Est exercitationem aut rerum aperiam pariatur a magnam. Quas non accusamus tempora voluptatum.	Est omnis in a consequatur itaque. Aliquid totam molestiae non est sint incidunt ipsam. Minus nihil reiciendis illo cupiditate incidunt aut rem. Molestiae dolorem commodi quam error libero voluptatem.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5467745199999996	9.93883772000000043
+159	Runolfsdottir-Douglas		Possimus vel ex. Tempore et et qui. Dicta in molestiae rerum aliquid incidunt non illo.	Quos perferendis beatae quia consectetur ratione. Unde sit sed cumque et minima. Dolorem aut commodi at et nam adipisci labore. Laborum dolorem est quia cumque et alias aliquam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5405129600000009	9.88459420000000044
+160	Dietrich, Walsh and Boyer		Rerum ab veritatis deserunt non assumenda nisi. Suscipit cupiditate voluptates reiciendis tenetur esse. Voluptatum dolor laboriosam quia. Qui et tenetur occaecati sit aut beatae voluptatem.	Quidem harum nobis rerum voluptatem. Libero eos iste voluptatem voluptas quo. Facere aut enim quibusdam dolorum rerum dolorem. Consequatur qui alias unde soluta perspiciatis. Repudiandae modi minus suscipit reprehenderit et.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6056239500000018	9.98019844000000056
+161	Pagac, Durgan and Quigley		Minima non voluptas voluptatibus. Neque cupiditate id aut aliquid. Dolor saepe et quia ab consequatur tenetur eveniet. Illo nihil quaerat dolorem.	Quisquam ipsa et. Ut quo consectetur impedit dolor eius. Omnis nesciunt aperiam nisi hic repudiandae beatae. Ad voluptas soluta. Amet minima sit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4836844800000009	9.95717239999999926
+162	Heidenreich, Goyette and Mueller		Mollitia et ea quis et. Quo ipsum laborum aut eos aut. Modi qui fugiat necessitatibus est cumque excepturi. Dolores excepturi nam et ea ut.	Corporis amet molestiae nam. Voluptatem asperiores corporis esse excepturi deleniti harum. Vel dignissimos earum nesciunt praesentium. Velit aut excepturi aut sit quia totam doloremque. Quia beatae voluptas.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5771821100000025	9.89030510000000085
+163	Medhurst Inc		Omnis vero dolore possimus. Nam natus sunt impedit pariatur dolorem. Praesentium sint explicabo in iure ad deserunt nostrum.	Dignissimos delectus dolor. In ex tempora laborum mollitia. A soluta recusandae delectus sed quisquam rem enim. Iure ea nostrum. Quo facilis rerum ex debitis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6354639400000011	9.99833053000000049
+164	Deckow-Considine		Quia enim sequi ea aut non qui. Perspiciatis ea est. Vero sequi non. Similique magni aperiam aliquid est voluptatem.	Facere doloremque sunt quas unde ut tempore odio. Amet repudiandae at ullam aut atque sunt. Illum et alias error. Corporis ipsa animi itaque rem sequi quia. Sunt qui voluptate dignissimos est qui quia ratione.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5644490000000033	10.0810546700000003
+165	Kiehn, Glover and Murray		Voluptas suscipit maiores ut minus vel iste debitis. Quae impedit incidunt quas ea. Eveniet quis reiciendis amet.	Maxime dicta ea ab id. Fugit minima ex magni. Nisi et tempora iure omnis facere est labore.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6188824299999993	9.96709092999999946
+166	Daugherty, Zboncak and Rolfson		Error dolore at dignissimos quis sapiente animi corrupti. Architecto ut omnis voluptatum id velit quibusdam. Laudantium aperiam explicabo. Et est doloremque consectetur ut sequi molestiae laboriosam. Quis dolore eius illum commodi.	Ut praesentium fugiat mollitia et. Velit rerum expedita. Veniam nemo et et magnam aut. Dolores esse ex earum quidem perspiciatis eum omnis. Quod sed neque.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6030312099999975	9.9261785800000002
+167	Romaguera, Yost and Klocko		Doloremque maiores enim veniam quia est officia. Dolor qui excepturi. Voluptas placeat porro quisquam harum. Laboriosam voluptatibus aut aut nihil sint repellendus.	Maiores quo molestias quia ducimus harum. Minus perspiciatis sit voluptatibus repellat porro. Ut neque sapiente aut eum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5253970500000023	10.0282239799999999
+168	Bogisich-Vandervort		Id voluptatem et distinctio maxime. Reiciendis sint fugit. Iure minima possimus.	Tenetur est aut beatae ab officiis. Et voluptas voluptatem est sit voluptas ut. Et aut ut rerum laboriosam cupiditate quia minus. Iure officiis ducimus et culpa. Veritatis sit sint.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5607800499999982	9.91576560000000029
+169	Mante-Considine		Dolorem ea distinctio dolor corporis alias. Ducimus et quis. Ut qui voluptas quis quos. Quaerat rerum amet saepe perferendis cumque eos. Cupiditate deserunt expedita.	Ad quam placeat facilis laboriosam debitis rem. Quia voluptate et nulla et est. Et officiis perspiciatis. Itaque dignissimos fuga eum odio sed.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6424758499999967	9.99114465999999979
+170	Denesik, Maggio and Thompson		Laudantium repellendus laboriosam qui praesentium nobis. Aspernatur deleniti rerum ipsum modi quam dignissimos sed. Voluptas accusamus aut. Cumque et numquam velit praesentium dicta.	Qui sequi sed voluptate aut nihil nam pariatur. Optio vel fuga. Et voluptatem at molestias sapiente est hic non.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5051894500000031	9.89144242000000062
+171	Tillman, Bayer and Satterfield		At enim est aut qui dolores quia. Fuga accusamus aut non quisquam voluptatum vel labore. Voluptatem vel et sint consequatur.	Quis et et porro minus nihil quia perferendis. Minima omnis possimus corrupti. Quam labore tempore maxime.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.593727819999998	10.0859046200000009
+172	Runolfsdottir, Schimmel and Ratke		Placeat error quasi qui. Laboriosam suscipit cum. Illo culpa beatae nihil dolores eaque fuga dolores. Eum qui vero quia quibusdam aliquam.	Ullam maiores mollitia. Voluptate esse dolore suscipit cum et officia dolores. In voluptatum voluptates porro.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4941217000000009	10.0709535799999994
+173	Gerlach LLC		Porro enim aut minus. Eligendi vel nam adipisci aut. Sed sunt tempore maiores recusandae delectus. Voluptas libero et explicabo omnis commodi ipsam.	Vel est distinctio voluptas voluptates. Sit nam rerum aut quis alias cupiditate ipsum. Ut quibusdam reiciendis omnis dolores possimus earum. Dolorem sit consequatur nostrum minima consequatur. Ad ut reprehenderit et fuga aspernatur totam veniam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6164804499999974	9.91706588000000089
+174	Hayes Group		Ipsa assumenda dolorem autem ea beatae. Sit deleniti id. Optio et molestias dolor officiis. Repellendus sed laudantium eaque error vero aspernatur. Et sed aut dolores voluptas.	Suscipit quo odio facilis maxime beatae voluptatibus. Alias repudiandae similique ipsa vel tempora. Dolorum aut debitis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5145446599999985	10.0296149499999991
+175	Osinski, Eichmann and Frami		Aut est molestiae porro. Officiis soluta et non similique. Atque quos fugiat sit omnis. Perspiciatis voluptate porro cumque reprehenderit.	Nam assumenda quo accusamus nostrum non. At non fugiat quas. Non enim atque illo odio nihil qui. Mollitia impedit facilis voluptatem dolores placeat eligendi aut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5658186000000001	10.0654353200000006
+176	Ratke Inc		Laborum animi ducimus. Voluptate est non dolorem sit sed consectetur. Perferendis in deleniti.	Nulla voluptas sint itaque laborum eum. Aut consequatur blanditiis error praesentium. Voluptas natus cum quos enim sit velit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5363073999999983	10.0697115999999998
+177	Murray-Bartoletti		Dicta non unde tempora dolor similique ratione. Rerum omnis tempora at sit nobis dolores. Unde adipisci impedit culpa qui sed. Enim vero et est dolorem in. Sint fugiat quidem.	Dolore minima corporis modi consequuntur saepe sint repellat. Maxime autem qui facilis laudantium. Maxime exercitationem hic distinctio inventore et animi. Et eum et aspernatur illo sit. Eos ratione doloribus error quia labore et vitae.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.596818380000002	10.0992201900000005
+178	Lebsack LLC		Dolor est quidem cum. Voluptatem iure eligendi et tempore et. Et qui asperiores officiis voluptatem fugit repellendus ut. Autem cumque tempora. Numquam voluptatem veritatis vitae quis sed.	Non ex molestias. Vitae quidem nobis consequatur expedita eveniet quaerat sed. Eveniet aut voluptatem consectetur nostrum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5651539699999972	9.98226694000000059
+179	Aufderhar-Abshire		Repudiandae nemo similique ratione quo ea sit incidunt. Nostrum ratione aut. Repudiandae amet aliquam. Voluptatem adipisci provident quod ratione quisquam laudantium. Perspiciatis laudantium est ut nihil.	Dolore quia repellendus praesentium cupiditate. Non quo adipisci rerum repellendus qui. Corporis nihil ipsum ut dolor inventore odio. Quidem omnis doloremque iusto est quis qui.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6313080600000021	10.0436637500000003
+180	Reichel and Sons		Ut vero sunt ex voluptas eum magni corrupti. Labore cupiditate qui necessitatibus omnis omnis inventore possimus. Et deserunt minima laudantium saepe quos aut nihil.	Consectetur et dicta alias hic laboriosam. Non autem eligendi. In deleniti sed eum beatae perferendis. Placeat sed laudantium odio quis ipsa.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4939509399999977	9.90408930999999981
+181	Roberts Group		Sit earum aut id quia nam illo. Officia id pariatur est. Dolorem nihil quia fugiat illo voluptas voluptatem. Tempore neque in.	Atque maiores quia nisi modi veniam. Numquam facilis alias nemo ea et quasi. Saepe error velit expedita nihil commodi ut. Incidunt consequuntur consequatur beatae.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4745146500000033	9.94422819999999952
+182	Sawayn, Franecki and Heathcote		Voluptatem reprehenderit voluptas quis quasi sint sunt. Illum est repellendus voluptas. Harum ut corporis dolorem cupiditate.	Minima error dolores esse id. Autem aliquid consequuntur rerum eos et repellendus laboriosam. Qui dolorum explicabo vero.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5024107200000003	10.0791484699999998
+183	Hansen, Cruickshank and Casper		Aut ullam ut earum dolorem velit nulla voluptates. Maxime qui temporibus iure et officiis aut harum. Aut consectetur vero et et cumque ad. Possimus est voluptas eveniet non ipsam sint in.	Qui nostrum necessitatibus molestiae. Recusandae nisi eaque qui. Nemo veniam assumenda ut velit est soluta ea. Et illo a neque. Expedita repudiandae nulla ipsum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5521127900000025	9.95325605999999929
+184	Gerhold, Denesik and Veum		Dolorem est est provident exercitationem culpa. Eaque qui non ipsum modi. Exercitationem maxime rerum hic dolorem aliquid deserunt. Sequi commodi in quam eos sit porro atque. Nulla consequatur maxime modi.	Ut modi doloribus voluptatem cumque voluptatem. Minima maiores et doloribus sit voluptas. Voluptas consequatur aut doloremque vel repellat non. Dolore dolor numquam et quia voluptates minima. Eveniet vero facere quaerat unde.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5100074500000034	10.0282414600000003
+185	Breitenberg, Zulauf and Kihn		Vel hic impedit. Commodi in dolores voluptas eveniet et est. Impedit voluptas quis.	Et soluta aspernatur non dicta. Architecto porro pariatur possimus voluptate eum ut deleniti. Minima enim a similique perspiciatis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5903543800000008	9.9020931300000008
+186	Hansen-Predovic		Numquam ut provident cum a sapiente ut perferendis. Omnis non inventore architecto sequi ut nihil suscipit. Alias hic voluptatibus ex veritatis sunt ratione expedita. Voluptatibus nam placeat optio doloribus voluptatem sequi.	Nesciunt consequatur incidunt perspiciatis magnam. Consequatur et ipsa architecto voluptatem porro beatae non. Id itaque et. Praesentium voluptas omnis fuga harum. Quia quis aut quia.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4813175399999992	10.0758454799999999
+187	Kuvalis Inc		Magni sed et mollitia corporis magnam et. Sapiente excepturi ut sunt. Ut eligendi iure et et sint.	Odit ab consequatur. Et voluptatibus hic at. Atque optio ducimus. Sunt consectetur blanditiis voluptatem.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5383374099999969	9.92924960999999939
+188	Emmerich Inc		Nemo quae aut itaque omnis. Natus non reprehenderit quae. Cumque sequi reprehenderit atque omnis. Repudiandae hic labore reiciendis nam nemo fugit. Voluptate architecto consequatur saepe.	Deleniti magni consequatur. Et laudantium nostrum est quia officia. Optio suscipit reiciendis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4839293799999993	10.0077415500000004
+189	Kohler Group		Incidunt quam aut eaque. Praesentium fuga laudantium quo sit beatae ipsam iure. At earum et expedita mollitia. Est perspiciatis qui. Provident amet vitae et vel.	Reprehenderit voluptatem natus. Et qui modi est vero. Ex sequi quis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5856389599999972	9.89759469000000003
+190	Kiehn LLC		Ipsum quia itaque rerum culpa esse. Autem animi est ullam fugit quis laboriosam ipsum. Hic adipisci inventore facere voluptates necessitatibus.	Possimus aperiam hic. Accusamus sit harum. Sapiente quis qui. Quidem rem est sed repellat. Illo sit sequi est doloremque dolorem sint cumque.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.575191580000002	10.1215507700000007
+191	Kuhic LLC		Dignissimos eos inventore eum dolorem ad facilis occaecati. Mollitia incidunt itaque debitis. Ex aliquid est nobis soluta. Vel nihil qui. Deleniti sit itaque tempore sed iure cum.	Optio pariatur ut earum reiciendis. Illum aut facilis non id. Ut dolor voluptas cum autem et. Quam voluptatem est odio.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4811248000000035	9.93514505999999997
+192	Gaylord, Olson and Raynor		Ut atque nemo totam ab placeat aliquid consequatur. Et voluptate neque voluptatem totam ratione. Aliquam quod adipisci voluptatem. Quo sunt beatae sed corrupti. Nisi dolore et officia eaque quia vero.	Animi iste officia voluptatem hic est quisquam. Rerum quis omnis vitae iure amet sit omnis. Voluptatibus tempora beatae nulla ullam. Asperiores impedit et aut ex.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5890968400000034	9.99423980999999984
+193	Lakin, Abshire and Strosin		Dolore facere nam quia saepe voluptas officiis. Qui explicabo sed aut. Aut ratione quasi maiores et.	Error ipsam explicabo praesentium aut hic dolores. Officiis eos tempore quidem quia rerum aut. Sed voluptas eum. Voluptatibus sit deserunt maxime ullam illum voluptatem eligendi.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6230838600000013	9.92805071000000083
+194	Crist, Bartoletti and Frami		Soluta est quidem dolores. Repellendus repellat est nihil illo quis. Doloribus est eum rerum qui officia consequuntur explicabo. Et excepturi recusandae vel praesentium.	Neque excepturi fuga distinctio aut est totam et. Ullam quo quidem. Dignissimos facilis distinctio. Ut et sit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5237747400000003	10.1025446599999995
+195	Gusikowski LLC		Numquam maxime et. Totam nostrum maiores vitae debitis. Et incidunt consequatur quis. Odio rerum rem voluptatum atque et molestiae. Quidem nisi soluta totam ut est consequatur et.	Eligendi sit pariatur quos. Eos soluta in vitae mollitia. Neque dolorem laborum reprehenderit ducimus aut est.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5939748799999975	9.94549705999999922
+196	Hayes, Lehner and Bartoletti		Alias doloribus provident. Voluptas minima hic possimus omnis. Vero odit ut doloremque eum consequuntur labore. Id vitae voluptate sit quae iste magnam. Consectetur eligendi aut minus enim deleniti facere at.	Eveniet doloribus voluptate. Aut eligendi qui qui corporis deserunt. Et recusandae in quo quis amet sed. Sit nisi amet reprehenderit eum. Quaerat nihil recusandae quia.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5208163699999986	9.95210922999999958
+197	O'Hara, Jacobson and Zemlak		Sed assumenda vel quia omnis eveniet. Incidunt explicabo ut sed voluptatem. Rerum dolorem qui odio mollitia et aperiam animi. Fugiat id nihil.	Facilis eum similique et. Consectetur voluptatem explicabo eaque labore non velit delectus. Eveniet omnis fuga incidunt. Voluptatum recusandae nulla consequatur veritatis dolorum libero.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6220250100000015	9.93022855000000071
+198	Adams-Friesen		Enim saepe aut quis. Iusto dolorem nemo. Commodi porro qui quis mollitia. Corporis architecto sunt nobis.	Ex aut voluptas ea. Et veritatis earum et. Explicabo dignissimos et dolor sunt. Eaque nihil nam. Soluta quis facilis laborum laboriosam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6095913699999969	9.96548532000000087
+199	Friesen, Heaney and Corkery		Fugiat laborum quae beatae aut pariatur qui et. Eum molestiae voluptate nemo minima possimus ullam. Harum dolor provident. Et et corrupti.	Rerum optio eveniet aut dolorum eligendi laborum voluptas. Beatae ex fugit qui sit. Velit qui amet ad voluptas est voluptatem consequatur. Harum vel molestiae earum velit ut dolores recusandae. Id est qui et est soluta tenetur voluptas.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5520835000000019	9.92173872999999951
+200	McDermott, Kovacek and Kris		Corrupti nobis qui sit nemo id aut. Modi fugiat suscipit velit quia omnis magnam. Est unde temporibus amet perspiciatis. Aut tenetur molestiae quo.	Accusantium sit explicabo. Maxime doloremque molestiae rem in voluptas et quis. Molestias ut nihil. Quibusdam amet est saepe maiores magnam facilis et.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6250636400000005	10.0548215499999998
+201	Streich LLC		Cum quis voluptatem quis. Nihil minus tempore veniam debitis eos. Vel sit fuga ut.	Ipsam recusandae quia voluptatibus quia corrupti illo. Consequatur asperiores exercitationem. Iste est officiis sit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5280854100000028	9.97199705999999964
+202	Tromp and Sons		Qui tenetur magni ut cupiditate distinctio. Officia eaque inventore id eos placeat quaerat necessitatibus. Occaecati quaerat tenetur omnis omnis reiciendis sequi. Sapiente et consectetur minima ipsum omnis.	Occaecati sequi dolore enim natus nesciunt quidem nobis. Eveniet dolores vero. Vel numquam mollitia quo sunt ipsa odit quaerat. Quos itaque ratione non iste rerum qui. Qui mollitia voluptas ea.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5965143800000021	10.1184289700000001
+203	Muller, Senger and Wolf		In qui tempora inventore. Molestiae facere nam et amet ut. Laborum quo atque rem quo odit iure dolore. Placeat pariatur inventore labore unde veritatis.	Reiciendis a odio laboriosam iure. Quisquam iste necessitatibus quam. Ut et blanditiis dolorum sit accusantium dolore et. Voluptatem aliquid vel eius. Dicta vero eaque enim non.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5062288199999969	9.90055991999999918
+204	Mraz LLC		Ipsa hic laboriosam reiciendis similique. Ut quos dolorem natus illum. Harum aperiam similique et et ut.	Voluptas voluptatem quis et. Libero id eum maxime quibusdam repellendus nihil. Quibusdam voluptatibus ipsam occaecati ut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5319657599999985	9.93846321999999915
+205	Krajcik, Dare and Hayes		Culpa modi dignissimos. At nisi sunt et tempore ut. Consectetur soluta magnam libero sapiente incidunt. Est non excepturi et explicabo corporis ut. Harum ut eum distinctio dolores rem architecto adipisci.	Et assumenda qui consectetur molestiae. Temporibus doloribus hic. Soluta deleniti et sed alias unde.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5676527800000031	10.13417645
+206	D'Amore-Fadel		Culpa assumenda deleniti voluptatibus nobis. Reiciendis et quo voluptatem blanditiis laborum. Inventore explicabo voluptates.	At nostrum officia accusamus voluptate est et. Magni iste delectus iure non velit nihil. Sequi quia quos quis illo.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5334861199999992	10.0497959300000002
+207	Witting and Sons		Tempora quos ipsam est sint aut. Magni vel voluptatem voluptates quia provident sed a. Explicabo corrupti aperiam qui occaecati accusantium quo sed. Ab accusamus temporibus quisquam soluta et consequuntur.	Rerum quia molestias et. Voluptatem aut doloribus et qui. Vero doloremque mollitia totam a dolore modi.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5744259100000022	10.0430320900000005
+208	Hettinger-Jast		Molestiae aliquid voluptas. Provident non ducimus sit. Et natus aliquam error ea.	Officia recusandae laborum. Voluptatem deleniti fugiat recusandae quidem ea laborum veritatis. Veniam ipsa et alias expedita minus dolor.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6096527400000014	10.0916392100000003
+209	Leuschke-Bins		Quas quibusdam non odit consequuntur. Similique molestiae fugiat aut eligendi. Doloremque quas omnis et magni. Commodi laborum repudiandae aliquid.	Quia voluptatem rem. Incidunt necessitatibus quia. Aut qui debitis pariatur dicta. Iusto voluptate corporis fuga nihil exercitationem qui enim.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.541074799999997	9.99721957999999944
+210	Mohr and Sons		Rerum in et nihil tempore facere temporibus. Voluptas rerum error quas eligendi tempore culpa. Cupiditate nostrum sint animi.	Nulla eveniet sint qui eligendi et voluptas qui. Quisquam in doloribus dolor qui. Sint quae et tempora natus saepe aut. Eveniet doloremque consectetur aut. Non dignissimos similique est.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5639657799999966	10.0461981500000004
+211	Lubowitz-Douglas		Inventore autem incidunt neque sint ea id ea. Sint quibusdam temporibus. Libero et minus alias eum.	Autem labore et maxime qui assumenda voluptatem esse. Dicta corrupti aut aut rerum culpa. Beatae cum odit voluptates nihil. Ratione omnis minima quae quos. Quia aspernatur occaecati perferendis rem sapiente sunt corrupti.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5123726699999978	9.99264920999999973
+212	Daniel and Sons		Voluptatem alias ad. Rerum sunt fugiat vero. Repellendus facere quis quam in aut quidem. Voluptatem explicabo adipisci tenetur porro quidem ipsam. Minima cum et voluptas porro reprehenderit rem.	Assumenda tenetur repellendus. Adipisci accusamus voluptatem. Accusantium aut sunt autem accusamus. Harum totam provident perferendis eos qui molestias. Sequi rem et error molestias nesciunt iure.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5010085999999987	9.91595599999999955
+232	Flatley Inc		Est nam porro repudiandae. Aliquam adipisci et quia. Quam beatae dolores et. Nihil ab qui excepturi beatae a cumque repellat. Dolorum perferendis illo possimus et ab corrupti commodi.	Et porro quisquam accusantium non ad repellat. Aut earum ut. Id et voluptates vel atque sint in.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5322698499999987	10.0808960800000005
+213	Renner LLC		Eos autem voluptatem. Molestias alias officia fuga quasi sapiente. Vel a quam quo enim nesciunt. Enim facilis quo et. Numquam voluptas molestiae tempora et.	Doloribus quia iste cumque amet ex facere. Est repudiandae natus totam veniam consectetur voluptatum. Sed dolorem soluta. Quidem exercitationem debitis ut quam perferendis voluptas neque. Fuga saepe harum aspernatur ratione illum alias iusto.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5138711900000033	9.86845426000000003
+214	Kuhn, Ullrich and Runte		Excepturi nihil id tempore quo mollitia. Id ducimus incidunt. At dolor iusto accusamus officiis expedita. Eos eaque reprehenderit occaecati ipsum.	Aut voluptas eaque. Labore est soluta sit tempore perspiciatis numquam enim. Quaerat omnis odio. Voluptas velit repellendus officia porro amet nam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.569385969999999	9.96045701000000072
+215	Carter-Hammes		Rem libero veniam. Temporibus voluptas ea sunt. Quibusdam illo rerum fugit perferendis beatae aliquam. Iure tenetur qui ullam.	Eligendi rerum eos molestias voluptatibus accusamus fugiat deleniti. Est vel a sit. Sunt mollitia in. Consectetur eos dolor.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.579441199999998	10.0248013199999999
+216	Ankunding, Thompson and Crist		Ut repudiandae maxime. Non dolor sapiente veniam omnis quam. Et similique ea quia architecto.	Voluptatem aut quae impedit. Quaerat non et. Dolore occaecati fugit quia voluptates saepe nemo.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5172110999999973	10.0114002699999993
+217	Kemmer Inc		Culpa autem quia quo. Qui totam dolor tenetur perferendis quis. Laborum et non tenetur et sed voluptas voluptas. Accusantium modi natus odio cumque incidunt. Sed quod iste dicta.	Voluptatum quisquam est ab. Labore consequuntur aut itaque et at. Eveniet voluptatem quia amet qui ratione earum blanditiis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5863534000000001	10.0199661500000001
+218	Hilpert and Sons		Sunt officiis et. Optio atque esse. Voluptas vel exercitationem quae. Omnis neque suscipit necessitatibus possimus tempore impedit temporibus.	Cumque vitae enim saepe tempore itaque ullam earum. Aspernatur magni ut eveniet. Error quia expedita. Consequatur ad dolorem nulla aliquam. Eaque quae numquam debitis tempora minus.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5043949499999982	9.94285256999999945
+219	Renner, Johnston and Wisozk		Blanditiis sed quo. Ut quas officiis adipisci enim a. Est qui voluptates nulla adipisci ullam expedita. Voluptatum dolor aliquam odio voluptatem ea.	Libero illum quia ut. Et architecto sint aut. Et ut excepturi voluptatem. Porro numquam animi in explicabo hic libero. Qui et ut veritatis quas.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5062951999999967	9.89939050999999992
+220	Larkin-Johnson		Atque dolores vel expedita. Et omnis molestias ratione autem facilis quo eos. Pariatur sit quia. Voluptates perspiciatis non. Non velit nihil.	Optio sit possimus et unde. Soluta omnis sit debitis illum cum. Nemo iste aut et voluptatem. Qui earum voluptas nihil sint. Vero impedit occaecati.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5838233599999967	10.0666980099999996
+221	Reilly, Hansen and Herman		Consequuntur incidunt hic numquam voluptatem delectus vitae. Laboriosam sequi ab perspiciatis distinctio eos. Mollitia eos quis. Fugit voluptatem architecto exercitationem nulla tempore maiores. Earum id voluptatem doloribus necessitatibus.	Voluptate consequatur consequuntur maxime aut atque. Atque veniam consequatur vel. Et quo velit itaque. Expedita qui rerum. Quo optio ipsum velit quidem.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5634381099999999	9.98049117999999957
+222	Bergnaum, Kertzmann and Deckow		Modi vero sunt aspernatur consequatur accusantium neque. Deserunt aut sapiente. Numquam illo qui at nulla recusandae similique distinctio. Voluptatem laborum eos iusto dolores recusandae. Magni quisquam quas qui.	Necessitatibus numquam vero aliquam occaecati. Eum dignissimos quis voluptatem vero ullam. Magni ullam et doloribus. Omnis libero fuga non sapiente est.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5389338000000023	10.1300284099999995
+223	Beer-Hansen		Delectus nihil odit officiis. Non iure laudantium earum. Repellat maxime ut possimus officia. Aut quod rem.	Placeat distinctio blanditiis alias sit molestiae. Rerum itaque omnis. Exercitationem voluptatum atque ducimus minima quo optio. Enim est aut corporis iste.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5738977000000034	9.97098040000000019
+224	Fritsch, Wilderman and Hartmann		Aut vitae necessitatibus. Molestiae explicabo amet tempore est quod doloremque. Illo quibusdam quasi provident et ipsa. Et dolores vel commodi illo eum in. Veniam aliquam mollitia praesentium sapiente explicabo id pariatur.	Sed ipsa fugit voluptas. Voluptates veniam doloremque. Aut ab ut quis deserunt ullam. Et ea molestiae nesciunt consequatur vel. Nihil inventore voluptas aliquam ut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4968649699999972	10.0381571199999993
+225	Mitchell Inc		Iusto rerum delectus. Asperiores magni sequi. Aut error unde odit consequuntur ipsa vel dolorem. Consequatur cupiditate vel.	Ipsa perferendis sunt nihil modi assumenda incidunt. Non tempore perferendis necessitatibus velit. Possimus recusandae consequatur nesciunt eligendi. Dolores commodi veniam aperiam impedit.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5243603099999987	9.9631782900000001
+226	Olson Group		Nam quis voluptate consequatur saepe ex. Optio praesentium architecto. Et rerum explicabo est eaque id beatae. Eum minima dicta. Quia earum sapiente.	Sit animi autem. Doloremque mollitia omnis. Dolorum eius tempora qui molestiae temporibus vitae. Ratione qui distinctio quasi at. Ut ut ab doloribus.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4864092299999996	10.0731698200000004
+227	Ebert Group		Nisi consequatur ipsum aut amet. Quam possimus voluptas odit nisi atque nemo. Ut et quo cupiditate eos repellat.	Itaque veritatis expedita. Quas quo rerum dolor eum distinctio pariatur repudiandae. Optio doloribus voluptatum ipsum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4707475499999987	10.0268407800000006
+228	Rath-Hammes		Sit magnam accusamus provident corrupti molestiae. Doloribus neque dolor quia earum. Facere blanditiis quis.	Et in distinctio aut. Ad iste odio laborum provident. Labore voluptatem voluptatem aut a qui et. Nulla quo eligendi a. Ipsum sunt quidem.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.552952359999999	9.87410273999999966
+229	Fadel LLC		Nobis voluptatem suscipit quas natus quod. Sunt et ipsa omnis commodi. Et porro et ab mollitia. Quaerat dignissimos reprehenderit vel. Adipisci dolorem dignissimos numquam excepturi quisquam impedit aut.	Ab adipisci vel ullam aspernatur et tempora. Quas molestiae cumque omnis id qui. Omnis occaecati doloremque. Et minima fugit et.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5820458900000034	10.0181915900000007
+230	Bechtelar, Fay and Wyman		Corporis in non illo mollitia dicta placeat. Sed molestiae ipsa quod ullam reprehenderit sunt. Omnis corrupti eos porro repellat ipsum similique quam. Est eum nisi veniam. Quia consequuntur et repellat velit similique.	Culpa recusandae architecto sunt. Possimus deleniti vero cumque sint perferendis corporis maiores. Qui doloribus laborum rerum quos laboriosam amet aut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.579885830000002	10.0927508499999998
+231	McLaughlin Group		Molestiae amet qui expedita ad vitae a. Inventore deserunt eum. A consequatur qui quas aut molestiae qui. Quo qui laborum consectetur et.	Repudiandae ipsa eius et rerum animi. Eligendi in quas quia quam nemo beatae. Est consequatur illum. Blanditiis enim vitae voluptatem.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.6181881300000001	9.98844388000000016
+233	Price Inc		Aut non numquam. Possimus eaque quae reprehenderit. Aut suscipit exercitationem aliquid est molestias. Id nihil quidem consequatur.	Et nam ut cum. Aspernatur et aut ab hic dolores. Quos ipsa similique. Ratione blanditiis deleniti impedit labore.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5187783100000019	9.96502528999999981
+234	Wehner, Rice and Pfannerstill		Ea eius maiores enim ipsa esse. Consequatur est aut. Quod ex qui omnis maxime iusto.	Sunt voluptatem impedit magni molestias. Et laborum tenetur exercitationem quisquam. Placeat eos dicta sint enim quaerat omnis. In et magnam similique animi earum qui aut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5542155400000013	10.1020844299999997
+235	Turcotte, Deckow and Blick		Repudiandae incidunt eum ipsum temporibus eaque officia. Et veritatis sunt est natus consectetur quo. Fugit vero assumenda. Et dolores quidem ex. Ab est porro ea aliquam nam.	Qui vel provident. Quae tempora explicabo iusto laboriosam impedit sint qui. Ut nesciunt necessitatibus illum. Veniam consequatur molestias laudantium et unde ea laboriosam. Et quo impedit nesciunt.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5923008500000009	9.88280542999999945
+236	West and Sons		Odio quidem beatae eum est facere adipisci pariatur. Culpa deserunt libero. Deleniti non ipsum. Et illo blanditiis sit dicta aut. Dolorem eius nam.	Iste quos non dolorum. Facere ullam itaque excepturi sint non. Nisi rerum provident porro aut adipisci aut.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4933114199999977	10.1026602299999997
+237	Baumbach LLC		Omnis impedit minima. Et labore officiis. Neque et itaque.	Facilis veniam esse. Quod ratione doloremque harum autem quia. Modi ipsum quos quibusdam sint eos quis libero. Culpa non consequatur ut sunt. Nulla neque quis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4939972199999971	10.10377276
+238	Bergstrom, Durgan and Rosenbaum		Voluptatem eius sequi ea atque iure ut corporis. Qui inventore nesciunt commodi dicta ab eius. Ea dolores ipsa consequatur tenetur qui eius occaecati. Eaque in repellendus ut. Aut placeat quam voluptatibus exercitationem pariatur.	Ut repellendus natus a nulla non. Ducimus ullam qui molestiae. Aut corrupti eveniet fugiat.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4980589299999991	9.92350923000000051
+239	Hickle LLC		Perferendis iure vel rerum. Cupiditate non ad. Sequi et aut cumque quia quos rerum. Deserunt expedita quisquam fugit placeat unde voluptatibus. Eos et et placeat optio dolor fuga tempore.	Illo delectus maiores. Eligendi nostrum ut quas. Quis ut quasi et dolor repudiandae omnis et.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5282156499999999	10.0046926099999993
+240	Kiehn, Kemmer and Ferry		Nostrum eius laudantium. Unde id accusantium saepe. Iste nobis natus.	Ratione cum blanditiis non. Ea qui ipsa fugit earum ipsum reprehenderit. Non maxime placeat. Omnis occaecati quo dolorem quia voluptatibus. In cumque voluptatem quam nisi et.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5380036000000032	10.0106533599999992
+241	Breitenberg, Wintheiser and Watsica		Consequatur aspernatur ad quia. Quibusdam labore quia molestiae voluptate eaque. Magnam molestias consectetur quis.	Corrupti reprehenderit necessitatibus nihil aut quibusdam ut. Provident eius recusandae animi id eum. Rerum totam amet.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.484871069999997	9.94044326000000034
+242	Windler Inc		Quasi fuga eveniet molestias. Earum eum aut blanditiis doloribus repellat quam amet. Ipsam omnis vitae voluptas ipsum consequatur. Praesentium quis eaque nihil. Sequi unde ut rerum quisquam et repellat.	Similique non debitis. Asperiores dicta ut in sed provident eum veritatis. Consequuntur ut nisi eius voluptatem soluta quis omnis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4969095399999972	10.1022008900000007
+243	Bayer LLC		Deleniti ullam recusandae at. Explicabo fugit vitae ipsum ratione quia sequi dignissimos. Est minima voluptatem dolorum delectus fuga rerum aspernatur. Laborum occaecati cum perferendis. Accusantium consequatur dolorum ipsa placeat.	Nobis quam quisquam. Impedit aut perspiciatis. Molestiae blanditiis laboriosam consequatur. Quia perferendis ipsa labore dignissimos sed amet.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.508211860000003	9.88756023000000006
+244	Douglas-McDermott		Odio quod neque soluta. Saepe incidunt et non dolor voluptatum praesentium qui. Suscipit dolores magnam.	Ipsa non a quam est esse eius. Sit nisi qui ducimus eum consectetur recusandae dolore. Autem tempora quo ad in facere voluptatum.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5552256599999978	10.0864432700000002
+245	Johnson, Rutherford and Rippin		Sunt labore aut. Saepe culpa laborum eos minus exercitationem illum. Quaerat similique quidem.	Et consequatur illum eius. Id tempora numquam. Laborum fugit ut. Voluptate non id consequatur.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5021335599999972	10.1083258399999991
+246	Crist LLC		Suscipit sed quas fugiat. In aut blanditiis. Accusantium velit hic quisquam non necessitatibus recusandae.	Consequatur culpa qui ex nam quae assumenda. Odit in et eveniet ut qui. Sint doloribus aut suscipit autem. Necessitatibus modi qui labore ipsa quod officiis.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5047907000000009	9.94636895999999915
+247	Koss, Hahn and Balistreri		Consequatur qui ducimus quod impedit. Ea perspiciatis iure in dolorem eum id odio. Omnis harum aut. Aut rerum eius.	Dolorem sit aspernatur officiis. Quo quia maxime est et nam culpa. Et velit mollitia neque.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5512861699999974	9.96038798000000014
+248	Batz-Haley		Ut voluptatem est dolores aut quos. Ducimus earum quibusdam omnis. Aliquid nisi error corporis facilis iure in cumque. Et et laudantium pariatur ducimus exercitationem id expedita. Officia placeat quas fugit reiciendis.	Dolorem voluptatem repellendus placeat rem dolores. Ratione reiciendis et est. Dolorem consequatur aspernatur et quia.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5268466200000006	9.91446037000000047
+249	Hand-Daniel		Eos vitae impedit voluptas. Rerum ducimus qui magni et. Ut eaque amet debitis occaecati.	Sit ducimus sit. Repellendus aut mollitia fugiat tempora ratione. Vel libero debitis autem ipsam.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.5842347299999986	9.86154714000000077
+250	Collins, Zieme and Boehm		Id et velit non modi non rem soluta. Delectus atque voluptas sunt. Dolorum consequatur sed vero maiores nesciunt repellat. Explicabo sunt corporis reiciendis ipsa adipisci atque perspiciatis.	Reiciendis doloribus est quo totam optio. Architecto recusandae reprehenderit sed quod aperiam molestiae quia. Ducimus sit provident recusandae est. Temporibus sit porro. Laudantium molestiae aut ipsum sunt quos est.					2003-03-13 20:25:00	2003-03-13 20:25:00		53.4831578000000007	10.0702973199999999
+\.
+
+
+--
+-- Name: restaurants_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Christopher
+--
+
+SELECT pg_catalog.setval('restaurants_id_seq', 251, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: Christopher
+--
+
+COPY schema_migrations (version) FROM stdin;
+20130301151053
+20130226203721
+20130226221018
+20130227123953
+\.
+
+
+--
+-- Data for Name: searches; Type: TABLE DATA; Schema: public; Owner: Christopher
+--
+
+COPY searches (id, keywords, cuisine_input, offer_input, created_at, updated_at) FROM stdin;
+1		Italian	241	2013-03-03 20:55:33.309013	2013-03-03 20:55:33.309013
+2	son	Asian	241	2013-03-03 22:07:34.518514	2013-03-03 22:07:34.518514
+3			true	2013-03-04 10:13:32.91625	2013-03-04 10:13:32.91625
+4			241	2013-03-04 10:15:07.687303	2013-03-04 10:15:07.687303
+5			true	2013-03-04 13:33:43.691308	2013-03-04 13:33:43.691308
+6		German	241	2013-03-04 13:35:07.410718	2013-03-04 13:35:07.410718
+7		German	241	2013-03-04 13:41:11.013358	2013-03-04 13:41:11.013358
+8		American	true	2013-03-04 13:50:56.075134	2013-03-04 13:50:56.075134
+9		American	true	2013-03-04 13:52:02.112546	2013-03-04 13:52:02.112546
+10			241	2013-03-04 14:00:41.865328	2013-03-04 14:00:41.865328
+11			241	2013-03-04 14:01:13.665205	2013-03-04 14:01:13.665205
+12		Fusion	241	2013-03-04 14:01:20.761515	2013-03-04 14:01:20.761515
+13		Fusion	true	2013-03-04 14:04:32.281616	2013-03-04 14:04:32.281616
+14			50	2013-03-04 14:11:03.015581	2013-03-04 14:11:03.015581
+15		Fusion	241	2013-03-04 14:14:15.154403	2013-03-04 14:14:15.154403
+16	son	Fusion	241	2013-03-04 14:15:06.476185	2013-03-04 14:15:06.476185
+17			241	2013-03-04 14:16:05.650398	2013-03-04 14:16:05.650398
+18		German	true	2013-03-04 14:21:38.452806	2013-03-04 14:21:38.452806
+19			241	2013-03-04 14:25:18.035993	2013-03-04 14:25:18.035993
+20		Italian	50	2013-03-04 14:31:46.165782	2013-03-04 14:31:46.165782
+21	son	Italian	50	2013-03-04 14:31:53.704783	2013-03-04 14:31:53.704783
+22		Italian	241	2013-03-04 14:33:32.311808	2013-03-04 14:33:32.311808
+23	sons		50	2013-03-04 14:34:35.526016	2013-03-04 14:34:35.526016
+24		Italian	50	2013-03-04 14:34:47.313156	2013-03-04 14:34:47.313156
+25		Fusion	241	2013-03-04 14:35:44.422305	2013-03-04 14:35:44.422305
+26	son	Fusion	241	2013-03-04 14:35:56.984185	2013-03-04 14:35:56.984185
+27	son	Fusion	50	2013-03-04 14:36:41.682761	2013-03-04 14:36:41.682761
+28			241	2013-03-04 14:37:09.042808	2013-03-04 14:37:09.042808
+29		Asian	241	2013-03-04 14:37:20.694518	2013-03-04 14:37:20.694518
+30			true	2013-03-04 14:37:40.731603	2013-03-04 14:37:40.731603
+31	test		true	2013-03-04 14:38:08.736917	2013-03-04 14:38:08.736917
+32	test	Asian	241	2013-03-04 14:38:16.7726	2013-03-04 14:38:16.7726
+33		Asian	241	2013-03-04 14:38:22.266281	2013-03-04 14:38:22.266281
+34			241	2013-03-04 14:44:05.86631	2013-03-04 14:44:05.86631
+35			true	2013-03-04 14:46:04.3955	2013-03-04 14:46:04.3955
+36		American	true	2013-03-04 14:46:55.788696	2013-03-04 14:46:55.788696
+37			241	2013-03-04 14:47:53.351442	2013-03-04 14:47:53.351442
+38			241	2013-03-04 14:48:03.652596	2013-03-04 14:48:03.652596
+39		American	50	2013-03-04 14:49:43.827581	2013-03-04 14:49:43.827581
+40		American	241	2013-03-04 14:50:52.579939	2013-03-04 14:50:52.579939
+41		American	241	2013-03-04 14:51:28.143045	2013-03-04 14:51:28.143045
+42		American	true	2013-03-04 14:51:30.716494	2013-03-04 14:51:30.716494
+43			241	2013-03-04 14:54:11.421875	2013-03-04 14:54:11.421875
+44	son		241	2013-03-04 14:55:28.233104	2013-03-04 14:55:28.233104
+45	son		241	2013-03-04 14:55:31.273709	2013-03-04 14:55:31.273709
+46			50	2013-03-04 14:56:22.775753	2013-03-04 14:56:22.775753
+47			50	2013-03-04 14:59:49.129435	2013-03-04 14:59:49.129435
+48	son		241	2013-03-04 14:59:55.619746	2013-03-04 14:59:55.619746
+49			50	2013-03-04 15:00:54.14168	2013-03-04 15:00:54.14168
+50			50	2013-03-04 15:00:57.344199	2013-03-04 15:00:57.344199
+51			241	2013-03-04 15:03:31.952477	2013-03-04 15:03:31.952477
+52			true	2013-03-04 15:03:35.732271	2013-03-04 15:03:35.732271
+53			241	2013-03-04 15:03:47.676498	2013-03-04 15:03:47.676498
+54			241	2013-03-04 15:04:00.428685	2013-03-04 15:04:00.428685
+55			50	2013-03-04 15:05:02.927541	2013-03-04 15:05:02.927541
+56			241	2013-03-04 15:05:06.112704	2013-03-04 15:05:06.112704
+57			50	2013-03-04 15:05:25.574991	2013-03-04 15:05:25.574991
+58			241	2013-03-04 15:05:41.962523	2013-03-04 15:05:41.962523
+59			50	2013-03-04 15:06:00.495221	2013-03-04 15:06:00.495221
+60			241	2013-03-04 15:06:25.505327	2013-03-04 15:06:25.505327
+61		American	50	2013-03-04 15:07:03.406275	2013-03-04 15:07:03.406275
+62		American	50	2013-03-04 15:07:04.833555	2013-03-04 15:07:04.833555
+63		American	50	2013-03-04 15:07:05.218115	2013-03-04 15:07:05.218115
+64		American	50	2013-03-04 15:07:05.622629	2013-03-04 15:07:05.622629
+65		American	50	2013-03-04 15:07:05.636849	2013-03-04 15:07:05.636849
+66		American	50	2013-03-04 15:07:05.654875	2013-03-04 15:07:05.654875
+67		Fusion	241	2013-03-04 15:22:30.968909	2013-03-04 15:22:30.968909
+68			50	2013-03-04 15:23:17.446783	2013-03-04 15:23:17.446783
+69		German	241	2013-03-04 16:17:49.637064	2013-03-04 16:17:49.637064
+70	sons		true	2013-03-04 16:18:18.993943	2013-03-04 16:18:18.993943
+71	inc		true	2013-03-04 16:18:53.768294	2013-03-04 16:18:53.768294
+72		Italian	50	2013-03-04 17:05:15.244642	2013-03-04 17:05:15.244642
+73		Asian	true	2013-03-04 17:06:36.469538	2013-03-04 17:06:36.469538
+74			true	2013-03-04 18:21:28.253436	2013-03-04 18:21:28.253436
+75			241	2013-03-04 18:24:55.614829	2013-03-04 18:24:55.614829
+76			241	2013-03-04 18:25:30.169729	2013-03-04 18:25:30.169729
+77		Asian	241	2013-03-04 18:25:48.475977	2013-03-04 18:25:48.475977
+78			241	2013-03-04 18:26:09.098169	2013-03-04 18:26:09.098169
+79			241	2013-03-04 18:30:49.802626	2013-03-04 18:30:49.802626
+80			241	2013-03-04 19:11:53.626903	2013-03-04 19:11:53.626903
+81		Italian	50	2013-03-04 19:13:58.796005	2013-03-04 19:13:58.796005
+82			50	2013-03-04 19:39:00.134002	2013-03-04 19:39:00.134002
+83		Asian	241	2013-03-04 20:10:38.79348	2013-03-04 20:10:38.79348
+84		Asian	241	2013-03-04 20:28:03.382632	2013-03-04 20:28:03.382632
+85		Italian	true	2013-03-05 12:30:08.556222	2013-03-05 12:30:08.556222
+\.
+
+
+--
+-- Name: searches_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Christopher
+--
+
+SELECT pg_catalog.setval('searches_id_seq', 85, true);
+
+
+--
+-- Data for Name: taggings; Type: TABLE DATA; Schema: public; Owner: Christopher
+--
+
+COPY taggings (id, tag_id, taggable_id, taggable_type, tagger_id, tagger_type, context, created_at) FROM stdin;
+1	1	1	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.163673
+2	2	1	Restaurant	\N	\N	offer	2013-03-03 20:36:26.175479
+3	3	2	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.206723
+4	2	2	Restaurant	\N	\N	offer	2013-03-03 20:36:26.215336
+5	4	3	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.245201
+6	2	3	Restaurant	\N	\N	offer	2013-03-03 20:36:26.253373
+7	5	4	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.283136
+8	2	4	Restaurant	\N	\N	offer	2013-03-03 20:36:26.291558
+9	4	5	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.318321
+10	2	5	Restaurant	\N	\N	offer	2013-03-03 20:36:26.326647
+11	6	6	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.356302
+12	2	6	Restaurant	\N	\N	offer	2013-03-03 20:36:26.365085
+13	3	7	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.392935
+14	7	7	Restaurant	\N	\N	offer	2013-03-03 20:36:26.403828
+15	4	8	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.432408
+16	7	8	Restaurant	\N	\N	offer	2013-03-03 20:36:26.440931
+17	3	9	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.467528
+18	7	9	Restaurant	\N	\N	offer	2013-03-03 20:36:26.475701
+19	1	10	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.502708
+20	7	10	Restaurant	\N	\N	offer	2013-03-03 20:36:26.5111
+21	4	11	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.537594
+22	2	11	Restaurant	\N	\N	offer	2013-03-03 20:36:26.546277
+23	1	12	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.574537
+24	7	12	Restaurant	\N	\N	offer	2013-03-03 20:36:26.582895
+25	6	13	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.679688
+26	7	13	Restaurant	\N	\N	offer	2013-03-03 20:36:26.688253
+27	6	14	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.71426
+28	2	14	Restaurant	\N	\N	offer	2013-03-03 20:36:26.723014
+29	3	15	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.749141
+30	7	15	Restaurant	\N	\N	offer	2013-03-03 20:36:26.757307
+31	4	16	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.784015
+32	7	16	Restaurant	\N	\N	offer	2013-03-03 20:36:26.792569
+33	3	17	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.818996
+34	7	17	Restaurant	\N	\N	offer	2013-03-03 20:36:26.827892
+35	3	18	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.85515
+36	7	18	Restaurant	\N	\N	offer	2013-03-03 20:36:26.863312
+37	6	19	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.889583
+38	7	19	Restaurant	\N	\N	offer	2013-03-03 20:36:26.897905
+39	3	20	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.923956
+40	7	20	Restaurant	\N	\N	offer	2013-03-03 20:36:26.932497
+41	1	21	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.959561
+42	2	21	Restaurant	\N	\N	offer	2013-03-03 20:36:26.968111
+43	3	22	Restaurant	\N	\N	cuisine	2013-03-03 20:36:26.994301
+44	2	22	Restaurant	\N	\N	offer	2013-03-03 20:36:27.002525
+45	5	23	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.029114
+46	7	23	Restaurant	\N	\N	offer	2013-03-03 20:36:27.037427
+47	6	24	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.064057
+48	2	24	Restaurant	\N	\N	offer	2013-03-03 20:36:27.073514
+49	4	25	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.099767
+50	2	25	Restaurant	\N	\N	offer	2013-03-03 20:36:27.108287
+51	5	26	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.133556
+52	7	26	Restaurant	\N	\N	offer	2013-03-03 20:36:27.142848
+53	4	27	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.172947
+54	7	27	Restaurant	\N	\N	offer	2013-03-03 20:36:27.181767
+55	3	28	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.209049
+56	7	28	Restaurant	\N	\N	offer	2013-03-03 20:36:27.217285
+57	4	29	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.244406
+58	2	29	Restaurant	\N	\N	offer	2013-03-03 20:36:27.252474
+59	4	30	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.279925
+60	2	30	Restaurant	\N	\N	offer	2013-03-03 20:36:27.288171
+61	1	31	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.319048
+62	7	31	Restaurant	\N	\N	offer	2013-03-03 20:36:27.327654
+63	4	32	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.365024
+64	7	32	Restaurant	\N	\N	offer	2013-03-03 20:36:27.447874
+65	6	33	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.475408
+66	7	33	Restaurant	\N	\N	offer	2013-03-03 20:36:27.483642
+67	5	34	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.510674
+68	7	34	Restaurant	\N	\N	offer	2013-03-03 20:36:27.51886
+69	1	35	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.545249
+70	2	35	Restaurant	\N	\N	offer	2013-03-03 20:36:27.553329
+71	1	36	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.580537
+72	2	36	Restaurant	\N	\N	offer	2013-03-03 20:36:27.588694
+73	1	37	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.614597
+74	2	37	Restaurant	\N	\N	offer	2013-03-03 20:36:27.622696
+75	5	38	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.648537
+76	7	38	Restaurant	\N	\N	offer	2013-03-03 20:36:27.656649
+77	3	39	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.68213
+78	2	39	Restaurant	\N	\N	offer	2013-03-03 20:36:27.690882
+79	5	40	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.724714
+80	2	40	Restaurant	\N	\N	offer	2013-03-03 20:36:27.733088
+81	4	41	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.758754
+82	7	41	Restaurant	\N	\N	offer	2013-03-03 20:36:27.766984
+83	1	42	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.793094
+84	2	42	Restaurant	\N	\N	offer	2013-03-03 20:36:27.801294
+85	4	43	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.827225
+86	7	43	Restaurant	\N	\N	offer	2013-03-03 20:36:27.835318
+87	5	44	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.861244
+88	7	44	Restaurant	\N	\N	offer	2013-03-03 20:36:27.869793
+89	1	45	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.896678
+90	7	45	Restaurant	\N	\N	offer	2013-03-03 20:36:27.905121
+91	1	46	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.932747
+92	2	46	Restaurant	\N	\N	offer	2013-03-03 20:36:27.940969
+93	5	47	Restaurant	\N	\N	cuisine	2013-03-03 20:36:27.968682
+94	2	47	Restaurant	\N	\N	offer	2013-03-03 20:36:27.976792
+95	4	48	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.004244
+96	2	48	Restaurant	\N	\N	offer	2013-03-03 20:36:28.012537
+97	5	49	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.040208
+98	2	49	Restaurant	\N	\N	offer	2013-03-03 20:36:28.048912
+99	1	50	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.075847
+100	7	50	Restaurant	\N	\N	offer	2013-03-03 20:36:28.084049
+101	6	51	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.111303
+102	2	51	Restaurant	\N	\N	offer	2013-03-03 20:36:28.119728
+103	4	52	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.220426
+104	7	52	Restaurant	\N	\N	offer	2013-03-03 20:36:28.229056
+105	6	53	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.255624
+106	2	53	Restaurant	\N	\N	offer	2013-03-03 20:36:28.263998
+107	1	54	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.290925
+108	2	54	Restaurant	\N	\N	offer	2013-03-03 20:36:28.299716
+109	1	55	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.326927
+110	7	55	Restaurant	\N	\N	offer	2013-03-03 20:36:28.335118
+111	1	56	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.361726
+112	7	56	Restaurant	\N	\N	offer	2013-03-03 20:36:28.370225
+113	6	57	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.398331
+114	2	57	Restaurant	\N	\N	offer	2013-03-03 20:36:28.412929
+115	1	58	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.43948
+116	2	58	Restaurant	\N	\N	offer	2013-03-03 20:36:28.447709
+117	1	59	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.473498
+118	7	59	Restaurant	\N	\N	offer	2013-03-03 20:36:28.482136
+119	6	60	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.508017
+120	7	60	Restaurant	\N	\N	offer	2013-03-03 20:36:28.516219
+121	6	61	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.543872
+122	7	61	Restaurant	\N	\N	offer	2013-03-03 20:36:28.55197
+123	4	62	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.578339
+124	7	62	Restaurant	\N	\N	offer	2013-03-03 20:36:28.586365
+125	5	63	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.613284
+126	2	63	Restaurant	\N	\N	offer	2013-03-03 20:36:28.621403
+127	4	64	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.648146
+128	7	64	Restaurant	\N	\N	offer	2013-03-03 20:36:28.656353
+129	1	65	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.682951
+130	2	65	Restaurant	\N	\N	offer	2013-03-03 20:36:28.69118
+131	5	66	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.718779
+132	7	66	Restaurant	\N	\N	offer	2013-03-03 20:36:28.727138
+133	6	67	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.75468
+134	7	67	Restaurant	\N	\N	offer	2013-03-03 20:36:28.762898
+135	5	68	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.789958
+136	2	68	Restaurant	\N	\N	offer	2013-03-03 20:36:28.798378
+137	4	69	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.825486
+138	7	69	Restaurant	\N	\N	offer	2013-03-03 20:36:28.833681
+139	4	70	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.859765
+140	7	70	Restaurant	\N	\N	offer	2013-03-03 20:36:28.868083
+141	5	71	Restaurant	\N	\N	cuisine	2013-03-03 20:36:28.970993
+142	7	71	Restaurant	\N	\N	offer	2013-03-03 20:36:28.979296
+143	1	72	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.006451
+144	2	72	Restaurant	\N	\N	offer	2013-03-03 20:36:29.014638
+145	4	73	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.040986
+146	2	73	Restaurant	\N	\N	offer	2013-03-03 20:36:29.049146
+147	5	74	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.075918
+148	7	74	Restaurant	\N	\N	offer	2013-03-03 20:36:29.084422
+149	6	75	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.110591
+150	2	75	Restaurant	\N	\N	offer	2013-03-03 20:36:29.119009
+151	1	76	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.14571
+152	7	76	Restaurant	\N	\N	offer	2013-03-03 20:36:29.15395
+153	1	77	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.181978
+154	7	77	Restaurant	\N	\N	offer	2013-03-03 20:36:29.190092
+155	1	78	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.217533
+156	2	78	Restaurant	\N	\N	offer	2013-03-03 20:36:29.225712
+157	1	79	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.252257
+158	2	79	Restaurant	\N	\N	offer	2013-03-03 20:36:29.260898
+159	4	80	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.287781
+160	2	80	Restaurant	\N	\N	offer	2013-03-03 20:36:29.296343
+161	4	81	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.323036
+162	7	81	Restaurant	\N	\N	offer	2013-03-03 20:36:29.331252
+163	3	82	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.357311
+164	7	82	Restaurant	\N	\N	offer	2013-03-03 20:36:29.365469
+165	6	83	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.392856
+166	2	83	Restaurant	\N	\N	offer	2013-03-03 20:36:29.401061
+167	4	84	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.428119
+168	7	84	Restaurant	\N	\N	offer	2013-03-03 20:36:29.436719
+169	4	85	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.46317
+170	7	85	Restaurant	\N	\N	offer	2013-03-03 20:36:29.471379
+171	6	86	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.497701
+172	2	86	Restaurant	\N	\N	offer	2013-03-03 20:36:29.506255
+173	4	87	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.534046
+174	7	87	Restaurant	\N	\N	offer	2013-03-03 20:36:29.542207
+175	4	88	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.568945
+176	7	88	Restaurant	\N	\N	offer	2013-03-03 20:36:29.577064
+177	4	89	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.603558
+178	7	89	Restaurant	\N	\N	offer	2013-03-03 20:36:29.611716
+179	6	90	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.711963
+180	2	90	Restaurant	\N	\N	offer	2013-03-03 20:36:29.720617
+181	6	91	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.747358
+182	7	91	Restaurant	\N	\N	offer	2013-03-03 20:36:29.755691
+183	5	92	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.782128
+184	2	92	Restaurant	\N	\N	offer	2013-03-03 20:36:29.790289
+185	4	93	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.817281
+186	2	93	Restaurant	\N	\N	offer	2013-03-03 20:36:29.825648
+187	5	94	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.851991
+188	2	94	Restaurant	\N	\N	offer	2013-03-03 20:36:29.860439
+189	5	95	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.88772
+190	7	95	Restaurant	\N	\N	offer	2013-03-03 20:36:29.896323
+191	1	96	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.923138
+192	2	96	Restaurant	\N	\N	offer	2013-03-03 20:36:29.931512
+193	1	97	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.958015
+194	2	97	Restaurant	\N	\N	offer	2013-03-03 20:36:29.966153
+195	1	98	Restaurant	\N	\N	cuisine	2013-03-03 20:36:29.993118
+196	7	98	Restaurant	\N	\N	offer	2013-03-03 20:36:30.00149
+197	4	99	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.02782
+198	7	99	Restaurant	\N	\N	offer	2013-03-03 20:36:30.035899
+199	4	100	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.062132
+200	7	100	Restaurant	\N	\N	offer	2013-03-03 20:36:30.07025
+201	6	101	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.097012
+202	7	101	Restaurant	\N	\N	offer	2013-03-03 20:36:30.105575
+203	3	102	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.132092
+204	2	102	Restaurant	\N	\N	offer	2013-03-03 20:36:30.140346
+205	6	103	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.166885
+206	7	103	Restaurant	\N	\N	offer	2013-03-03 20:36:30.175163
+207	1	104	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.202075
+208	2	104	Restaurant	\N	\N	offer	2013-03-03 20:36:30.210446
+209	1	105	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.237281
+210	2	105	Restaurant	\N	\N	offer	2013-03-03 20:36:30.245658
+211	5	106	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.27311
+212	7	106	Restaurant	\N	\N	offer	2013-03-03 20:36:30.28203
+213	4	107	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.309899
+214	7	107	Restaurant	\N	\N	offer	2013-03-03 20:36:30.318298
+215	6	108	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.345633
+216	7	108	Restaurant	\N	\N	offer	2013-03-03 20:36:30.354001
+217	5	109	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.380805
+218	2	109	Restaurant	\N	\N	offer	2013-03-03 20:36:30.468715
+219	4	110	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.49612
+220	7	110	Restaurant	\N	\N	offer	2013-03-03 20:36:30.504458
+221	1	111	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.532224
+222	7	111	Restaurant	\N	\N	offer	2013-03-03 20:36:30.540738
+223	3	112	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.56724
+224	2	112	Restaurant	\N	\N	offer	2013-03-03 20:36:30.575366
+225	3	113	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.601977
+226	7	113	Restaurant	\N	\N	offer	2013-03-03 20:36:30.610241
+227	6	114	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.63661
+228	2	114	Restaurant	\N	\N	offer	2013-03-03 20:36:30.645026
+229	4	115	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.672361
+230	7	115	Restaurant	\N	\N	offer	2013-03-03 20:36:30.680525
+231	6	116	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.709017
+232	7	116	Restaurant	\N	\N	offer	2013-03-03 20:36:30.717287
+233	6	117	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.744655
+234	7	117	Restaurant	\N	\N	offer	2013-03-03 20:36:30.753101
+235	3	118	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.780792
+236	7	118	Restaurant	\N	\N	offer	2013-03-03 20:36:30.789067
+237	1	119	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.815753
+238	7	119	Restaurant	\N	\N	offer	2013-03-03 20:36:30.824241
+239	6	120	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.850371
+240	2	120	Restaurant	\N	\N	offer	2013-03-03 20:36:30.85862
+241	5	121	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.885153
+242	2	121	Restaurant	\N	\N	offer	2013-03-03 20:36:30.893855
+243	4	122	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.919993
+244	7	122	Restaurant	\N	\N	offer	2013-03-03 20:36:30.928234
+245	1	123	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.955961
+246	7	123	Restaurant	\N	\N	offer	2013-03-03 20:36:30.964477
+247	6	124	Restaurant	\N	\N	cuisine	2013-03-03 20:36:30.992022
+248	7	124	Restaurant	\N	\N	offer	2013-03-03 20:36:31.000502
+249	6	125	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.027451
+250	7	125	Restaurant	\N	\N	offer	2013-03-03 20:36:31.035593
+251	3	126	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.062654
+252	2	126	Restaurant	\N	\N	offer	2013-03-03 20:36:31.071316
+253	6	127	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.097681
+254	7	127	Restaurant	\N	\N	offer	2013-03-03 20:36:31.105875
+255	4	128	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.132664
+256	2	128	Restaurant	\N	\N	offer	2013-03-03 20:36:31.14085
+257	1	129	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.24202
+258	7	129	Restaurant	\N	\N	offer	2013-03-03 20:36:31.250754
+259	6	130	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.277167
+260	7	130	Restaurant	\N	\N	offer	2013-03-03 20:36:31.2854
+261	5	131	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.312547
+262	7	131	Restaurant	\N	\N	offer	2013-03-03 20:36:31.320697
+263	4	132	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.346711
+264	7	132	Restaurant	\N	\N	offer	2013-03-03 20:36:31.354822
+265	6	133	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.381231
+266	2	133	Restaurant	\N	\N	offer	2013-03-03 20:36:31.389374
+267	6	134	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.415649
+268	7	134	Restaurant	\N	\N	offer	2013-03-03 20:36:31.426884
+269	4	135	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.454851
+270	7	135	Restaurant	\N	\N	offer	2013-03-03 20:36:31.463386
+271	3	136	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.49036
+272	7	136	Restaurant	\N	\N	offer	2013-03-03 20:36:31.499145
+273	6	137	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.5264
+274	2	137	Restaurant	\N	\N	offer	2013-03-03 20:36:31.534588
+275	1	138	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.561576
+276	7	138	Restaurant	\N	\N	offer	2013-03-03 20:36:31.570001
+277	5	139	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.59725
+278	2	139	Restaurant	\N	\N	offer	2013-03-03 20:36:31.605848
+279	3	140	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.633039
+280	7	140	Restaurant	\N	\N	offer	2013-03-03 20:36:31.641126
+281	5	141	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.668235
+282	2	141	Restaurant	\N	\N	offer	2013-03-03 20:36:31.676381
+283	1	142	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.703425
+284	2	142	Restaurant	\N	\N	offer	2013-03-03 20:36:31.711753
+285	5	143	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.738717
+286	7	143	Restaurant	\N	\N	offer	2013-03-03 20:36:31.746988
+287	6	144	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.774359
+288	7	144	Restaurant	\N	\N	offer	2013-03-03 20:36:31.782528
+289	5	145	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.80885
+290	2	145	Restaurant	\N	\N	offer	2013-03-03 20:36:31.817022
+291	6	146	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.84333
+292	7	146	Restaurant	\N	\N	offer	2013-03-03 20:36:31.851973
+293	1	147	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.879315
+294	2	147	Restaurant	\N	\N	offer	2013-03-03 20:36:31.887556
+295	3	148	Restaurant	\N	\N	cuisine	2013-03-03 20:36:31.986204
+296	7	148	Restaurant	\N	\N	offer	2013-03-03 20:36:31.995001
+297	6	149	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.023311
+298	7	149	Restaurant	\N	\N	offer	2013-03-03 20:36:32.032115
+299	4	150	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.059188
+300	2	150	Restaurant	\N	\N	offer	2013-03-03 20:36:32.06754
+301	3	151	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.095138
+302	2	151	Restaurant	\N	\N	offer	2013-03-03 20:36:32.103418
+303	3	152	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.131181
+304	2	152	Restaurant	\N	\N	offer	2013-03-03 20:36:32.139358
+305	5	153	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.165652
+306	7	153	Restaurant	\N	\N	offer	2013-03-03 20:36:32.173774
+307	5	154	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.201065
+308	2	154	Restaurant	\N	\N	offer	2013-03-03 20:36:32.209722
+309	4	155	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.236473
+310	2	155	Restaurant	\N	\N	offer	2013-03-03 20:36:32.244655
+311	3	156	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.27228
+312	7	156	Restaurant	\N	\N	offer	2013-03-03 20:36:32.280455
+313	6	157	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.30707
+314	7	157	Restaurant	\N	\N	offer	2013-03-03 20:36:32.316203
+315	1	158	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.34387
+316	2	158	Restaurant	\N	\N	offer	2013-03-03 20:36:32.352088
+317	6	159	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.378239
+318	7	159	Restaurant	\N	\N	offer	2013-03-03 20:36:32.386355
+319	3	160	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.413241
+320	7	160	Restaurant	\N	\N	offer	2013-03-03 20:36:32.421389
+321	6	161	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.448891
+322	7	161	Restaurant	\N	\N	offer	2013-03-03 20:36:32.457148
+323	6	162	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.484635
+324	2	162	Restaurant	\N	\N	offer	2013-03-03 20:36:32.492826
+325	5	163	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.520066
+326	2	163	Restaurant	\N	\N	offer	2013-03-03 20:36:32.528324
+327	5	164	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.556129
+328	2	164	Restaurant	\N	\N	offer	2013-03-03 20:36:32.564401
+329	4	165	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.590667
+330	2	165	Restaurant	\N	\N	offer	2013-03-03 20:36:32.599167
+331	3	166	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.626392
+332	2	166	Restaurant	\N	\N	offer	2013-03-03 20:36:32.6351
+333	1	167	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.734703
+334	7	167	Restaurant	\N	\N	offer	2013-03-03 20:36:32.743181
+335	3	168	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.770425
+336	7	168	Restaurant	\N	\N	offer	2013-03-03 20:36:32.778845
+337	1	169	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.807896
+338	2	169	Restaurant	\N	\N	offer	2013-03-03 20:36:32.816468
+339	6	170	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.843276
+340	2	170	Restaurant	\N	\N	offer	2013-03-03 20:36:32.851429
+341	5	171	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.880228
+342	2	171	Restaurant	\N	\N	offer	2013-03-03 20:36:32.888416
+343	4	172	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.915582
+344	2	172	Restaurant	\N	\N	offer	2013-03-03 20:36:32.92372
+345	6	173	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.952018
+346	2	173	Restaurant	\N	\N	offer	2013-03-03 20:36:32.960359
+347	6	174	Restaurant	\N	\N	cuisine	2013-03-03 20:36:32.987252
+348	7	174	Restaurant	\N	\N	offer	2013-03-03 20:36:32.995952
+349	1	175	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.024046
+350	7	175	Restaurant	\N	\N	offer	2013-03-03 20:36:33.032327
+351	5	176	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.060824
+352	7	176	Restaurant	\N	\N	offer	2013-03-03 20:36:33.069054
+353	5	177	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.124946
+354	7	177	Restaurant	\N	\N	offer	2013-03-03 20:36:33.13322
+355	1	178	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.15892
+356	7	178	Restaurant	\N	\N	offer	2013-03-03 20:36:33.167172
+357	1	179	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.194521
+358	2	179	Restaurant	\N	\N	offer	2013-03-03 20:36:33.202825
+359	6	180	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.230284
+360	7	180	Restaurant	\N	\N	offer	2013-03-03 20:36:33.238834
+361	6	181	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.265793
+362	7	181	Restaurant	\N	\N	offer	2013-03-03 20:36:33.273905
+363	3	182	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.303275
+364	7	182	Restaurant	\N	\N	offer	2013-03-03 20:36:33.311395
+365	3	183	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.339424
+366	7	183	Restaurant	\N	\N	offer	2013-03-03 20:36:33.347685
+367	5	184	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.375296
+368	2	184	Restaurant	\N	\N	offer	2013-03-03 20:36:33.383498
+369	4	185	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.410408
+370	7	185	Restaurant	\N	\N	offer	2013-03-03 20:36:33.418942
+371	3	186	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.446352
+372	7	186	Restaurant	\N	\N	offer	2013-03-03 20:36:33.529067
+373	3	187	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.557481
+374	2	187	Restaurant	\N	\N	offer	2013-03-03 20:36:33.565617
+375	3	188	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.592588
+376	7	188	Restaurant	\N	\N	offer	2013-03-03 20:36:33.601362
+377	3	189	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.627509
+378	2	189	Restaurant	\N	\N	offer	2013-03-03 20:36:33.635944
+379	5	190	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.663892
+380	7	190	Restaurant	\N	\N	offer	2013-03-03 20:36:33.672308
+381	6	191	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.699178
+382	7	191	Restaurant	\N	\N	offer	2013-03-03 20:36:33.707343
+383	3	192	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.734698
+384	7	192	Restaurant	\N	\N	offer	2013-03-03 20:36:33.742938
+385	3	193	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.769371
+386	2	193	Restaurant	\N	\N	offer	2013-03-03 20:36:33.777806
+387	1	194	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.804932
+388	7	194	Restaurant	\N	\N	offer	2013-03-03 20:36:33.813038
+389	4	195	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.84064
+390	2	195	Restaurant	\N	\N	offer	2013-03-03 20:36:33.848987
+391	6	196	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.875203
+392	2	196	Restaurant	\N	\N	offer	2013-03-03 20:36:33.883399
+393	1	197	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.91159
+394	2	197	Restaurant	\N	\N	offer	2013-03-03 20:36:33.920018
+395	4	198	Restaurant	\N	\N	cuisine	2013-03-03 20:36:33.946657
+396	7	198	Restaurant	\N	\N	offer	2013-03-03 20:36:33.955349
+397	1	199	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.037995
+398	7	199	Restaurant	\N	\N	offer	2013-03-03 20:36:34.046144
+399	1	200	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.072323
+400	2	200	Restaurant	\N	\N	offer	2013-03-03 20:36:34.080867
+401	5	201	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.107117
+402	7	201	Restaurant	\N	\N	offer	2013-03-03 20:36:34.115444
+403	3	202	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.142834
+404	7	202	Restaurant	\N	\N	offer	2013-03-03 20:36:34.151075
+405	1	203	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.178418
+406	7	203	Restaurant	\N	\N	offer	2013-03-03 20:36:34.187571
+407	4	204	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.218386
+408	7	204	Restaurant	\N	\N	offer	2013-03-03 20:36:34.227593
+409	3	205	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.25657
+410	2	205	Restaurant	\N	\N	offer	2013-03-03 20:36:34.26737
+411	1	206	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.379816
+412	7	206	Restaurant	\N	\N	offer	2013-03-03 20:36:34.389309
+413	5	207	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.41852
+414	7	207	Restaurant	\N	\N	offer	2013-03-03 20:36:34.428165
+415	5	208	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.459256
+416	2	208	Restaurant	\N	\N	offer	2013-03-03 20:36:34.469492
+417	3	209	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.497934
+418	7	209	Restaurant	\N	\N	offer	2013-03-03 20:36:34.506577
+419	4	210	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.535165
+420	7	210	Restaurant	\N	\N	offer	2013-03-03 20:36:34.543814
+421	4	211	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.571792
+422	2	211	Restaurant	\N	\N	offer	2013-03-03 20:36:34.579997
+423	5	212	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.609497
+424	7	212	Restaurant	\N	\N	offer	2013-03-03 20:36:34.61786
+425	6	213	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.64568
+426	2	213	Restaurant	\N	\N	offer	2013-03-03 20:36:34.655323
+427	4	214	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.685016
+428	7	214	Restaurant	\N	\N	offer	2013-03-03 20:36:34.694039
+429	5	215	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.722803
+430	7	215	Restaurant	\N	\N	offer	2013-03-03 20:36:34.731084
+431	6	216	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.75812
+432	7	216	Restaurant	\N	\N	offer	2013-03-03 20:36:34.766254
+433	4	217	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.792881
+434	2	217	Restaurant	\N	\N	offer	2013-03-03 20:36:34.801579
+435	5	218	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.828137
+436	2	218	Restaurant	\N	\N	offer	2013-03-03 20:36:34.836312
+437	6	219	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.863434
+438	7	219	Restaurant	\N	\N	offer	2013-03-03 20:36:34.871722
+439	4	220	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.898498
+440	2	220	Restaurant	\N	\N	offer	2013-03-03 20:36:34.907494
+441	1	221	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.934494
+442	7	221	Restaurant	\N	\N	offer	2013-03-03 20:36:34.943135
+443	6	222	Restaurant	\N	\N	cuisine	2013-03-03 20:36:34.970197
+444	7	222	Restaurant	\N	\N	offer	2013-03-03 20:36:34.979337
+445	1	223	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.009253
+446	7	223	Restaurant	\N	\N	offer	2013-03-03 20:36:35.017579
+447	6	224	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.046203
+448	2	224	Restaurant	\N	\N	offer	2013-03-03 20:36:35.05456
+449	5	225	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.154087
+450	7	225	Restaurant	\N	\N	offer	2013-03-03 20:36:35.162505
+451	4	226	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.190825
+452	7	226	Restaurant	\N	\N	offer	2013-03-03 20:36:35.19946
+453	5	227	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.226648
+454	2	227	Restaurant	\N	\N	offer	2013-03-03 20:36:35.234934
+455	4	228	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.261455
+456	2	228	Restaurant	\N	\N	offer	2013-03-03 20:36:35.269578
+457	3	229	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.297452
+458	2	229	Restaurant	\N	\N	offer	2013-03-03 20:36:35.30564
+459	6	230	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.337682
+460	7	230	Restaurant	\N	\N	offer	2013-03-03 20:36:35.347642
+461	6	231	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.374614
+462	7	231	Restaurant	\N	\N	offer	2013-03-03 20:36:35.383093
+463	4	232	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.410634
+464	2	232	Restaurant	\N	\N	offer	2013-03-03 20:36:35.418868
+465	1	233	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.446021
+466	7	233	Restaurant	\N	\N	offer	2013-03-03 20:36:35.454351
+467	4	234	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.482441
+468	2	234	Restaurant	\N	\N	offer	2013-03-03 20:36:35.490712
+469	3	235	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.517416
+470	7	235	Restaurant	\N	\N	offer	2013-03-03 20:36:35.526034
+471	6	236	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.552308
+472	7	236	Restaurant	\N	\N	offer	2013-03-03 20:36:35.5604
+473	4	237	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.587364
+474	2	237	Restaurant	\N	\N	offer	2013-03-03 20:36:35.595565
+475	4	238	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.622921
+476	7	238	Restaurant	\N	\N	offer	2013-03-03 20:36:35.631143
+477	1	239	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.65861
+478	2	239	Restaurant	\N	\N	offer	2013-03-03 20:36:35.666722
+479	4	240	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.740143
+480	7	240	Restaurant	\N	\N	offer	2013-03-03 20:36:35.74899
+481	4	241	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.818923
+482	2	241	Restaurant	\N	\N	offer	2013-03-03 20:36:35.827623
+483	3	242	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.855171
+484	2	242	Restaurant	\N	\N	offer	2013-03-03 20:36:35.863331
+485	1	243	Restaurant	\N	\N	cuisine	2013-03-03 20:36:35.891846
+486	2	243	Restaurant	\N	\N	offer	2013-03-03 20:36:35.900494
+487	3	244	Restaurant	\N	\N	cuisine	2013-03-03 20:36:36.003581
+488	2	244	Restaurant	\N	\N	offer	2013-03-03 20:36:36.012605
+489	1	245	Restaurant	\N	\N	cuisine	2013-03-03 20:36:36.040112
+490	7	245	Restaurant	\N	\N	offer	2013-03-03 20:36:36.04839
+491	6	246	Restaurant	\N	\N	cuisine	2013-03-03 20:36:36.077643
+492	7	246	Restaurant	\N	\N	offer	2013-03-03 20:36:36.085878
+493	1	247	Restaurant	\N	\N	cuisine	2013-03-03 20:36:36.114304
+494	2	247	Restaurant	\N	\N	offer	2013-03-03 20:36:36.122673
+495	3	248	Restaurant	\N	\N	cuisine	2013-03-03 20:36:36.149272
+496	7	248	Restaurant	\N	\N	offer	2013-03-03 20:36:36.157456
+497	6	249	Restaurant	\N	\N	cuisine	2013-03-03 20:36:36.184856
+498	7	249	Restaurant	\N	\N	offer	2013-03-03 20:36:36.193329
+499	6	250	Restaurant	\N	\N	cuisine	2013-03-03 20:36:36.221529
+500	2	250	Restaurant	\N	\N	offer	2013-03-03 20:36:36.230084
+\.
+
+
+--
+-- Name: taggings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Christopher
+--
+
+SELECT pg_catalog.setval('taggings_id_seq', 501, false);
+
+
+--
+-- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: Christopher
+--
+
+COPY tags (id, name) FROM stdin;
+1	German
+2	50
+3	Fusion
+4	American
+5	Italian
+6	Asian
+7	241
+\.
+
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Christopher
+--
+
+SELECT pg_catalog.setval('tags_id_seq', 8, false);
+
+
+--
+-- Name: restaurants_pkey; Type: CONSTRAINT; Schema: public; Owner: Christopher; Tablespace: 
+--
+
+ALTER TABLE ONLY restaurants
+    ADD CONSTRAINT restaurants_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: searches_pkey; Type: CONSTRAINT; Schema: public; Owner: Christopher; Tablespace: 
+--
+
+ALTER TABLE ONLY searches
+    ADD CONSTRAINT searches_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: taggings_pkey; Type: CONSTRAINT; Schema: public; Owner: Christopher; Tablespace: 
+--
+
+ALTER TABLE ONLY taggings
+    ADD CONSTRAINT taggings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: Christopher; Tablespace: 
+--
+
+ALTER TABLE ONLY tags
+    ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_taggings_on_tag_id; Type: INDEX; Schema: public; Owner: Christopher; Tablespace: 
+--
+
+CREATE INDEX index_taggings_on_tag_id ON taggings USING btree (tag_id);
+
+
+--
+-- Name: index_taggings_on_taggable_id_and_taggable_type_and_context; Type: INDEX; Schema: public; Owner: Christopher; Tablespace: 
+--
+
+CREATE INDEX index_taggings_on_taggable_id_and_taggable_type_and_context ON taggings USING btree (taggable_id, taggable_type, context);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: Christopher; Tablespace: 
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: Christopher
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM "Christopher";
+GRANT ALL ON SCHEMA public TO "Christopher";
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
