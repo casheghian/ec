@@ -1,1 +1,3 @@
 Gmaps.map.replaceMarkers(<%=raw @search.restaurants.to_gmaps4rails %>);
+$("#search_results").html("<%= escape_javascript(render("show")) %>");
+

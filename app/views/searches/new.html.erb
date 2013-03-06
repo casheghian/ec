@@ -25,6 +25,6 @@
   <div class="actions"><%= f.submit "Search" %></div>
 
 <% end %>
-    
-<%= gmaps("map_options" => { :raw => "{scrollwheel: false}", "auto_adjust" => true },"markers" => { "data" => @json }) %>
+<%= render 'show' %>
+<%= gmaps("map_options" => { :raw => "{scrollwheel: false, }", "auto_adjust" => true },"markers" => { "data" => @json,"options" => {"list_container" => "markers_list" }  }) %>
 

@@ -9,7 +9,11 @@ def gmaps4rails_address
 end
    
 def gmaps4rails_infowindow
-	"#{self.name},#{self.content}"
+	"<h3>#{self.name}</h3>
+  <img class= 'info_window_img' src='http://www.miami.com/sites/migration.miami.com/files/images/bulla-restaurant-logo.thumbnail.png'/>
+  <p>Cuisine:#{self.cuisine_list}</br>
+  Offer:#{self.offer_list}</br>
+  Restrictions:</p>"  
 end
 
 def gmaps4rails_marker_picture
@@ -20,6 +24,12 @@ def gmaps4rails_marker_picture
     }
 end
 
+def gmaps4rails_sidebar
+"<h3>#{self.name}</h3>
+  <p>Cuisine:#{self.cuisine_list}</br>
+  Offer:#{self.offer_list}</br>
+  Restrictions:</p>" 
+end
 
 end
 

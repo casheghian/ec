@@ -1,5 +1,7 @@
 <table>
 <tr>
+    <td><%= restaurant.id %></td>
+
     <td><%= link_to restaurant.name, restaurant %></td>
     <td><%=raw restaurant.cuisine_list.map { |t| link_to t, tag_path(t) }.join %></td>
     <td><%=raw restaurant.offer_list.map { |t| link_to t, tag_path(t) }.join %></td>
