@@ -15,7 +15,7 @@ def index
     end
   else
 @restaurants = Restaurant.paginate(:page => params[:page])
-@json = Restaurant.paginate(:page => params[:page]).to_gmaps4rails
+@json = Restaurant.all.to_gmaps4rails
 
   end
 end

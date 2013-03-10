@@ -25,6 +25,30 @@
   <div class="actions"><%= f.submit "Search" %></div>
 
 <% end %>
-<%= render 'show' %>
-<%= gmaps("map_options" => { :raw => "{scrollwheel: false, }", "auto_adjust" => true },"markers" => { "data" => @json,"options" => {"list_container" => "markers_list" }  }) %>
 
+<div id="search_results">
+<%= render 'show' %>
+</div>
+
+<%= gmaps("map_options" => { :raw => "{scrollwheel: false, }", "auto_adjust" => true },"markers" => { "data" => @json }) %>
+
+<% content_for :scripts do %>
+    <script type="text/javascript" charset="utf-8">
+  Gmaps.map.listen_to_markers = function(markers){
+  for(var i = 0; i < markers.length; i++){
+    marker = markers[i];
+    google.maps.event.addListener(marker.serviceObject, 'click', 
+      (function(marker){
+        return function(){      
+          alert(marker.id);
+        }
+      })(marker)
+   )
+ }
+}
+
+Gmaps.map.callback = function(){
+  Gmaps.map.listen_to_markers(Gmaps.map.markers);
+}
+    </script>
+<% end %>

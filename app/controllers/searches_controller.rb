@@ -1,19 +1,17 @@
 class SearchesController < ApplicationController
+
 def new
   @search = Search.new
-  @json = Restaurant.all.to_gmaps4rails
+
+  @json = Restaurant.all.to_gmaps4rails do |restaurant, marker|
+  marker.json({ :id => restaurant.id })
+ end
  
-end
+ end
 
 def create
-  @search = Search.create!(params[:search])
-  
-end
+  @search = Search.create!(params[:search]) 
 
-def show
-  @json = @search.restaurants.all.to_gmaps4rails 
-
-    
 end
 
 
