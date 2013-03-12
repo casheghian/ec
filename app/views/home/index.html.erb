@@ -1,2 +1,17 @@
-<h1>Hello, Rails!</h1>
-<%= link_to "My Blog", restaurants_path %>
+<div class="row">
+  <div class="span7 offset2" id="slogan">
+    <h2>elbcard gives you 50% OFF or 2 FOR 1 at Hamburg's finest Restaurants</h2>
+  </div>
+</div>  
+
+<div class="row">
+  <div class="span9" id="search">
+    <%= form_for @search do |f| %>
+        <%= f.text_field :keywords, :placeholder => "Was? (Pizza, Spanisches, PLZ, Name)" %>
+      </div>
+      <div class="actions span2"><%= f.submit "Search", :class =>'btn btn-search btn-large' %></div>
+
+    <% end %>
+  </div>
+</div>  
+

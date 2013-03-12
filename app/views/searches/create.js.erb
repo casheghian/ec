@@ -1,5 +1,5 @@
-var new_markers = <%=raw @search.restaurants.to_gmaps4rails %>;
+var new_markers = <%=raw @json%>;
 Gmaps.map.replaceMarkers(new_markers);
 Gmaps.map.listen_to_markers(new_markers);
-$("#search_results").html("<%= escape_javascript(render("show")) %>");
+$("#search_results").html("<%= escape_javascript(render("result")) %>");
 

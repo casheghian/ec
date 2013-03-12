@@ -27,7 +27,10 @@ gem "will_paginate", "~> 3.0"
  
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'gmaps4rails'
+gem "therubyracer"
+gem "less-rails"
 
+gem 'twitter-bootstrap-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

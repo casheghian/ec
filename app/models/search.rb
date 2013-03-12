@@ -6,17 +6,11 @@ def restaurants
 end
 
 private
-
-def find_restaurants
-  restaurants = Restaurant.order(:id) 
-  restaurants = restaurants.where("name like ?", "%#{keywords}%") if keywords.present?
-  restaurants = restaurants.tagged_with("#{cuisine_input}") if cuisine_input.present?
-  restaurants = restaurants.tagged_with("#{offer_input}")  if offer_input != 'true'
-
-  restaurants
-
-
-end
-
-
+	def find_restaurants
+	  restaurants = Restaurant.order(:id) 
+	  restaurants = restaurants.where("name like ?", "%#{keywords}%") unless keywords.blank?
+	  restaurants = restaurants.tagged_with("#{cuisine_input}") unless cuisine_input.blank?
+	  restaurants = restaurants.tagged_with("#{offer_input}")  unless offer_input = 'true'
+	  restaurants
+	end
 end

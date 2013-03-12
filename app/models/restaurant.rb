@@ -24,12 +24,6 @@ def gmaps4rails_marker_picture
     }
 end
 
-def gmaps4rails_sidebar
-"<h3>#{self.name}</h3>
-  <p>Cuisine:#{self.cuisine_list}</br>
-  Offer:#{self.offer_list}</br>
-  Restrictions:</p>" 
-end
 
 end
 
