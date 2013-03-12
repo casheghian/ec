@@ -10,7 +10,7 @@ private
 	  restaurants = Restaurant.order(:id) 
 	  restaurants = restaurants.where("name like ?", "%#{keywords}%") unless keywords.blank?
 	  restaurants = restaurants.tagged_with("#{cuisine_input}") unless cuisine_input.blank?
-	  restaurants = restaurants.tagged_with("#{offer_input}")  unless offer_input = 'true'
+	  restaurants = restaurants.tagged_with("#{offer_input}")  unless offer_input.blank?
 	  restaurants
 	end
 end

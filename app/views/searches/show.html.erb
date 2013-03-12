@@ -1,4 +1,4 @@
-<%= form_for @search, :remote => true do |f| %>
+<%= form_for @search,  :remote => true do |f| %>
   <div class="field">
     <%= f.label :keywords %><br />
     <%= f.text_field :keywords %>
@@ -10,7 +10,7 @@
   </div>
 
   <div class="field">
-  <%= f.radio_button :offer_input, true, :checked => true %> 
+  <%= f.radio_button :offer_input, true, :checked => nil %> 
   <%= f.label "Any" %><br />
 
   <%= f.radio_button :offer_input, "241" %>
