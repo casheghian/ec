@@ -1,0 +1,36 @@
+<%= form_for @search, :remote => true do |f| %>
+  <div class="field">
+    <%= f.label :keywords %><br />
+    <%= f.text_field :keywords %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cuisine_input %><br />
+    <%= f.select :cuisine_input, [['Please select an option', nil], 'American', 'Asian', 'Fusion', 'German', 'Italian'] %>
+  </div>
+
+  <div class="field">
+  <%= f.radio_button :offer_input, true, :checked => true %> 
+  <%= f.label "Any" %><br />
+
+  <%= f.radio_button :offer_input, "241" %>
+  <%= f.label "241" %><br />
+
+  <%= f.radio_button :offer_input, "50" %>
+  <%= f.label "50" %><br />
+	</div>
+  
+  <div class="actions"><%= f.submit "Search" %></div>
+
+<% end %>
+
+<div id="search_results">
+  <ul>
+    <%= render 'result' %>
+  </ul>
+</div>
+
+
+
+<%= gmaps("map_options" => { :raw => "{scrollwheel: false, }", "auto_adjust" => true }, "markers" => { "data" => @json }) %>
+
