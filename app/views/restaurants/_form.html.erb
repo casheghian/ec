@@ -1,74 +1,58 @@
-<%= form_for @restaurant, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :content, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :content, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :sub_content, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :sub_content, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :cuisine, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :cuisine, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :offer, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :offer, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :opening_hours, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :opening_hours, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :restrictions, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :restrictions, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :address, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :address, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :latitude, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :latitude, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :longitude, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :longitude, :class => 'text_field' %>
-    </div>
-  </div>
+<%= form_for(@restaurant) do |f| %>
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                restaurants_path, :class => 'btn' %>
+      <ul>
+      <% @restaurant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.label :sub_content %><br />
+    <%= f.text_area :sub_content %>
+  </div>
+  <div class="field">
+    <%= f.label :cuisine %><br />
+    <%= f.select :cuisine_list, [['Please select an option', nil], 'Spanish', 'Asian', 'Italian', 'Fusion', 'German', 'American'] %>
+  </div>
+  <div class="field">
+    <%= f.label :offer %><br />
+    <%= f.select :offer_list, [['Please select an option', nil], '50', '241'] %>
+  </div>
+  <div class="field">
+    <%= f.label :opening_hours %><br />
+    <%= f.text_area :opening_hours %>
+  </div>
+   <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
   </div>
 <% end %>

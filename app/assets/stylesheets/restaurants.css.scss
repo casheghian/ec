@@ -2,20 +2,3 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#search_results{
-
-    width: 100%;
-    display: block;
-    white-space: nowrap;
-     overflow: auto; 
-     }
-
-
-#search_results li{
-display: inline-block;
-     border:1px solid #000;
-     padding:10px;
-     margin-right:5px;
-
-
-}
