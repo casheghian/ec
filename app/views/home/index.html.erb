@@ -6,7 +6,7 @@
 
 <div class="row">
   <div class="span9" id="search">
-    <%= form_for Search.new do |f| %>
+    <%= form_for @search do |f| %>
         <%= f.text_field :keywords, :placeholder => "Was? (Pizza, Spanisches, PLZ, Name)" %>
       </div>
       <div class="actions span3"><%= f.submit "Search", :class =>'btn btn-search btn-large' %></div>
