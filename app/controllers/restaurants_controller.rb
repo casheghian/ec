@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   
-def index
+  def index
 
   if params[:tag]
     @restaurants = Restaurant.tagged_with(params[:tag]).paginate(:page => params[:page])

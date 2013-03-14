@@ -4,6 +4,7 @@ class Restaurant < ActiveRecord::Base
   acts_as_taggable_on :cuisine, :offer, :restriction, :tag
   acts_as_gmappable :process_geocoding => false
 
+
 def gmaps4rails_address
   "#{self.longitude}, #{self.latitude}" 
 end

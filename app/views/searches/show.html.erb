@@ -3,35 +3,39 @@
     <%= form_for @search,  :remote => true do |f| %>
     <%= f.text_field :keywords %>
     </div>
+  <div class="actions span3"><%= f.submit "Search", :class =>'btn btn-search btn-large' %></div>
 
-    <div class="actions span3"><%= f.submit "Search", :class =>'btn btn-search btn-large' %></div>
   </div>
   <small>Filter Options</small>
 
 <div class="row" id="advanced_search">
   <div class="span6">
-  <small style="display:block;">Cuisine</small>
-  <%= check_box_tag "cuisine[]", "German" %>
-    <%= f.label "German" %></br>
+  <%= f.label :cuisine_input %><br />
+  <%= f.check_box :cuisine_input, { :multiple => true }, 'German', nil %>
+  <%= f.label "German" %><br />
+  <%= f.check_box :cuisine_input, { :multiple => true }, 'Asian', nil %>
+  <%= f.label "Asian" %><br />
+  <%= f.check_box :cuisine_input, { :multiple => true }, 'Italian', nil %>
+  <%= f.label "Italian" %><br />
+  <%= f.check_box :cuisine_input, { :multiple => true }, 'American', nil %>
+  <%= f.label "American" %><br />
 
-  <%= check_box_tag "cuisine[]", "Italian" %>
-      <%= f.label "Italian" %></br>
-
-  <%= check_box_tag "cuisine[]", "Asian" %>
-      <%= f.label "Asian" %></br>
 </div>
 
   <div class="span6">
       <small style="display:block;">Offer</small>
 
-  <%= check_box_tag "search[offer_input][]", "50" %>
-      <%= f.label "50%" %></br>
+  <%= f.label :offer_input %><br />
+  <%= f.check_box :offer_input, { :multiple => true }, '50', nil %>
+  <%= f.label "50%" %><br />
 
-  <%= check_box_tag "search[offer_input][]", "241" %>
-      <%= f.label "2 For 1" %></br>
+  <%= f.check_box :offer_input, { :multiple => true }, '241', nil %>
+  <%= f.label "241" %><br />
+
 
   </div>
 </div>
+
 <% end %>
 
 <div class="row" id="results_container">
