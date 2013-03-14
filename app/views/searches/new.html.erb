@@ -1,33 +1,37 @@
-<%= form_for @search, :remote => true do |f| %>
-  <div class="field">
-    <%= f.label :keywords %><br />
+ <div class="row">
+  <div class="span9" id="search">  
+    <%= form_for Search.new do |f| %>
     <%= f.text_field :keywords %>
+    </div>
+
+    <div class="actions span3"><%= f.submit "Search", :class =>'btn btn-search btn-large' %></div>
   </div>
+  <small>Filter Options</small>
 
-  <div class="field">
-    <%= f.label :cuisine_input %><br />
-    <%= f.select :cuisine_input, [['Please select an option', nil], 'American', 'Asian', 'Fusion', 'German', 'Italian'] %>
-  </div>
+<div class="row" id="advanced_search">
+  <div class="span6">
+  <small style="display:block;">Cuisine</small>
+  <%= check_box_tag "search[cuisine_input][]", "German" %>
+    <%= f.label "German" %></br>
 
-  <div class="field">
-  <%= f.radio_button :offer_input, true, :checked => true %> 
-  <%= f.label "Any" %><br />
+  <%= check_box_tag "search[cuisine_input][]", "Italian" %>
+      <%= f.label "Italian" %></br>
 
-  <%= f.radio_button :offer_input, "241" %>
-  <%= f.label "241" %><br />
-
-  <%= f.radio_button :offer_input, "50" %>
-  <%= f.label "50" %><br />
-	</div>
-  
-  <div class="actions"><%= f.submit "Search" %></div>
-
-<% end %>
-
-<div id="search_results">
-  <ul>
-    <%= render 'result' %>
-  </ul>
+  <%= check_box_tag "search[cuisine_input][]", "Asian" %>
+      <%= f.label "Asian" %></br>
 </div>
 
-<%= gmaps("map_options" => { :raw => "{scrollwheel: false, }", "auto_adjust" => true }) %>
+  <div class="span6">
+      <small style="display:block;">Offer</small>
+
+  <%= check_box_tag "search[offer_input][]", "50" %>
+      <%= f.label "50%" %></br>
+
+  <%= check_box_tag "search[offer_input][]", "241" %>
+      <%= f.label "2 For 1" %></br>
+
+  </div>
+</div>
+<% end %>
+
+

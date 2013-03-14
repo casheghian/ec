@@ -15,10 +15,7 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
+  
   <div class="field">
     <%= f.label :content %><br />
     <%= f.text_area :content %>
@@ -32,9 +29,23 @@
     <%= f.select :cuisine_list, [['Please select an option', nil], 'Spanish', 'Asian', 'Italian', 'Fusion', 'German', 'American'] %>
   </div>
   <div class="field">
-    <%= f.label :offer %><br />
-    <%= f.select :offer_list, [['Please select an option', nil], '50', '241'] %>
+  <%= f.label :offer %><br />
+  <%= f.check_box :offer_list, { :multiple => true }, '50', nil %>
+  <%= f.check_box :offer_list, { :multiple => true }, '241', nil %>  
+</div>
+
+  <div class="field">
+  <%= f.label :restrictions %></br>
+  <%= f.check_box :restriction_list, { :multiple => true }, 'Freitag', nil %>
+  <%= f.check_box :restriction_list, { :multiple => true }, 'Samstag', nil %>
+  <%= f.check_box :restriction_list, { :multiple => true }, 'December', nil %>
   </div>
+
+  <div class="field">
+  <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+  <%= f.text_field :tag_list %>
+  </div>
+
   <div class="field">
     <%= f.label :opening_hours %><br />
     <%= f.text_area :opening_hours %>

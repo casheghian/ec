@@ -11,6 +11,7 @@ private
 	  restaurants = restaurants.where("name like ?", "%#{keywords}%") unless keywords.blank?
 	  restaurants = restaurants.tagged_with("#{cuisine_input.join(",")}",:any => true) unless cuisine_input.blank?
 	  restaurants = restaurants.tagged_with("#{offer_input.join(",")}",:any => true)  unless offer_input.blank?
+	 # restaurants = restaurantsUser.tagged_with(['awesome, cool'], :on => :tags, :any => true).tagged_with(['smart', 'shy'], :on => :skills, :any => true)
 
 	  restaurants
 	end

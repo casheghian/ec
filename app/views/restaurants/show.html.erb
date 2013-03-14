@@ -13,9 +13,11 @@
   <dt><strong><%= model_class.human_attribute_name(:sub_content) %>:</strong></dt>
   <dd><%= @restaurant.sub_content %></dd>
   <dt><strong><%= model_class.human_attribute_name(:cuisine) %>:</strong></dt>
-  <dd><%= @restaurant.cuisine %></dd>
+  <dd><%= @restaurant.cuisine_list %></dd>
   <dt><strong><%= model_class.human_attribute_name(:offer) %>:</strong></dt>
-  <dd><%= @restaurant.offer %></dd>
+  <dd><%= @restaurant.offer_list %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:tags) %>:</strong></dt>
+  <dd><%= @restaurant.tag_list %></dd>
   <dt><strong><%= model_class.human_attribute_name(:opening_hours) %>:</strong></dt>
   <dd><%= @restaurant.opening_hours %></dd>
   <dt><strong><%= model_class.human_attribute_name(:restrictions) %>:</strong></dt>
