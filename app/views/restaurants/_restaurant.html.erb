@@ -1,9 +1,12 @@
  <li class ="restaurant" id = "<%= restaurant.id %>">
     <p><%= link_to restaurant.name, restaurant %></br>
-   <%=restaurant.cuisine_list %></br>
-    <%=restaurant.offer_list %></p>
-   
 
+    <%=restaurant.address %></br>
+    <%=restaurant.city %></br>	
+    <%=restaurant.cuisine_list %></br>
+    <%=restaurant.offer_list %></br>
+    <%=restaurant.availability_list %></br>
+    <%=restaurant.max_party_list %></p>
 
 
     <td><%= link_to 'Show', restaurant %></td>

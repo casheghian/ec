@@ -1,7 +1,8 @@
 class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
-  
+  before_filter :authorize, only: [:edit, :update]
+
   def index
 
   if params[:tag]

@@ -20,7 +20,11 @@
     				  <li class="search"><%= link_to "Suchen", new_search_path %></li>
               <li><%= link_to "About", root_path %></li>
     				  <li><%= link_to "Karte Bestellen", root_path %></li>
-   				    <li><%= link_to "Free Trial!", root_path %></li>
+              <% if current_user %>
+                <li><%= link_to "Log Out", logout_path %></li>
+                <% else %>
+   				     <li><%= link_to "Sign In", login_path %></li>
+               <% end %>
    				 </ul>
     	   </div>
         </div>
@@ -28,6 +32,12 @@
     </header>
 
 <div class = "container" id="content">
+  <% flash.each do |name, msg| %>
+  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+    <a class="close" data-dismiss="alert">×</a>
+    <%= msg %>
+  </div>
+<% end %>   
 	<%= yield %>
 </div>
 

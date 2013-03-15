@@ -41,9 +41,10 @@ body
 }
 form{margin-bottom: 0px;}
 label{display: inline;}
-///////////////////
+
+
 //   Header     //
-/////////////////
+
 
 header
 {
@@ -71,9 +72,36 @@ header h1 a{text-decoration: none; color:#fff;font-size:1.1em;}
 header h1 a:hover{text-decoration: none; color:#fff;}
 #slogan h2{font-family: 'Lato'; font-weight:300; text-align: center;margin-bottom: 1.25em;}
 
-///////////////////
+//    Image   //
+#restaurant_images{overflow: auto;}
+.restaurant_image {
+  border: solid 1px #CCC;
+  padding: 10px 10px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.restaurant_image .name {
+  padding-top: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.restaurant_image .image_placeholder {
+  width: 200px;
+  height: 150px;
+  background-color: #B6B6B6;
+}
+
+.restaurant_image .actions {
+  font-size: 10px;
+  text-align: center;
+  color: #777;
+}
+
 //    Content   //
-/////////////////
+
 #search_form_home{text-align: center;}
 #content{margin-bottom:20px;}
 #search_keywords{width:100%;font-size:20px;height:1.8em;} 
@@ -90,9 +118,9 @@ color: #fff !important; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.16);
 -webkit-font-smoothing: antialiased;
 }
 
-///////////////////
+
 // Gmaps4Rails  //
-/////////////////           
+           
 
 .map_container {
 border:1px solid #d5ccc8;margin:0;
@@ -112,9 +140,9 @@ float:left;
 #map img { max-width: none; }
 
 
-///////////////////
+
 //  Navigation  //
-/////////////////     
+     
 
 #nav {
     float:right;}
@@ -163,9 +191,9 @@ float:left;
           }
 
 
-///////////////////
+
 // Search Results  //
-/////////////////
+
 #advanced_search{margin-bottom: 20px;}
 #search_results_list{background: #f4ece9;}
 #search_results_list ul{border:1px solid #d5ccc8;margin:0;}
@@ -174,9 +202,7 @@ float:left;
 
 
 
-
-///////////////////
 //    Footer    //
-///////////////// 
+ 
 
 footer{background: #f2ece9; border-top: 1px solid #e5dbd6; height:400px;}

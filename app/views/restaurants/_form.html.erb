@@ -1,5 +1,5 @@
-<%= form_for(@restaurant) do |f| %>
-  <% if @restaurant.errors.any? %>
+<%= form_for @restaurant, :html => { :multipart => true } do |f| %>
+ <% if @restaurant.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
 
@@ -11,34 +11,102 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+<div class="row">
+  <div class="span6">
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :content %><br />
+        <%= f.text_area :content %>
+      </div>
+
+      <div class="field">
+        <%= f.label :sub_content %><br />
+        <%= f.text_area :sub_content %>
+      </div>
+      
+       <div class="field">
+        <%= f.label :address %><br />
+        <%= f.text_field :address %>
+      </div>
+
+      <div class="field">
+        <%= f.label :city %><br />
+        <%= f.text_field :city %>
+      </div>
+
+      <div class="field">
+        <%= f.label :district %><br />
+        <%= f.text_field :district %>
+      </div>
+
+      <div class="field">
+        <%= f.label :zip %><br />
+        <%= f.text_field :zip %>
+      </div>
+
+      <div class="field">
+        <%= f.label :longitude %><br />
+        <%= f.text_field :longitude %>
+      </div>
+      <div class="field">
+        <%= f.label :latitude %><br />
+        <%= f.text_field :latitude %>
+      </div>
+    </div>
+
+  <div class="span4">
+    <div class="field">
+      <%= f.label :cuisine, "Cuisine" %><br />
+      <%= f.check_box :cuisine_list, { :multiple => true }, 'German', nil %>
+      <%= f.label "German" %><br />
+      <%= f.check_box :cuisine_list, { :multiple => true }, 'Asian', nil %>
+      <%= f.label "Asian" %><br />
+      <%= f.check_box :cuisine_list, { :multiple => true }, 'Italian', nil %>
+      <%= f.label "Italian" %><br />
+      <%= f.check_box :cuisine_list, { :multiple => true }, 'American', nil %>
+      <%= f.label "American" %><br />
   </div>
-  
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :sub_content %><br />
-    <%= f.text_area :sub_content %>
-  </div>
-  <div class="field">
-    <%= f.label :cuisine %><br />
-    <%= f.select :cuisine_list, [['Please select an option', nil], 'Spanish', 'Asian', 'Italian', 'Fusion', 'German', 'American'] %>
-  </div>
+
   <div class="field">
   <%= f.label :offer %><br />
   <%= f.check_box :offer_list, { :multiple => true }, '50', nil %>
+  <%= f.label "50%" %><br />
   <%= f.check_box :offer_list, { :multiple => true }, '241', nil %>  
+  <%= f.label "241" %><br />
+
 </div>
 
   <div class="field">
-  <%= f.label :restrictions %></br>
-  <%= f.check_box :restriction_list, { :multiple => true }, 'Freitag', nil %>
-  <%= f.check_box :restriction_list, { :multiple => true }, 'Samstag', nil %>
-  <%= f.check_box :restriction_list, { :multiple => true }, 'December', nil %>
+        <%= f.label :availability, "Availability" %><br />
+        <%= f.check_box :availability_list, { :multiple => true }, 'Freitag', nil %>
+        <%= f.label "Freitag" %><br />
+        <%= f.check_box :availability_list, { :multiple => true }, 'Samstag', nil %>
+        <%= f.label "Samstag" %><br />
+        <%= f.check_box :availability_list, { :multiple => true }, 'Dezember', nil %>
+        <%= f.label "Dezember" %><br />
+
+  </div>
+
+  <div class="field">
+        <%= f.label :max_party, "No. of People" %><br />
+        <%= f.check_box :max_party_list, { :multiple => true }, '2', nil %>
+        <%= f.label "2" %><br />
+        <%= f.check_box :max_party_list, { :multiple => true }, '4', nil %>
+        <%= f.label "4" %><br />
+        <%= f.check_box :max_party_list, { :multiple => true }, '6', nil %>
+        <%= f.label "6" %><br />
+        <%= f.check_box :max_party_list, { :multiple => true }, '8', nil %>
+        <%= f.label "8" %><br />
+        <%= f.check_box :max_party_list, { :multiple => true }, '10', nil %>
+        <%= f.label "10" %><br />
+        <%= f.check_box :max_party_list, { :multiple => true }, '12', nil %>
+        <%= f.label "12" %><br />
+        <%= f.check_box :max_party_list, { :multiple => true }, 'Unlimited', nil %>
+        <%= f.label "Unlimited" %><br />
   </div>
 
   <div class="field">
@@ -46,24 +114,26 @@
   <%= f.text_field :tag_list %>
   </div>
 
-  <div class="field">
-    <%= f.label :opening_hours %><br />
-    <%= f.text_area :opening_hours %>
+
   </div>
-   <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="actions">
+</div>
+ <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
+
+<div id="restaurant_images">
+  <%= link_to "Add a Image", new_image_path(:restaurant_id => @restaurant) %> 
+
+  <% @restaurant.images.each do |image| %>
+    <div class="restaurant_image">
+      <%= image_tag image.image_url(:thumb).to_s %>
+      <div class="name"><%= image.name %></div>
+      <div class="actions">
+        <%= link_to "edit", edit_image_path(image) %> |
+        <%= link_to "remove", image, :confirm => 'Are you sure?', :method => :delete %>
+      </div>
+    </div>
+  <% end %>
+</div>

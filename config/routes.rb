@@ -1,8 +1,21 @@
 Start::Application.routes.draw do
+
+
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+  
+  resources :users
+  resources :sessions
+  resources :password_resets
+
+
+
   get 'restaurant/:tag', to: 'restaurants#index', as: :tag
 
   resources :restaurants
   resources :searches
+  resources :images
 
 
   get "home/index"

@@ -31,9 +31,14 @@ gem "therubyracer"
 gem "less-rails"
 
 gem 'twitter-bootstrap-rails'
+gem 'simple_form'
+gem 'carrierwave'
+gem 'rmagick'
+
+gem 'pg_search'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

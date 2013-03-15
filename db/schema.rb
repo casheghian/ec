@@ -11,30 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301151053) do
+ActiveRecord::Schema.define(:version => 20130315202203) do
+
+  create_table "images", :force => true do |t|
+    t.integer  "restaurant_id"
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "restaurants", :force => true do |t|
     t.string   "name"
     t.string   "title"
     t.text     "content"
     t.text     "sub_content"
-    t.string   "cuisine"
-    t.string   "offer"
-    t.text     "opening_hours"
-    t.string   "restrictions"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "city"
+    t.string   "district"
+    t.integer  "zip"
+    t.string   "image"
   end
 
   create_table "searches", :force => true do |t|
     t.string   "keywords"
     t.string   "cuisine_input"
     t.string   "offer_input"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "availability_input"
+    t.string   "max_party_input"
   end
 
   create_table "taggings", :force => true do |t|
@@ -52,6 +62,16 @@ ActiveRecord::Schema.define(:version => 20130301151053) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end
