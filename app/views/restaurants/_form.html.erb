@@ -60,22 +60,19 @@
 
   <div class="span4">
     <div class="field">
-      <%= f.label :cuisine, "Cuisine" %><br />
-      <%= f.check_box :cuisine_list, { :multiple => true }, 'German', nil %>
-      <%= f.label "German" %><br />
-      <%= f.check_box :cuisine_list, { :multiple => true }, 'Asian', nil %>
-      <%= f.label "Asian" %><br />
-      <%= f.check_box :cuisine_list, { :multiple => true }, 'Italian', nil %>
-      <%= f.label "Italian" %><br />
-      <%= f.check_box :cuisine_list, { :multiple => true }, 'American', nil %>
-      <%= f.label "American" %><br />
+     
   </div>
 
+<%= hidden_field_tag "restaurant[cuisine_ids][]", nil %>
+<% Cuisine.all.each do |cuisine| %>
+  <%= check_box_tag "restaurant[cuisine_ids][]", cuisine.id, @restaurant.cuisine_ids.include?(cuisine.id), id: dom_id(cuisine) %>
+  <%= label_tag dom_id(cuisine), cuisine.name %><br>
+<% end %>
   <div class="field">
   <%= f.label :offer %><br />
-  <%= f.check_box :offer_list, { :multiple => true }, '50', nil %>
+  <%= f.check_box :offer_list, { :multiple => false }, '50', nil %>
   <%= f.label "50%" %><br />
-  <%= f.check_box :offer_list, { :multiple => true }, '241', nil %>  
+  <%= f.check_box :offer_list, { :multiple => false }, '241', nil %>  
   <%= f.label "241" %><br />
 
 </div>

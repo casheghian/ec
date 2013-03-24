@@ -32,7 +32,7 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     @image.destroy
     flash[:notice] = "Successfully destroyed image."
-    redirect_to @image.restaurant
+      redirect_to edit_restaurant_path(@image.restaurant)
   end
 end
 

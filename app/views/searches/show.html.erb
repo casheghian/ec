@@ -3,7 +3,7 @@
     <%= form_for @search,  :remote => true do |f| %>
     <%= f.text_field :keywords %>
   </div>
-    <div class="actions span3"><%= f.submit "Search", :class =>'btn btn-search btn-large' %></div>
+    <div class="actions span3"><%= f.submit "Search", :class =>'btn btn-custom btn-large' %></div>
 </div>
   
 
@@ -65,6 +65,6 @@
   </div>
 
   <div class="span5">
-  <%= gmaps("map_options" => { :raw => "{scrollwheel: false, }", "auto_adjust" => true }, "markers" => { "data" => @json }) %>
+  <%= gmaps("map_options" => { :raw => "{scrollwheel: false }", "auto_adjust" => true }, "markers" => { "data" => @json }) %>
   </div>
 </div>

@@ -1,3 +1,5 @@
-<ul>
-<%= render @search.restaurants %>
-</ul>
+<% if @search.restaurants.empty? %>
+ 	<h2> No Results Found </h2>
+<% else %>
+		<%= render @search.restaurants %>		
+ <% end %>

@@ -1,16 +1,53 @@
- <li class ="restaurant" id = "<%= restaurant.id %>">
-    <p><%= link_to restaurant.name, restaurant %></br>
+<div class ="listing row" id = "<%= restaurant.id %>">
+     
+    <div class="listing_image">
+        <% restaurant.images.each do |image| %>
+            <%= image_tag image.image_url(:thumb).to_s %>
+        <% end %>
+    </div>
 
-    <%=restaurant.address %></br>
-    <%=restaurant.city %></br>	
-    <%=restaurant.cuisine_list %></br>
-    <%=restaurant.offer_list %></br>
-    <%=restaurant.availability_list %></br>
-    <%=restaurant.max_party_list %></p>
+    <div class="details">
+        <div class="pull-right">
+            <i class="icon-map-marker"></i><small><%=restaurant.address %></br>
+            <%=restaurant.zip %>, <%=restaurant.city %></small>
+        </div>
 
+        <div class "pull-left">
+            <h1 class="listing_title"><%= link_to restaurant.name, restaurant %></h1>
+            <p><i class="icon-food"></i>
+              <%= restaurant.cuisines.pluck(:name).to_sentence(:last_word_connector => ' , ' ) %>
+            </br>
+             <i class="icon-phone"></i><%= restaurant.phone_number %></p>
+
+
+        <% if restaurant.offer_list.include?('50')%>
+            <span class="label label-offer">50%</span>
+        <% else %>
+            <span class="label label-offer">2 Für 1</span>
+        <% end %>
+            <span class="label label-party"><i class="icon-user"></i><%=restaurant.max_party_list %></span>
+         
+
+       <% unless restaurant.availability_list.include?("Freitag") %>    
+            <span class="label label-important"><i class="icon-remove"></i>Freitag</span>
+        <% end %>
+        <% unless restaurant.availability_list.include?("Samstag") %>    
+            <span class="label label-important"><i class="icon-remove"></i>Samstag</span>
+        <% end %>
+        <% unless restaurant.availability_list.include?("Dezember") %>    
+            <span class="label label-important"><i class="icon-remove"></i>Dezember</span>
+        <% end %>
+    </div>
+         
+
+<% if current_user %>    
+<tr>
 
     <td><%= link_to 'Show', restaurant %></td>
     <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
     <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-</li>
+  <% end %>
+    </div>  
+        
+</div>

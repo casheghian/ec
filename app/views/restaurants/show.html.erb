@@ -25,7 +25,9 @@
 
 <p>
   <b>Cuisine:</b>
-  <%= @restaurant.cuisine_list %>
+   <% @restaurant.cuisines.each do |cuisine| %>
+      <%= cuisine.name %>
+      <% end %>
 </p>
 
 <p>
