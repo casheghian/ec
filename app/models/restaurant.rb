@@ -15,8 +15,7 @@ class Restaurant < ActiveRecord::Base
     pg_search_scope :search_query, against: [:name, :zip, :district],
     using: {tsearch: {dictionary: "german"}},
     :associated_against => {
-    :tags => [:name],
-    :cuisines => [:name]
+    :tags => [:name]
     }
 
 
