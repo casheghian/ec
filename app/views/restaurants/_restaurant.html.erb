@@ -8,16 +8,14 @@
 
     <div class="details">
         <div class="pull-right">
-            <i class="icon-map-marker"></i><small><%=restaurant.address %></br>
+            <small><%=restaurant.address %></br>
             <%=restaurant.zip %>, <%=restaurant.city %></small>
         </div>
 
         <div class "pull-left">
             <h1 class="listing_title"><%= link_to restaurant.name, restaurant %></h1>
-            <p><i class="icon-food"></i>
-              <%= restaurant.cuisines.pluck(:name).to_sentence(:last_word_connector => ' , ' ) %>
-            </br>
-             <i class="icon-phone"></i><%= restaurant.phone_number %></p>
+            <p>Küche: <%= restaurant.cuisines.pluck(:name).to_sentence(:two_words_connector => ', ', :last_word_connector => ', ' ) %></p>
+             <p>Resevierung: <%= restaurant.phone_number %></p>
 
 
         <% if restaurant.offer_list.include?('50')%>
@@ -42,7 +40,6 @@
 
 <% if current_user %>    
 <tr>
-
     <td><%= link_to 'Show', restaurant %></td>
     <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
     <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
