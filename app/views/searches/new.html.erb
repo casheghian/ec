@@ -1,38 +1,74 @@
 <div class="row">
   <div class="span9" id="search">  
-<%= form_for @search do |f| %>
+    <%= form_for @search,  :remote => true do |f| %>
     <%= f.text_field :keywords %>
-    </div>
-  <div class="actions span3"><%= f.submit "Search", :class =>'btn btn-search btn-large' %></div>
-
   </div>
-  <small>Filter Options</small>
-
-<div class="row" id="advanced_search">
-  <div class="span6">
-  <%= f.label :cuisine_input %><br />
-  <%= f.check_box :cuisine_input, { :multiple => true }, 'German', nil %>
-  <%= f.label "German" %><br />
-  <%= f.check_box :cuisine_input, { :multiple => true }, 'Asian', nil %>
-  <%= f.label "Asian" %><br />
-  <%= f.check_box :cuisine_input, { :multiple => true }, 'Italian', nil %>
-  <%= f.label "Italian" %><br />
-  <%= f.check_box :cuisine_input, { :multiple => true }, 'American', nil %>
-  <%= f.label "American" %><br />
-  </div>
-
-  <div class="span6">
-  <small style="display:block;">Offer</small>
-
-  <%= f.label :offer_input %><br />
-  <%= f.check_box :offer_input, { :multiple => true }, '50', nil %>
-  <%= f.label "50%" %><br />
-
-  <%= f.check_box :offer_input, { :multiple => true }, '241', nil %>
-  <%= f.label "241" %><br />
-  </div>
-
+    <div class="actions span3"><%= f.submit "Search", :class =>'btn btn-custom btn-large' %></div>
 </div>
+  
 
+  <div class="row" id="advanced_search">
+     <div class="span2" id="cuisine_options">
+     <% Cuisine.first(8).each do |cuisine| %>
+    <%= check_box_tag "search[cuisine_input][]", cuisine.name %>
+   <%= label_tag cuisine.name %><br>
+    <% end %>
+
+    <a href="javascript:void(0)" id="trigger">See more</a>
+
+    <span class="more">
+    <% Cuisine.offset(8).each do |cuisine| %>
+    <%= check_box_tag "search[cuisine_input][]", cuisine.name %>
+    <%= label_tag cuisine.name %><br>
+  <% end %>
+</span>
+     </div>
+
+    <div class="span1" id="offer_options">
+        <%= f.label :offer_input, "Offer" %><br />
+        <%= f.check_box :offer_input, { :multiple => true }, '50', nil %>
+        <%= f.label "50%" %><br />
+        <%= f.check_box :offer_input, { :multiple => true }, '241', nil %>
+        <%= f.label "241" %><br />
+     </div>
+
+    <div class="span2   " id="availability_options">
+        <%= f.label :availability_input, "Availability" %><br />
+        <%= f.check_box :availability_input, { :multiple => true }, 'Freitag', nil %>
+        <%= f.label "Freitag" %><br />
+        <%= f.check_box :availability_input, { :multiple => true }, 'Samstag', nil %>
+        <%= f.label "Samstag" %><br />
+        <%= f.check_box :availability_input, { :multiple => true }, 'Dezember', nil %>
+        <%= f.label "Dezember" %><br />
+      </div>
+
+      <div class="span2" id="max_party_options">
+        <%= f.label :max_party_options, "No. of People" %><br />
+        <%= f.check_box :max_party_input, { :multiple => true }, '2', nil %>
+        <%= f.label "2" %><br />
+        <%= f.check_box :max_party_input, { :multiple => true }, '4', nil %>
+        <%= f.label "4" %><br />
+        <%= f.check_box :max_party_input, { :multiple => true }, '6', nil %>
+        <%= f.label "6" %><br />
+        <%= f.check_box :max_party_input, { :multiple => true }, '8', nil %>
+        <%= f.label "8" %><br />
+        <%= f.check_box :max_party_input, { :multiple => true }, '10', nil %>
+        <%= f.label "10" %><br />
+        <%= f.check_box :max_party_input, { :multiple => true }, '12', nil %>
+        <%= f.label "12" %><br />
+        <%= f.check_box :max_party_input, { :multiple => true }, '0', nil %>
+        <%= f.label "Unlimited" %><br />
+
+      </div>
+  </div>
 <% end %>
 
+<div class="row" id="results_container">
+  <div id="search_results_list" class="span7">
+      <%= render 'result' %>
+  </div>
+
+  <div class="span5">
+  <%= gmaps("map_options" => { :raw => "{scrollwheel: false }", "auto_adjust" => true }, "markers" => { "data" => @json }) %>
+  </div>
+</div>

@@ -25,3 +25,27 @@
 //= require twitter/bootstrap/bootstrap-collapse
 //= require twitter/bootstrap/bootstrap-carousel
 //= require twitter/bootstrap/bootstrap-typeahead
+$(document).ready(function() {
+		$('.secondary li').hide();
+
+		$(".main-options input").change(function() {
+   		$('.modal-body input[value="' + $(this).val() + '"]').prop("checked", this.checked);
+	});
+		
+	$(".modal-body input").change(function() {
+		if( $('.main-options input[value="' + $(this).val() + '"]').is(':visible')) 
+
+		{
+   		$('.main-options input[value="' + $(this).val() + '"]').prop("checked", this.checked);
+		}
+		else
+		{	
+		
+		$('.secondary input[value="' + $(this).val() + '"]').parent().show();
+		$('.secondary input[value="' + $(this).val() + '"]').prop("checked", this.checked);
+
+		}
+    	
+	});
+
+});

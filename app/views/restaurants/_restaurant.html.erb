@@ -1,5 +1,4 @@
 <div class ="listing row" id = "<%= restaurant.id %>">
-     
     <div class="listing_image">
         <% restaurant.images.each do |image| %>
             <%= image_tag image.image_url(:thumb).to_s %>
@@ -14,26 +13,27 @@
 
         <div class "pull-left">
             <h1 class="listing_title"><%= link_to restaurant.name, restaurant %></h1>
-            <p>Küche: <%= restaurant.cuisines.pluck(:name).to_sentence(:two_words_connector => ', ', :last_word_connector => ', ' ) %></p>
-             <p>Resevierung: <%= restaurant.phone_number %></p>
+            <p><strong>Küche:</strong> <%= restaurant.cuisines.pluck(:name).to_sentence(:two_words_connector => ', ', :last_word_connector => ', ' ) %></p>
+             <p><strong>Resevierung:</strong><%= restaurant.phone_number %></p>
 
 
         <% if restaurant.offer_list.include?('50')%>
-            <span class="label label-offer">50%</span>
+            <span class="label label-success">50%</span>
         <% else %>
-            <span class="label label-offer">2 Für 1</span>
+            <span class="label label-success">2 Für 1</span>
         <% end %>
-            <span class="label label-party"><i class="icon-user"></i><%=restaurant.max_party_list %></span>
-         
+         <% unless restaurant.max_party_list.include?('0') %>
+            <span class="label label-party"><i class="icon-user"></i>x<%=restaurant.max_party_list %></span> 
+         <% end %>
 
        <% unless restaurant.availability_list.include?("Freitag") %>    
-            <span class="label label-important"><i class="icon-remove"></i>Freitag</span>
+            <span class="label label-important"><i class="icon-remove"></i>Fr</span>
         <% end %>
         <% unless restaurant.availability_list.include?("Samstag") %>    
-            <span class="label label-important"><i class="icon-remove"></i>Samstag</span>
+            <span class="label label-important"><i class="icon-remove"></i>Sa</span>
         <% end %>
         <% unless restaurant.availability_list.include?("Dezember") %>    
-            <span class="label label-important"><i class="icon-remove"></i>Dezember</span>
+            <span class="label label-important"><i class="icon-remove"></i>Dez</span>
         <% end %>
     </div>
          
