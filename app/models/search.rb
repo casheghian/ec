@@ -6,6 +6,10 @@ class Search < ActiveRecord::Base
   serialize :max_party_input
 
  
+def to_param
+  "#{id}-#{keywords}-#{cuisine_input}-#{offer_input}-#{availability_input}-#{max_party_input}".parameterize
+end
+
   def restaurants
   	@restaurants ||= find_restaurants
   end
@@ -13,7 +17,7 @@ class Search < ActiveRecord::Base
 private
 	def find_restaurants
 	  #find out why restaurants are duplicated with multiple cuisine
-	  restaurants = Restaurant.order(:id).joins(:cuisines).uniq
+	  restaurants = Restaurant.joins(:cuisines).order(:id)
 	  restaurants = restaurants.where(:cuisines => {:name => cuisine_input}) unless cuisine_input.blank?
 	  restaurants = restaurants.tagged_with(offer_input, :any => true)  unless offer_input.blank?
 	  restaurants = restaurants.tagged_with(availability_input, :any => true)  unless availability_input.blank?

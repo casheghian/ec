@@ -15,7 +15,7 @@
       <%= f.check_box :cuisine_input, { :multiple => true }, cuisine.name, nil %> 
       <%= f.label :cuisine_input, cuisine.name %></li>
       <% end %>
-      
+
       <div class="secondary">
          <% Cuisine.offset(6).each do |cuisine| %>
          <li id ="<%= cuisine.name %>">
@@ -92,7 +92,7 @@
       <%= render 'result' %>
   </div>
 
-  <div class="span5">
+  <div class="span5" id="map_key">
     <%= gmaps("map_options" => { :raw => "{scrollwheel: false }", "auto_adjust" => true }, "markers" => { "data" => @json }) %>
 
     <div id="key">

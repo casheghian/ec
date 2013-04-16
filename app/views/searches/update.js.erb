@@ -1,4 +1,7 @@
-var new_markers = <%=raw @json%>;
-Gmaps.map.replaceMarkers(new_markers);
-//Gmaps.map.listen_to_markers(new_markers);
-$("#search_results_list").html("<%= escape_javascript(render("result")) %>");
+$('#search').bind('ajax:complete', function() {
+	var new_markers = <%=raw @json%>;
+	Gmaps.map.replaceMarkers(new_markers);
+	$("#search_results_list").html("<%= escape_javascript(render("result")) %>");
+	history.replaceState(null, document.title, "<%= @search.to_param %>");
+
+});
