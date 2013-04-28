@@ -70,40 +70,41 @@
 <% end %>
   <div class="field">
   <%= f.label :offer %><br />
-  <%= f.check_box :offer_list, { :multiple => false }, '50', nil %>
-  <%= f.label "50%" %><br />
-  <%= f.check_box :offer_list, { :multiple => false }, '241', nil %>  
+  <%= f.radio_button :offer, '50' %>
+  <%= f.label "50" %><br />
+  <%= f.radio_button :offer, '241' %>
   <%= f.label "241" %><br />
 
 </div>
 
   <div class="field">
         <%= f.label :availability, "Availability" %><br />
-        <%= f.check_box :availability_list, { :multiple => true }, 'Freitag', nil %>
+        <%= f.check_box :availability, { :multiple => true }, 'Freitag', nil %>
         <%= f.label "Freitag" %><br />
-        <%= f.check_box :availability_list, { :multiple => true }, 'Samstag', nil %>
+        <%= f.check_box :availability, { :multiple => true }, 'Samstag', nil %>
         <%= f.label "Samstag" %><br />
-        <%= f.check_box :availability_list, { :multiple => true }, 'Dezember', nil %>
+        <%= f.check_box :availability, { :multiple => true }, 'Dezember', nil %>
         <%= f.label "Dezember" %><br />
 
   </div>
 
   <div class="field">
         <%= f.label :max_party, "No. of People" %><br />
-        <%= f.check_box :max_party_list, { :multiple => true }, '2', nil %>
+        <%= f.radio_button :max_party, '2' %>
         <%= f.label "2" %><br />
-        <%= f.check_box :max_party_list, { :multiple => true }, '4', nil %>
+        <%= f.radio_button :max_party, '4' %>
         <%= f.label "4" %><br />
-        <%= f.check_box :max_party_list, { :multiple => true }, '6', nil %>
+        <%= f.radio_button :max_party, '6' %>
         <%= f.label "6" %><br />
-        <%= f.check_box :max_party_list, { :multiple => true }, '8', nil %>
+        <%= f.radio_button :max_party, '8' %>
         <%= f.label "8" %><br />
-        <%= f.check_box :max_party_list, { :multiple => true }, '10', nil %>
+        <%= f.radio_button :max_party, '10' %>
         <%= f.label "10" %><br />
-        <%= f.check_box :max_party_list, { :multiple => true }, '12', nil %>
+        <%= f.radio_button :max_party, '12' %>
         <%= f.label "12" %><br />
-        <%= f.check_box :max_party_list, { :multiple => true }, 'Unlimited', nil %>
+        <%= f.radio_button :max_party, '0' %>
         <%= f.label "Unlimited" %><br />
+
   </div>
 
   <div class="field">

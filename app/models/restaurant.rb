@@ -1,13 +1,13 @@
 class Restaurant < ActiveRecord::Base
-  attr_accessible :name, :content, :sub_content, :keywords, :tags, :cuisine_ids, :offer_list, :availability_list, :max_party_list, 
+  attr_accessible :name, :content, :sub_content, :keywords, :tags, :cuisine_ids, :offer, :availability, :max_party, 
                   :address, :city, :district, :zip, :phone_number, :longitude, :latitude, :image
   
   has_many :images
   has_many :categorizations
   has_many :cuisines, through: :categorizations
   
-  acts_as_taggable
-  acts_as_taggable_on :offer, :availability, :max_party, :tags
+  #acts_as_taggable
+  #acts_as_taggable_on :offer, :availability, :max_party, :tags
   acts_as_gmappable :process_geocoding => false
   
   mount_uploader :image, ImageUploader
@@ -26,8 +26,8 @@ class Restaurant < ActiveRecord::Base
    
   def gmaps4rails_infowindow
 	"<h4>#{self.name}</h4>
-   Offer:#{self.offer_list}</br>
-   Availability:#{self.availability_list}</p>"  
+   Offer:#{self.offer}</br>
+   Availability:#{self.availability}</p>"  
   end
 
   def gmaps4rails_marker_picture

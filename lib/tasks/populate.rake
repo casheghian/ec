@@ -7,10 +7,10 @@ require 'faker'
     (1..250).each do |i| 
     post = Restaurant.create!({ 
     :cuisine_ids => ["1","2","3","4","5","6","7"].sample,
-    :availability_list => ["Freitag", "Samstag", "Dezember"].sample,
-    :offer_list => ["241", "50"].sample,
+    :availability => ["Freitag", "Samstag", "Dezember"].sample,
+    :offer => [241,50].sample,
     :phone_number => Faker::PhoneNumber.phone_number,
-    :max_party_list => ["0","2","4","6","8","10","12"].sample,
+    :max_party => [0,2,4,6,8,10,12].sample,
     :city => "Hamburg",
     :district => ["Altona", "Barmbek", "Eimsbüttel"].sample,
     :name => Faker::Company.name,

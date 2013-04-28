@@ -67,21 +67,21 @@
   </div>  <!-- Availability -->
 
   <div class="span2" id="max_party_options">
-    <%= f.label :max_party_options, "No. of People" %><br />
-    <%= f.check_box :max_party_input, { :multiple => true }, '2', nil %>
-    <%= f.label "2" %><br />
-    <%= f.check_box :max_party_input, { :multiple => true }, '4', nil %>
-    <%= f.label "4" %><br />
-    <%= f.check_box :max_party_input, { :multiple => true }, '6', nil %>
-    <%= f.label "6" %><br />
-    <%= f.check_box :max_party_input, { :multiple => true }, '8', nil %>
-    <%= f.label "8" %><br />
-    <%= f.check_box :max_party_input, { :multiple => true }, '10', nil %>
-    <%= f.label "10" %><br />
-    <%= f.check_box :max_party_input, { :multiple => true }, '12', nil %>
-    <%= f.label "12" %><br />
-    <%= f.check_box :max_party_input, { :multiple => true }, '0', nil %>
-    <%= f.label "Unlimited" %><br />
+     <%= f.label :max_party_input, "No. of People" %><br />
+        <%= f.radio_button :max_party_input, '2' %>
+        <%= f.label "2" %><br />
+        <%= f.radio_button :max_party_input, '4' %>
+        <%= f.label "4" %><br />
+        <%= f.radio_button :max_party_input, '6' %>
+        <%= f.label "6" %><br />
+        <%= f.radio_button :max_party_input, '8' %>
+        <%= f.label "8" %><br />
+        <%= f.radio_button :max_party_input, '10' %>
+        <%= f.label "10" %><br />
+        <%= f.radio_button :max_party_input, '12' %>
+        <%= f.label "12" %><br />
+        <%= f.radio_button :max_party_input, '0' %>
+        <%= f.label "Unlimited" %><br />
    </div>  <!-- Max Party -->
 </div>
 

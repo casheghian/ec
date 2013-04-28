@@ -52,6 +52,10 @@ ActiveRecord::Schema.define(:version => 20130409211857) do
     t.string   "district"
     t.string  "zip"
     t.string  "cuisine_id"
+    t.string  "offer"
+    t.string  "availability"
+    t.string  "max_party"
+
     t.string  "keywords"
     t.float    "latitude"
     t.float    "longitude"
