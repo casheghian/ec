@@ -50,7 +50,9 @@ ActiveRecord::Schema.define(:version => 20130409211857) do
     t.string   "phone_number"
     t.string   "city"
     t.string   "district"
-    t.integer  "zip"
+    t.string  "zip"
+    t.string  "cuisine_id"
+    t.string  "keywords"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "image"
@@ -62,10 +64,10 @@ ActiveRecord::Schema.define(:version => 20130409211857) do
     t.string   "keywords"
     t.string   "cuisine_input"
     t.string   "offer_input"
+    t.string   "max_party_input"
+    t.string   "availability_input"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "availability_input"
-    t.string   "max_party_input"
   end
 
   create_table "taggings", :force => true do |t|

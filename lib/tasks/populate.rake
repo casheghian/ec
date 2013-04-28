@@ -6,7 +6,7 @@ require 'faker'
     Restaurant.delete_all
     (1..250).each do |i| 
     post = Restaurant.create!({ 
-    :cuisine_ids => [1,2,3,4,5,6,7].sample,
+    :cuisine_ids => ["1","2","3","4","5","6","7"].sample,
     :availability_list => ["Freitag", "Samstag", "Dezember"].sample,
     :offer_list => ["241", "50"].sample,
     :phone_number => Faker::PhoneNumber.phone_number,
