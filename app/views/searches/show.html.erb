@@ -12,14 +12,14 @@
       <%= f.label :offer_input, "Küche" %><br />
       <% Cuisine.first(6).each do |cuisine| %>
       <li id ="<%= cuisine.name %>">
-      <%= f.check_box :cuisine_input, { :multiple => true }, cuisine.id, nil %> 
+      <%= f.check_box :cuisine_input, { :multiple => true }, cuisine.name, nil %> 
       <%= f.label :cuisine_input, cuisine.name %></li>
       <% end %>
 
       <div class="secondary">
          <% Cuisine.offset(6).each do |cuisine| %>
          <li id ="<%= cuisine.name %>">
-        <%= f.check_box :cuisine_input, { :multiple => true }, cuisine.id, nil %> 
+        <%= f.check_box :cuisine_input, { :multiple => true }, cuisine.name, nil %> 
         <%= f.label :cuisine_input, cuisine.name %></li>
         <% end %>
       </div>
@@ -36,8 +36,8 @@
 
       <div class="modal-body">
         <% Cuisine.all.each do |cuisine| %>
-        <%= f.check_box :cuisine_input, { :multiple => true }, cuisine.name, nil %>
-        <%= f.label :cuisine_input, cuisine.name %><br />
+        <%= check_box_tag cuisine.name, nil %>
+        <%= label_tag cuisine.name %><br />
         <% end %>
       </div>
 
@@ -80,7 +80,7 @@
         <%= f.label "10" %><br />
         <%= f.radio_button :max_party_input, '12' %>
         <%= f.label "12" %><br />
-        <%= f.radio_button :max_party_input, '0' %>
+        <%= f.radio_button :max_party_input, '1' %>
         <%= f.label "Unlimited" %><br />
    </div>  <!-- Max Party -->
 </div>

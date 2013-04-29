@@ -27,18 +27,24 @@
 //= require twitter/bootstrap/bootstrap-typeahead
 $(document).ready(function() {
 	$('.secondary li').hide();
-
+		
+		$('.main-options input:checked').each(function() {
+			$(this).parent().show();
+    	 	$('.modal-body input[id="' + $(this).val() + '"]').prop("checked", this.checked);
+		});
+	
 	$(".main-options input").change(function() {
-   	$('.modal-body input[id="' + $(this).val() + '"]').prop("checked", this.checked);
+   	
+   		$('.modal-body input[id="' + $(this).val() + '"]').prop("checked", this.checked);
 	});
 		
 	$(".modal-body input").change(function() {
-		if( $('.main-options input[id="' + $(this).val() + '"]').is(':visible')){
-   		$('.main-options input[id="' + $(this).val() + '"]').prop("checked", this.checked);
+		if( $('.main-options input[value="' + $(this).attr('name') + '"]').is(':visible')){
+   		$('.main-options input[value="' + $(this).attr('name') + '"]').prop("checked", this.checked);
 		}
 		else {	
-		$('.secondary input[id="' + $(this).val() + '"]').parent().show();
-		$('.secondary input[id="' + $(this).val() + '"]').prop("checked", this.checked);
+		$('.secondary input[value="' + $(this).attr('name') + '"]').parent().show();
+		$('.secondary input[value="' + $(this).attr('name') + '"]').prop("checked", this.checked);
 		}	
 	});
 });

@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20130409211857) do
     t.string  "cuisine_id"
     t.string  "offer"
     t.string  "availability"
-    t.string  "max_party"
+    t.integer  "max_party"
 
     t.string  "keywords"
     t.float    "latitude"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20130409211857) do
     t.string   "keywords"
     t.string   "cuisine_input"
     t.string   "offer_input"
-    t.string   "max_party_input"
+    t.integer   "max_party_input"
     t.string   "availability_input"
     t.datetime "created_at"
     t.datetime "updated_at"
