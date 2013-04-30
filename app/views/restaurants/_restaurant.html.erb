@@ -22,7 +22,7 @@
         <% else %>
             <span class="label label-success">2 Für 1</span>
         <% end %>
-         <% unless restaurant.max_party == 0 %>
+         <% unless restaurant.max_party > 12 %>
             <span class="label label-party"><i class="icon-user"></i>x<%=restaurant.max_party.to_s %></span> 
          <% end %>
 

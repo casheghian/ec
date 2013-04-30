@@ -10,8 +10,9 @@ require 'faker'
     :availability => ["Freitag", "Samstag", "Dezember"].sample,
     :offer => [241,50].sample,
     :phone_number => Faker::PhoneNumber.phone_number,
-    :max_party => [0,2,4,6,8,10,12].sample,
+    :max_party => [2,4,6,8,10,12,99].sample,
     :city => "Hamburg",
+    :keywords =>["Pizza", "Pasta", "Italian", "Sushi"].sample,
     :district => ["Altona", "Barmbek", "Eimsbüttel"].sample,
     :name => Faker::Company.name,
     :content => Faker::Lorem.paragraph,
@@ -20,8 +21,6 @@ require 'faker'
     :latitude => Faker::Address.latitude
      
      }) 
-
-
 
 
     end 

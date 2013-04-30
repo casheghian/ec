@@ -42,8 +42,8 @@
       </div>
 
       <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        <button class="btn btn-primary">Save changes</button>
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</button>
+       <!-- <button class="btn btn-primary">Save changes</button> -->
       </div>
     </div>  <!-- Modal -->
   </div> <!-- Cuisine -->
@@ -68,7 +68,7 @@
 
   <div class="span2" id="max_party_options">
      <%= f.label :max_party_input, "No. of People" %><br />
-        <%= f.radio_button :max_party_input, '2' %>
+        <%= f.radio_button :max_party_input, '2', :checked => true %>
         <%= f.label "2" %><br />
         <%= f.radio_button :max_party_input, '4' %>
         <%= f.label "4" %><br />
@@ -80,7 +80,7 @@
         <%= f.label "10" %><br />
         <%= f.radio_button :max_party_input, '12' %>
         <%= f.label "12" %><br />
-        <%= f.radio_button :max_party_input, '1' %>
+        <%= f.radio_button :max_party_input, '99' %>
         <%= f.label "Unlimited" %><br />
    </div>  <!-- Max Party -->
 </div>
@@ -92,15 +92,16 @@
       <%= render 'result' %>
   </div>
 
-  <div class="span5" id="map_key">
+  <div class="span5" id="key_panel">
+    <div class ="panel_wrapper">
     <%= gmaps("map_options" => { :raw => "{scrollwheel: false }", "auto_adjust" => true }, "markers" => { "data" => @json }) %>
-
-    <div id="key">
-       <p> <span class="label label-success">50%</span>The restaurant offers tastecard card-holders 50% OFF the total food bill</p>
-       <p><span class="label label-success">2 Für 1</span>The restaurant offers tastecard card-holders 2 for 1 meals (across all courses ordered), 2 for 1 means one tastecard card applies for 2 people</p>
-       <p><span class="label label-party"><i class="icon-user"></i>x12</span>Number denotes the maximum number of people per taste booking</p>
-       <p><span class="label label-important"><i class="icon-remove"></i>Fr</span>The tastecard offer is not available during Friday</p>
-       <p><span class="label label-important"><i class="icon-remove"></i>Sa</span>The tastecard offer is not available during Saturday </p>
-       <p><span class="label label-important"><i class="icon-remove"></i>Dez</span>The tastecard offer is not available during December</p>
-  </div>
+      <div id="key">
+         <p> <span class="label label-success">50%</span>The restaurant offers tastecard card-holders 50% OFF the total food bill</p>
+         <p><span class="label label-success">2 Für 1</span>The restaurant offers tastecard card-holders 2 for 1 meals (across all courses ordered), 2 for 1 means one tastecard card applies for 2 people</p>
+         <p><span class="label label-party"><i class="icon-user"></i>x12</span>Number denotes the maximum number of people per taste booking</p>
+         <p><span class="label label-important"><i class="icon-remove"></i>Fr</span>The tastecard offer is not available during Friday</p>
+         <p><span class="label label-important"><i class="icon-remove"></i>Sa</span>The tastecard offer is not available during Saturday </p>
+         <p><span class="label label-important"><i class="icon-remove"></i>Dez</span>The tastecard offer is not available during December</p>
+      </div>
+    </div>
 </div>

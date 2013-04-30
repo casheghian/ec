@@ -1,6 +1,17 @@
-$('#search').bind('ajax:complete', function() {
+$('#search').on('ajax:before', function() {
+		$('body').addClass("loading"); 
+});
+
+$('#search').on('ajax:success', function() {
 	var new_markers = <%=raw @json%>;
 	Gmaps.map.replaceMarkers(new_markers);
 	$("#search_results_list").html("<%= escape_javascript(render("result")) %>");
 	history.pushState(null, document.title, "<%= @search.to_param %>");
+
+	 function HideLoadingSpinner() {
+		$('body').removeClass("loading"); 
+	}
+	setTimeout(HideLoadingSpinner, 500);
+
+
 });

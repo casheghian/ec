@@ -42,8 +42,29 @@ body
 }
 form{margin-bottom: 0px;}
 label{display: inline;}
+.field{margin-bottom: 10px;}
+.ajax-loader {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('http://i.stack.imgur.com/FhHRx.gif') 
+                50% 50% 
+                no-repeat;
+}
+body.loading {
+    overflow: hidden;   
+}
 
-
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .ajax-loader {
+    display: block;
+}
 //   Header     //
 
 
@@ -100,6 +121,11 @@ header h1 a:hover{text-decoration: none; color:#fff;}
   color: #777;
 }
 
+.new_restaurant input[type=text], .new_restaurant textarea ,.edit_restaurant input[type=text], .edit_restaurant textarea 
+{
+  width: 100%;
+  /* or */
+}
 //    Content   //
 
 #search_form_home{text-align: center;}
@@ -123,10 +149,11 @@ color: #fff !important; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.16);
 
 // Gmaps4Rails  //
            
-
+.panel_wrapper{position: relative;}
 .map_container {
 border:1px solid #d5ccc8;margin:0;
 width: 100%;
+
 }
 
 .gmaps4rails_map {
@@ -140,6 +167,7 @@ float:left;
 }
 #map label { width: auto; display:inline; }
 #map img { max-width: none; }
+
 
 
 

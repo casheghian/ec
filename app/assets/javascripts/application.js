@@ -47,4 +47,15 @@ $(document).ready(function() {
 		$('.secondary input[value="' + $(this).attr('name') + '"]').prop("checked", this.checked);
 		}	
 	});
+
+var el=$('.panel_wrapper');
+var elpos=el.offset().top;
+$(window).scroll(function () {
+    var y=$(this).scrollTop();
+    if(y<elpos){el.stop().animate({'top':0},500);}
+    else{el.stop().animate({'top':y-elpos},500);}
+});
+
+
+
 });
