@@ -1,0 +1,13 @@
+def read_line_number(filename, number)
+  return nil if number < 1
+  line = File.readlines(filename)[number-1]
+  line ? line.chomp : nil
+end
+
+	counter = 1
+	
+	Restaurant.all.each do |x|
+		line = read_line_number('latitude.txt,counter)
+		x.update_attribute(:latutude,line)
+		counter+=1
+		end
