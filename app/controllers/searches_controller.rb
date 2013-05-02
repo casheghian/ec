@@ -1,7 +1,5 @@
 class SearchesController < ApplicationController
-
-
-
+  
 def index
   @search = Search.all
 end
