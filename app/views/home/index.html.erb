@@ -1,16 +1,16 @@
-<div class="row">
-  <div class="span7 offset2" id="slogan">
-    <h2>elbcard gives you 50% OFF or 2 FOR 1 at Hamburg's finest Restaurants</h2>
-  </div>
-</div>  
-
-<div class="row">
-  <div class="span9" id="search">
-    <%= form_for @search do |f| %>
-        <%= f.text_field :keywords, :placeholder => "Was? (Pizza, Spanisches, PLZ, Name)" %>
-      </div>
-      <div class="actions span3"><%= f.submit "Search", :class =>'btn btn-custom btn-large' %></div>
-    <% end %>
-  </div>
-</div>  
-
+<div class ="container">
+      <h2 class="slogan">2 Für 1 oder 50%</h2>
+  <div class="row">
+    <div class="span9" id="search">
+      <%= form_for @search do |f| %>
+          <%= f.text_field :keywords, :placeholder => "Was? (Pizza, Spanisches, PLZ, Name, Bezirk)" %>
+        </div>
+        <div class="actions span3">
+        <%= button_tag(:type => 'submit', :class => 'btn btn-large btn-custom') do %>
+        <i class="icon-search"></i> SEARCH
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>  
+</div>

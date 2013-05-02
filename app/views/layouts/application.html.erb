@@ -29,8 +29,12 @@
         </div>
       </div>
     </header>
+<% if current_page?('/') %>
+<div id="content" class="home">
+<% else %>
+<div id="content">
+<% end %>
 
-<div class = "container" id="content">
   <% flash.each do |name, msg| %>
   <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
     <a class="close" data-dismiss="alert">×</a>

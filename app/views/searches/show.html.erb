@@ -1,107 +1,144 @@
-<div class="row">
-  <div class="span9" id="search">  
-    <%= form_for @search,  :remote => true do |f| %>
-    <%= f.text_field :keywords %>
-  </div>
-  <div class="actions span3"><%= f.submit "Search", :class =>'btn btn-custom btn-large' %></div>
-</div>
-  
-<div class="row" id="advanced_search">
-  <div class="span2">
-    <div class="main-options">
-      <%= f.label :offer_input, "Küche" %><br />
-      <% Cuisine.first(6).each do |cuisine| %>
-      <li id ="<%= cuisine.name %>">
-      <%= f.check_box :cuisine_input, { :multiple => true }, cuisine.name, nil %> 
-      <%= f.label :cuisine_input, cuisine.name %></li>
-      <% end %>
-
-      <div class="secondary">
-         <% Cuisine.offset(6).each do |cuisine| %>
-         <li id ="<%= cuisine.name %>">
-        <%= f.check_box :cuisine_input, { :multiple => true }, cuisine.name, nil %> 
-        <%= f.label :cuisine_input, cuisine.name %></li>
+<div class="container">
+  <div class="row">
+    <div class="span10" id="search">  
+      <%= form_for @search,  :remote => true do |f| %>
+      <%= f.text_field :keywords %>
+    </div>
+      <div class="actions span2">
+        <%= button_tag(:type => 'submit', :class => 'btn btn-large btn-custom') do %>
+        <i class="icon-search"></i> SEARCH
         <% end %>
-      </div>
+        </div>
     </div>
     
-    <a href="#myModal" role="button" data-toggle="modal">Show all</a>
+  <div class="row">
+    <div class="span4" id="advanced_search">
+            <%= gmaps("map_options" => { :raw => "{scrollwheel: false, mapTypeControl: false,streetViewControl: false, }","auto_adjust" => true }, "markers" => { "data" => @json }) %>
 
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="accordion" id="cuisine">
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                  <%= f.label :offer_input, "Küche" %><br />
+              </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse in">
+              <div class="accordion-inner">
+               <div class="main-options">
+                  <% Cuisine.first(6).each do |cuisine| %>
+                  <li id ="<%= cuisine.name %>">
+                  <%= f.check_box :cuisine_input, { :multiple => true }, cuisine.name, nil %> 
+                  <%= f.label :cuisine_input, cuisine.name %></li>
+                  <% end %>
 
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Küche</h3>
-      </div>
+                  <div class="secondary">
+                     <% Cuisine.offset(6).each do |cuisine| %>
+                     <li id ="<%= cuisine.name %>">
+                    <%= f.check_box :cuisine_input, { :multiple => true }, cuisine.name, nil %> 
+                    <%= f.label :cuisine_input, cuisine.name %></li>
+                    <% end %>
+                  </div>
+                  
+                  <a href="#myModal" role="button" data-toggle="modal">Show all</a>
 
-      <div class="modal-body">
-        <% Cuisine.all.each do |cuisine| %>
-        <%= check_box_tag cuisine.name, nil %>
-        <%= label_tag cuisine.name %><br />
-        <% end %>
-      </div>
+                  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</button>
-       <!-- <button class="btn btn-primary">Save changes</button> -->
-      </div>
-    </div>  <!-- Modal -->
-  </div> <!-- Cuisine -->
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                      <h3 id="myModalLabel">Küche</h3>
+                    </div>
 
-  <div class="span1" id="offer_options">
-      <%= f.label :offer_input, "Offer" %><br />
-      <%= f.check_box :offer_input, { :multiple => true }, '50', nil %>
-      <%= f.label "50%" %><br />
-      <%= f.check_box :offer_input, { :multiple => true }, '241', nil %>
-      <%= f.label "241" %><br />
-  </div>  <!-- Offer -->
+                    <div class="modal-body">
+                      <% Cuisine.all.each do |cuisine| %>
+                      <%= check_box_tag cuisine.name, nil %>
+                      <%= label_tag cuisine.name %><br />
+                      <% end %>
+                    </div>
 
- <div class="span2" id="availability_options">
-    <%= f.label :availability_input, "Availability" %><br />
-    <%= f.check_box :availability_input, { :multiple => true }, 'Freitag', nil %>
-    <%= f.label "Freitag" %><br />
-    <%= f.check_box :availability_input, { :multiple => true }, 'Samstag', nil %>
-    <%= f.label "Samstag" %><br />
-    <%= f.check_box :availability_input, { :multiple => true }, 'Dezember', nil %>
-    <%= f.label "Dezember" %><br />
-  </div>  <!-- Availability -->
+                    <div class="modal-footer">
+                      <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</button>
+                     <!-- <button class="btn btn-primary">Save changes</button> -->
+                    </div>
+                  </div>  <!-- Modal -->
+                </div> <!-- Main Options -->
+              </div>
+            </div>
+          </div>
 
-  <div class="span2" id="max_party_options">
-     <%= f.label :max_party_input, "No. of People" %><br />
-        <%= f.radio_button :max_party_input, '2', :checked => true %>
-        <%= f.label "2" %><br />
-        <%= f.radio_button :max_party_input, '4' %>
-        <%= f.label "4" %><br />
-        <%= f.radio_button :max_party_input, '6' %>
-        <%= f.label "6" %><br />
-        <%= f.radio_button :max_party_input, '8' %>
-        <%= f.label "8" %><br />
-        <%= f.radio_button :max_party_input, '10' %>
-        <%= f.label "10" %><br />
-        <%= f.radio_button :max_party_input, '12' %>
-        <%= f.label "12" %><br />
-        <%= f.radio_button :max_party_input, '99' %>
-        <%= f.label "Unlimited" %><br />
-   </div>  <!-- Max Party -->
-</div>
+          <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                <%= f.label :offer_input, "Offer" %><br />
+            </a>
+          </div>
+          <div id="collapseTwo" class="accordion-body collapse in">
+            <div class="accordion-inner">
+              <div id="offer_options">
+                <%= f.check_box :offer_input, { :multiple => true }, '50', nil %>
+                <%= f.label "50%" %><br />
+                <%= f.check_box :offer_input, { :multiple => true }, '241', nil %>
+                <%= f.label "241" %><br />
+              </div>  <!-- Offer -->
+            </div>
+          </div>
+        </div>
 
+         <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                <%= f.label :availability_input, "Availability" %><br />
+            </a>
+          </div>
+          <div id="collapseThree" class="accordion-body collapse in">
+            <div class="accordion-inner">
+                  <div id="availability_options">
+                  <%= f.check_box :availability_input, { :multiple => true }, 'Freitag', nil %>
+                  <%= f.label "Freitag" %><br />
+                  <%= f.check_box :availability_input, { :multiple => true }, 'Samstag', nil %>
+                  <%= f.label "Samstag" %><br />
+                  <%= f.check_box :availability_input, { :multiple => true }, 'Dezember', nil %>
+                  <%= f.label "Dezember" %><br />
+              </div>  <!-- Availability -->
+            </div>
+          </div>
+        </div>
+
+
+         <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                  <%= f.label :max_party_input, "No. of People" %><br />
+            </a>
+          </div>
+          <div id="collapseFour" class="accordion-body collapse in">
+            <div class="accordion-inner">
+               <div id="max_party_options">
+                  <%= f.radio_button :max_party_input, '2', :checked => true %>
+                  <%= f.label "2" %><br />
+                  <%= f.radio_button :max_party_input, '4' %>
+                  <%= f.label "4" %><br />
+                  <%= f.radio_button :max_party_input, '6' %>
+                  <%= f.label "6" %><br />
+                  <%= f.radio_button :max_party_input, '8' %>
+                  <%= f.label "8" %><br />
+                  <%= f.radio_button :max_party_input, '10' %>
+                  <%= f.label "10" %><br />
+                  <%= f.radio_button :max_party_input, '12' %>
+                  <%= f.label "12" %><br />
+                  <%= f.radio_button :max_party_input, '99' %>
+                  <%= f.label "Unlimited" %><br />
+               </div>  <!-- Max Party -->
+            </div>
+          </div>
+        </div>
+     </div><!-- Accordion -->
+  </div> <!-- Advanced Search -->
 <% end %>
 
-<div class="row" id="results_container">
-  <div id="search_results_list" class="span7">
-      <%= render 'result' %>
-  </div>
-
-  <div class="span5" id="key_panel">
-    <div class ="panel_wrapper">
-    <%= gmaps("map_options" => { :raw => "{scrollwheel: false }", "auto_adjust" => true }, "markers" => { "data" => @json }) %>
-      <div id="key">
-         <p> <span class="label label-success">50%</span>The restaurant offers tastecard card-holders 50% OFF the total food bill</p>
-         <p><span class="label label-success">2 Für 1</span>The restaurant offers tastecard card-holders 2 for 1 meals (across all courses ordered), 2 for 1 means one tastecard card applies for 2 people</p>
-         <p><span class="label label-party"><i class="icon-user"></i>x12</span>Number denotes the maximum number of people per taste booking</p>
-         <p><span class="label label-important"><i class="icon-remove"></i>Fr</span>The tastecard offer is not available during Friday</p>
-         <p><span class="label label-important"><i class="icon-remove"></i>Sa</span>The tastecard offer is not available during Saturday </p>
-         <p><span class="label label-important"><i class="icon-remove"></i>Dez</span>The tastecard offer is not available during December</p>
-      </div>
+    <div id="search_results_list" class="span8">
+        <%= render 'result' %>
     </div>
-</div>
+  </div><!-- Row -->
+</div><!-- Container -->
+
+   

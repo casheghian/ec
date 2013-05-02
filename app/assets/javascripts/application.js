@@ -56,6 +56,10 @@ $(window).scroll(function () {
     else{el.stop().animate({'top':y-elpos},500);}
 });
 
-
+$('.accordion-body').each(function(){
+    if ($(this).hasClass('in')) {
+        $(this).collapse('toggle');
+    }
+});
 
 });
