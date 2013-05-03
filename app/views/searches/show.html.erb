@@ -12,7 +12,7 @@
     </div>
     
   <div class="row">
-    <div class="span4" id="advanced_search">
+    <div class="span4 panel_wrapper" id="advanced_search">
             <%= gmaps("map_options" => { :raw => "{scrollwheel: false, mapTypeControl: false,streetViewControl: false, }","auto_adjust" => true }, "markers" => { "data" => @json,"options" => {"rich_marker" => true } }) %>
 
       <div class="accordion" id="cuisine">

@@ -227,6 +227,8 @@ float:left;
   color:#fff;
 }
 .my-marker:hover{background-position: 0 -77px;}
+.my-marker.marker-active{background-position: 0 -77px;}
+
 .my-marker a{color:#fff;font-size:.85em;text-decoration: none;cursor: pointer;}
 #map label { width: auto; display:inline; }
 #map img { max-width: none; }
@@ -294,9 +296,10 @@ a.accordion-toggle.collapsed{background:url('close.png') no-repeat right center;
 #search_results_list li{list-style-type: none;border-bottom:1px solid #d5ccc8;padding: 10px;}
 #search_results_list .image {display: block;}
 #map_key{}
-.listing {padding:10px 0px 10px 0px; border-top: 1px solid #d5ccc8;}
-.listing_image{margin-right:10px;height:100%; float:left; width:100px;}
-.listing_title{font-size:16px; margin:0; padding:0;line-height: 1.1em;}
+.listing {padding:10px; border-top: 1px solid #d5ccc8;}
+.listing span.btn{font-size:.85em;}
+.listing_image{margin-right:10px;float:left;backround:#fff;padding:5px;border:1px solid #d5ccc8;}
+.listing_title{font-size:1.25em; margin:0; padding:0;line-height: 1.1em;}
 .details h1{margin-bottom: .5em;}
 .details h1 a{text-decoration: none; color: #0f99a3;   }
 .details h1 a:hover{text-decoration: underline; color: #0f99a3; }

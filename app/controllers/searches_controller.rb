@@ -32,7 +32,7 @@ def update
     @json = @search.restaurants.to_gmaps4rails do |restaurant, marker|
     length += 1
     marker.picture({
-                        :rich_marker => "<div class='my-marker'><a href='<%= link_to restaurant.id, restaurant_path(restaurant) %>'>#{length}</a></div>",
+                        :rich_marker => "<div class='my-marker' id='#{restaurant.id}'><a href='/restaurants/#{restaurant.to_param}'>#{length}</a></div>",
                         :marker_anchor=>[10,true]
                         
         })
@@ -48,7 +48,7 @@ end
     @json = @search.restaurants.to_gmaps4rails do |restaurant, marker|
     length += 1
     marker.picture({
-                        :rich_marker => "<div class='my-marker'><a href='/restaurants/#{restaurant.to_param}'>#{length}</a></div>",
+                        :rich_marker => "<div class='my-marker' id='#{restaurant.id}'><a href='/restaurants/#{restaurant.to_param}'>#{length}</a></div>",
                         :marker_anchor=>[10,true]
                         
         })

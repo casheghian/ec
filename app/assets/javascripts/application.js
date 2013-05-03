@@ -57,18 +57,23 @@ $(document).ready(function() {
 		}	
 	});
 
-var el=$('.panel_wrapper');
-var elpos=el.offset().top;
-$(window).scroll(function () {
-    var y=$(this).scrollTop();
-    if(y<elpos){el.stop().animate({'top':0},500);}
-    else{el.stop().animate({'top':y-elpos},500);}
-});
+
 
 $('.accordion-body').each(function(){
     if ($(this).hasClass('in')) {
         $(this).collapse('toggle');
     }
 });
+Gmaps.map.callback = function() {
+  $(".listing").on("mouseover", function() {
+  	$(this).css("background-color","#f9f9f9");
+
+    $('.my-marker[id="' + $(this).attr('id') + '"]').addClass("marker-active");
+  });
+  $(".listing").on("mouseleave", function() {
+  	$(this).css("background-color","#FFFFFF");
+    $('.my-marker[id="' + $(this).attr('id') + '"]').removeClass("marker-active");
+  });
+}
 
 });
