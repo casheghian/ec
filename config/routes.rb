@@ -11,7 +11,7 @@ Start::Application.routes.draw do
 
 
 
-  get 'restaurant/:tag', to: 'restaurants#index', as: :tag
+  #get 'restaurant/:tag', to: 'restaurants#index', as: :tag
 
   resources :restaurants
   resources :searches
