@@ -13,7 +13,7 @@
     
   <div class="row">
     <div class="span4" id="advanced_search">
-            <%= gmaps("map_options" => { :raw => "{scrollwheel: false, mapTypeControl: false,streetViewControl: false, }","auto_adjust" => true }, "markers" => { "data" => @json }) %>
+            <%= gmaps("map_options" => { :raw => "{scrollwheel: false, mapTypeControl: false,streetViewControl: false, }","auto_adjust" => true }, "markers" => { "data" => @json,"options" => {"rich_marker" => true } }) %>
 
       <div class="accordion" id="cuisine">
           <div class="accordion-group">
@@ -68,7 +68,7 @@
           <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                <%= f.label :offer_input, "Offer" %><br />
+                <%= f.label :offer_input, "Offer" %>
             </a>
           </div>
           <div id="collapseTwo" class="accordion-body collapse in">
@@ -86,7 +86,7 @@
          <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                <%= f.label :availability_input, "Availability" %><br />
+                <%= f.label :availability_input, "Availability" %>
             </a>
           </div>
           <div id="collapseThree" class="accordion-body collapse in">
@@ -113,20 +113,8 @@
           <div id="collapseFour" class="accordion-body collapse in">
             <div class="accordion-inner">
                <div id="max_party_options">
-                  <%= f.radio_button :max_party_input, '2', :checked => true %>
-                  <%= f.label "2" %><br />
-                  <%= f.radio_button :max_party_input, '4' %>
-                  <%= f.label "4" %><br />
-                  <%= f.radio_button :max_party_input, '6' %>
-                  <%= f.label "6" %><br />
-                  <%= f.radio_button :max_party_input, '8' %>
-                  <%= f.label "8" %><br />
-                  <%= f.radio_button :max_party_input, '10' %>
-                  <%= f.label "10" %><br />
-                  <%= f.radio_button :max_party_input, '12' %>
-                  <%= f.label "12" %><br />
-                  <%= f.radio_button :max_party_input, '99' %>
-                  <%= f.label "Unlimited" %><br />
+                <%= select(:search, :max_party_input, options_for_select([['2', 2], ['4', 4],['6', 6], ['8', 8],['10', 10], ['12', 12]])) %>
+                
                </div>  <!-- Max Party -->
             </div>
           </div>

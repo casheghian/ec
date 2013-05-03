@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409211857) do
+ActiveRecord::Schema.define(:version => 20130502181903) do
 
   create_table "categorizations", :force => true do |t|
     t.integer  "cuisine_id"
@@ -50,13 +50,12 @@ ActiveRecord::Schema.define(:version => 20130409211857) do
     t.string   "phone_number"
     t.string   "city"
     t.string   "district"
-    t.string  "zip"
-    t.string  "cuisine_id"
-    t.string  "offer"
-    t.string  "availability"
+    t.string   "zip"
+    t.string   "cuisine_id"
+    t.string   "offer"
+    t.string   "availability"
     t.integer  "max_party"
-
-    t.string  "keywords"
+    t.string   "keywords"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "image"
@@ -68,10 +67,11 @@ ActiveRecord::Schema.define(:version => 20130409211857) do
     t.string   "keywords"
     t.string   "cuisine_input"
     t.string   "offer_input"
-    t.integer   "max_party_input"
+    t.integer  "max_party_input"
     t.string   "availability_input"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "number"
   end
 
   create_table "taggings", :force => true do |t|

@@ -218,6 +218,16 @@ margin-bottom:20px;
 float:left;
 
 }
+.my-marker{
+  background:url('marker-sprite.png');
+ background-position: 0 0;
+  width:20px;
+  height:27px;
+  text-align:center;
+  color:#fff;
+}
+.my-marker:hover{background-position: 0 -77px;}
+.my-marker a{color:#fff;font-size:.85em;text-decoration: none;cursor: pointer;}
 #map label { width: auto; display:inline; }
 #map img { max-width: none; }
 
@@ -272,7 +282,7 @@ float:left;
 
 // Filtering  //
 .accordion-group{margin:0;}
-a.accordion-toggle{text-decoration: none; color:#444; font-weight: 600;}
+a.accordion-toggle{text-decoration: none; color:#444; font-weight: 600;cursor: pointer;}
 a.accordion-toggle{background:url('open.png') no-repeat right center;}
 a.accordion-toggle.collapsed{background:url('close.png') no-repeat right center;}
 

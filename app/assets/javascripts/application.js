@@ -27,7 +27,16 @@
 //= require twitter/bootstrap/bootstrap-typeahead
 $(document).ready(function() {
 	$('.secondary li').hide();
-		
+	$('select').attr('disabled', true);
+
+	$("#offer_options input").change(function() {
+	if( $('#offer_options input[type="checkbox"]').first().prop('checked') === true ){
+	$('select').attr('disabled', false);
+	}
+	else
+		{	$('select').attr('disabled', true);}
+	});
+
 		$('.main-options input:checked').each(function() {
 			$(this).parent().show();
     	 	$('.modal-body input[id="' + $(this).val() + '"]').prop("checked", this.checked);

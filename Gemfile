@@ -25,7 +25,7 @@ gem "faker", "~> 1.1.2"
 gem "populator", "~> 1.0.0"
 gem "will_paginate", "~> 3.0"
  
-gem 'acts-as-taggable-on', '~> 2.3.1'
+#gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'gmaps4rails'
 gem "therubyracer"
 gem "less-rails"
@@ -35,8 +35,8 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'rmagick'
 
-gem 'pg_search'
-gem 'textacular', '~> 3.0', require: 'textacular/rails'
+#gem 'pg_search'
+#gem 'textacular', '~> 3.0', require: 'textacular/rails'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'

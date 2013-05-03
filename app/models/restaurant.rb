@@ -6,37 +6,20 @@ class Restaurant < ActiveRecord::Base
   has_many :categorizations
   has_many :cuisines, through: :categorizations
   
-  #acts_as_taggable
-  #acts_as_taggable_on :offer, :availability, :max_party, :tags
   acts_as_gmappable :process_geocoding => false
   
   mount_uploader :image, ImageUploader
 
-  #include PgSearch
-  #  pg_search_scope :search_query, against: [:name, :zip, :district],
-  #  using: {tsearch: {dictionary: "german"}},
-  #  :associated_against => {
-  #  :tags => [:name]
-  #  }
 
-
+  def to_param
+    "#{id}-#{name}".parameterize
+  end
+  
   def gmaps4rails_address
     "#{self.longitude}, #{self.latitude}" 
   end
    
-  def gmaps4rails_infowindow
-	"<h4>#{self.name}</h4>
-   Offer:#{self.offer}</br>
-   Availability:#{self.availability}</p>"  
-  end
 
-  def gmaps4rails_marker_picture
-    {
-    "picture" => '/assets/marker.png', # image_path column has to contain something like '/assets/my_pic.jpg'.
-    "width" => 25, #beware to resize your pictures properly
-    "height" => 39, #beware to resize your pictures properly
-    }
-  end
 end
 
 

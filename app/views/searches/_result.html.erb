@@ -1,5 +1,12 @@
 <% if @search.restaurants.empty? %>
- 	<h2> No Results Found </h2>
+ 	<h3> No Results Found </h3>
+ 		<p>Use the search box above to find participating restaurants. It is an intuitive search so you can type in pretty much anything! Try the following:</p>
+
+		<li>Restaurant Name</li>
+		<li>Postzahl</li>
+		<li>Bezirk</li>		
+
+		<p>You can then zoom in and out using the map, or alter the radius to increase or decrease the number of results. Once the restaurants nearest to your search have been returned you can use the tick boxes on the left hand side to further filter the results.</p>
 <% else %>
 		<%= render @search.restaurants %>		
  <% end %>

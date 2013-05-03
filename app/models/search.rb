@@ -1,5 +1,5 @@
 class Search < ActiveRecord::Base
-  attr_accessible :keywords, :cuisine_input, :offer_input, :availability_input, :max_party_input
+  attr_accessible :keywords, :cuisine_input, :offer_input, :availability_input, :max_party_input, :number
   serialize :cuisine_input
   serialize :offer_input
   serialize :availability_input
