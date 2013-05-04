@@ -8,6 +8,16 @@ $('#search').on('ajax:success', function() {
 	$("#search_results_list").html("<%= escape_javascript(render("result")) %>");
 	history.pushState(null, document.title, "<%= @search.to_param %>");
 
+	$(".listing").on("mouseover", function() {
+  	$(this).css("background-color","#f9f9f9");
+
+    $('.my-marker[id="' + $(this).attr('id') + '"]').addClass("marker-active");
+  });
+  $(".listing").on("mouseleave", function() {
+  	$(this).css("background-color","#FFFFFF");
+    $('.my-marker[id="' + $(this).attr('id') + '"]').removeClass("marker-active");
+  });
+  
 	 function HideLoadingSpinner() {
 		$('body').removeClass("loading"); 
 	}

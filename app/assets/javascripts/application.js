@@ -64,7 +64,6 @@ $('.accordion-body').each(function(){
         $(this).collapse('toggle');
     }
 });
-Gmaps.map.callback = function() {
   $(".listing").on("mouseover", function() {
   	$(this).css("background-color","#f9f9f9");
 
@@ -74,6 +73,6 @@ Gmaps.map.callback = function() {
   	$(this).css("background-color","#FFFFFF");
     $('.my-marker[id="' + $(this).attr('id') + '"]').removeClass("marker-active");
   });
-}
+
 
 });

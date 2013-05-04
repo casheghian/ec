@@ -3,3 +3,12 @@ Gmaps.map.replaceMarkers(new_markers);
 //Gmaps.map.listen_to_markers(new_markers);
 $("#search_results_list").html("<%= escape_javascript(render("result")) %>");
 
+  $(".listing").on("mouseover", function() {
+  	$(this).css("background-color","#f9f9f9");
+
+    $('.my-marker[id="' + $(this).attr('id') + '"]').addClass("marker-active");
+  });
+  $(".listing").on("mouseleave", function() {
+  	$(this).css("background-color","#FFFFFF");
+    $('.my-marker[id="' + $(this).attr('id') + '"]').removeClass("marker-active");
+  });
