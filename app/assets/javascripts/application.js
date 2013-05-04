@@ -59,11 +59,7 @@ $(document).ready(function() {
 
 
 
-$('.accordion-body').each(function(){
-    if ($(this).hasClass('in')) {
-        $(this).collapse('toggle');
-    }
-});
+
   $(".listing").on("mouseover", function() {
   	$(this).css("background-color","#f9f9f9");
 

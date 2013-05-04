@@ -220,16 +220,16 @@ float:left;
 }
 .my-marker{
   background:url('marker-sprite.png');
- background-position: 0 0;
-  width:20px;
-  height:27px;
+ background-position: 0 -85px;
+  width:27px;
+  height:35px;
   text-align:center;
-  color:#fff;
+  color:#444;
 }
-.my-marker:hover{background-position: 0 -77px;}
-.my-marker.marker-active{background-position: 0 -77px;}
+.my-marker:hover, .my-marker.marker-active{background-position: 0 0;}
+.my-marker:hover a, .my-marker.marker-active a{color:#dd6d77;}
 
-.my-marker a{color:#fff;font-size:.85em;text-decoration: none;cursor: pointer;}
+.my-marker a{font-family: 'Arial'; color:#5a9aad;font-size:.75em;text-decoration: none;cursor: pointer;font-weight: bold;display: block;padding-top: 2px;}
 #map label { width: auto; display:inline; }
 #map img { max-width: none; }
 
@@ -308,6 +308,7 @@ a.accordion-toggle.collapsed{background:url('close.png') no-repeat right center;
   font-weight: 100;}
 .label-offer{background:#0f99a3;}
 .label-party{background:#0f99a3;}
+.address{text-align: right;}
 i{padding-right:5px;}
 
 //    Footer    //
