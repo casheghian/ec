@@ -1,8 +1,11 @@
 <div class ="listing row" id = "<%= restaurant.id %>">
     <div class="details">
+                  <span><%= restaurant_counter + 1 %></span>
+
         <div class="listing_image">
         <% restaurant.images.each do |image| %>
             <%= image_tag image.image_url(:thumb).to_s %>
+
         <% end %>
     </div>
         <div class="pull-right address">

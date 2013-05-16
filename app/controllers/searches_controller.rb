@@ -28,7 +28,7 @@ def update
    format.html { redirect_to @search}
     
    format.js { 
-  length = 0
+    length = 0
     @json = @search.restaurants.to_gmaps4rails do |restaurant, marker|
     length += 1
     marker.picture({
