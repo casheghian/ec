@@ -26,28 +26,31 @@
 //= require twitter/bootstrap/bootstrap-carousel
 //= require twitter/bootstrap/bootstrap-typeahead
 $(document).ready(function() {
+
 	$('.secondary li').hide();
-	$('select').attr('disabled', true);
 
-	$("#offer_options input").change(function() {
-	if( $('#offer_options input[type="checkbox"]').first().prop('checked') === true ){
-	$('select').attr('disabled', false);
+	if($('#offer_options input[type="checkbox"]').first().prop('checked') === true ){
+		$('select').attr('disabled', false);}
+	else {
+		$('select').attr('disabled', true);
 	}
-	else
-		{	$('select').attr('disabled', true);}
-	});
 
-		$('.main-options input:checked').each(function() {
-			$(this).parent().show();
-    	 	$('.modal-body input[id="' + $(this).val() + '"]').prop("checked", this.checked);
-		});
+
+	$('.main-options input:checked').each(function() {
+		$(this).parent().show();
+	 	$('.modal-body input[id="' + $(this).val() + '"]').prop("checked", this.checked);
+	});
 	
+
 	$(".main-options input").change(function() {
-   	
+		$("#search_form").submit();
    		$('.modal-body input[id="' + $(this).val() + '"]').prop("checked", this.checked);
 	});
 		
+
 	$(".modal-body input").change(function() {
+		$("#search_form").submit();
+
 		if( $('.main-options input[value="' + $(this).attr('name') + '"]').is(':visible')){
    		$('.main-options input[value="' + $(this).attr('name') + '"]').prop("checked", this.checked);
 		}
@@ -57,18 +60,37 @@ $(document).ready(function() {
 		}	
 	});
 
+	$("#offer_options input").change(function() {
+		$("#search_form").submit();
+			if( $('#offer_options input[type="checkbox"]').first().prop('checked') === true ){
+				$('select').attr('disabled', false);}
+		else {	
+		  $('select').attr('disabled', true);}
+		});
 
+	$("#availability_options input").change(function() {
+		$("#search_form").submit();
+	
+	});
 
+	$("#search_max_party_input").change(function() {
+		$("#search_form").submit();
+	
+	});
 
-  $(".listing").on("mouseover", function() {
-  	$(this).css("background-color","#f9f9f9");
+	$('.accordion-body').each(function(){
+	    if ($(this).hasClass('in')) {
+	        $(this).collapse('toggle');
+	    }
+	});
+	  $(".listing").on("mouseover", function() {
+	  	$(this).css("background-color","#f9f9f9");
 
-    $('.my-marker[id="' + $(this).attr('id') + '"]').addClass("marker-active");
-  });
-  $(".listing").on("mouseleave", function() {
-  	$(this).css("background-color","#FFFFFF");
-    $('.my-marker[id="' + $(this).attr('id') + '"]').removeClass("marker-active");
-  });
-
+	    $('.my-marker[id="' + $(this).attr('id') + '"]').addClass("marker-active");
+	  });
+	  $(".listing").on("mouseleave", function() {
+	  	$(this).css("background-color","#FFFFFF");
+	    $('.my-marker[id="' + $(this).attr('id') + '"]').removeClass("marker-active");
+	  });
 
 });
