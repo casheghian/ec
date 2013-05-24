@@ -18,6 +18,10 @@ $('#search').on('ajax:success', function() {
     $('.my-marker[id="' + $(this).attr('id') + '"]').removeClass("marker-active");
   });
   
+  $('.btn').tooltip({
+	  	placement: 'bottom'
+
+	  });
 	 function HideLoadingSpinner() {
 		$('body').removeClass("loading"); 
 	}

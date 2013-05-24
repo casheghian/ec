@@ -22,8 +22,8 @@ def create
 end
 
 def update
+
  	@search = Search.create!(params[:search])
-  
 	 respond_to do |format|
    format.html { redirect_to @search}
     

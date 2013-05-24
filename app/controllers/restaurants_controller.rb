@@ -4,19 +4,11 @@ class RestaurantsController < ApplicationController
   before_filter :authorize, only: [:edit, :update]
 
   def index
-
-  if params[:tag]
-    @restaurants = Restaurant.tagged_with(params[:tag]).paginate(:page => params[:page])
-    @json = Restaurant.tagged_with(params[:tag]).paginate(:page => params[:page]).to_gmaps4rails
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @restaurants } 
-
-    end
+  if params[:cuisine]
+    @restaurants = Restaurant.joins(:cuisines).where(:cuisines => {:name => params[:cuisine]})
   else
-
-    @restaurants = Restaurant.paginate(:page => params[:page])
-    @json = Restaurant.all.to_gmaps4rails
+    @restaurants = Restaurant.all
+    @json = Restaurant.all
 
   end
 end

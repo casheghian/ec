@@ -84,13 +84,17 @@ $(document).ready(function() {
 	    }
 	});
 	  $(".listing").on("mouseover", function() {
-	  	$(this).css("background-color","#f9f9f9");
+	  	$(this).addClass("active");
 
 	    $('.my-marker[id="' + $(this).attr('id') + '"]').addClass("marker-active");
 	  });
 	  $(".listing").on("mouseleave", function() {
-	  	$(this).css("background-color","#FFFFFF");
+	  	$(this).removeClass("active");
 	    $('.my-marker[id="' + $(this).attr('id') + '"]').removeClass("marker-active");
 	  });
 
+	  $('.btn').tooltip({
+	  	placement: 'bottom'
+
+	  });
 });

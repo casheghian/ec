@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" id="search_bar">
     <div class="span10" id="search">  
-      <%= form_for @search,  :remote => true, :html => { :id => "search_form" } do |f| %>
+      <%= form_for @search, :remote => true, :html => { :id => "search_form" } do |f| %>
       <%= f.text_field :keywords %>
     </div>
       <div class="actions span2">
