@@ -14,7 +14,9 @@
         </div>
 
             <h1 class="listing_title"><%= link_to restaurant.name, restaurant %></h1>
-            <p><strong>Küche:</strong> <%= restaurant.cuisines.pluck(:name).to_sentence(:two_words_connector => ', ', :last_word_connector => ', ' ) %></p>
+            <p><strong>Küche:</strong> <%= raw restaurant.cuisines.map { |cuisine|
+            "<a href='#{cuisine_path(cuisine.name)}'>#{cuisine.name}</a>"}.to_sentence(:two_words_connector => ', ', :last_word_connector => ', ' )%></p>
+
              <p><strong>Resevierung:</strong><%= restaurant.phone_number %></p>
 
          <div class="key pull-right">    
