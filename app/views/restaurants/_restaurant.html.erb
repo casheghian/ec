@@ -21,22 +21,22 @@
 
          <div class="key pull-right">    
         <% if restaurant.offer.include?('50')%>
-            <span class="btn" data-original-title="receive 50% off on all food">50%</span>
+            <span class="tag" data-original-title="receive 50% off on all food">50%</span>
         <% else %>
-            <span class="btn" data-original-title="receive 2:1 off on all food">2:1</span>
+            <span class="tag" data-original-title="receive 2:1 off on all food">2:1</span>
         <% end %>
          <% unless restaurant.max_party > 12 %>
-            <span class="btn" data-original-title="Reserve for <%=restaurant.max_party.to_s %> people with only 1 Elbcard"><i class="icon-user"></i>x<%=restaurant.max_party.to_s %></span> 
+            <span class="tag" data-original-title="Reserve for <%=restaurant.max_party.to_s %> people with only 1 Elbcard"><i class="icon-user"></i>x<%=restaurant.max_party.to_s %></span> 
          <% end %>
 
        <% unless restaurant.availability.include?("Freitag") %>    
-            <span class="btn" data-original-title="Elbcard is not accepted here on Fridays"><i class="icon-remove"></i>Fr</span>
+            <span class="tag" data-original-title="Elbcard is not accepted here on Fridays"><i class="icon-remove"></i>Fr</span>
         <% end %>
         <% unless restaurant.availability.include?("Samstag") %>    
-            <span class="btn" data-original-title="Elbcard is not accepted here on Saturdays"><i class="icon-remove"></i>Sa</span>
+            <span class="tag" data-original-title="Elbcard is not accepted here on Saturdays"><i class="icon-remove"></i>Sa</span>
         <% end %>
         <% unless restaurant.availability.include?("Dezember") %>    
-            <span class="btn" data-original-title="Elbcard is not accepted here in December"><i class="icon-remove"></i>Dez</span>
+            <span class="tag" data-original-title="Elbcard is not accepted here in December"><i class="icon-remove"></i>Dez</span>
         <% end %>
       </div>   
 

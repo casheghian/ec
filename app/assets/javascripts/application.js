@@ -93,7 +93,7 @@ $(document).ready(function() {
 	    $('.my-marker[id="' + $(this).attr('id') + '"]').removeClass("marker-active");
 	  });
 
-	  $('.btn').tooltip({
+	  $('.tag').tooltip({
 	  	placement: 'bottom'
 
 	  });
