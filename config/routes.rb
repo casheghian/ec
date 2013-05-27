@@ -9,7 +9,7 @@ Start::Application.routes.draw do
   resources :sessions
   resources :password_resets
 
-  get 'cuisine/:cuisine', to: 'restaurants#index', as: :cuisine
+  get 'cuisine/:cuisine', to: 'restaurants#filter', as: :cuisine
 
   resources :restaurants
   resources :searches

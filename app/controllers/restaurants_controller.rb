@@ -83,4 +83,18 @@ end
       format.json { head :no_content }
     end
   end
+
+  def filter
+        @restaurants = Restaurant.joins(:cuisines).where(:cuisines => {:name => params[:cuisine]})
+        length = 0
+    @json = @restaurants.to_gmaps4rails do |restaurant, marker|
+    length += 1
+    marker.picture({
+                        :rich_marker => "<div class='my-marker' id='#{restaurant.id}'><a href='/restaurants/#{restaurant.to_param}'>#{length}</a></div>",
+                        :marker_anchor=>[10,true]
+                        
+        })
+    marker.json({ :id => restaurant.id })
+      end 
+  end
 end
