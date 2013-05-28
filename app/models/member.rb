@@ -5,4 +5,6 @@ class Member < ActiveRecord::Base
   validates_presence_of :address
   validates_presence_of :city
   validates_presence_of :zip
+  validates :email, :uniqueness => true
+
 end

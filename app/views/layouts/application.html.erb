@@ -61,11 +61,12 @@
 	</div>
 </footer>
 <div class="ajax-loader"></div>
-<%= yield :scripts %>
-    <script type="text/javascript">
+ <script type="text/javascript">
       var PAYMILL_PUBLIC_KEY = '<%=PAYMILL_PUBLIC_KEY%>';
   </script>
     <%= javascript_include_tag "https://bridge.paymill.com/", "application" %>
+<%= yield :scripts %>
+   
 
 </body>
 </html>
