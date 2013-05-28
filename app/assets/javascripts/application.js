@@ -30,9 +30,9 @@ $(document).ready(function() {
 	$('.secondary li').hide();
 
 	if($('#offer_options input[type="checkbox"]').first().prop('checked') === true ){
-		$('select').attr('disabled', false);}
+		$('#advanced_search select').attr('disabled', false);}
 	else {
-		$('select').attr('disabled', true);
+		$('#advanced_search select').attr('disabled', true);
 	}
 
 

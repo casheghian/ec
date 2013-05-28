@@ -14,7 +14,9 @@ Start::Application.routes.draw do
   resources :restaurants
   resources :searches
   resources :images
-
+  resources :subscriptions
+  resources :plans
+  resources :members
 
   get "home/index"
 

@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag  "application" %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
     <header id="access" role="navigation">
@@ -18,12 +19,8 @@
           <div class="span9">
     			   <ul id="nav">
               <li><%= link_to "About", root_path %></li>
-    				  <li><%= link_to "Karte Bestellen", root_path %></li>
-              <% if current_user %>
-                <li><%= link_to "Log Out", logout_path %></li>
-                <% else %>
-   				     <li><%= link_to "Sign In", login_path %></li>
-               <% end %>
+    				  <li><%= link_to "Karte Bestellen", "/subscriptions/new?plan_id=4" %></li>
+   				     <li><%= link_to "Free Trial", login_path %></li>
    				 </ul>
     	   </div>
         </div>
@@ -65,5 +62,10 @@
 </footer>
 <div class="ajax-loader"></div>
 <%= yield :scripts %>
+    <script type="text/javascript">
+      var PAYMILL_PUBLIC_KEY = '<%=PAYMILL_PUBLIC_KEY%>';
+  </script>
+    <%= javascript_include_tag "https://bridge.paymill.com/", "application" %>
+
 </body>
 </html>

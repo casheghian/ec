@@ -63,4 +63,5 @@ Cuisine.create!(name: "Weinbar")
 Cuisine.create!(name: "XXL-")
 Cuisine.create!(name: "Äthiopisches")
 Cuisine.create!(name: "Österreichisches")
+Plan.create!(name: "elbcard 1 Year", :price '7500', :paymill_id "offer_cc0108da54d9ac9da9be")
 

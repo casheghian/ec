@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502181903) do
+ActiveRecord::Schema.define(:version => 20130528073831) do
 
   create_table "categorizations", :force => true do |t|
     t.integer  "cuisine_id"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(:version => 20130502181903) do
     t.string   "image"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "plans", :force => true do |t|
+    t.string   "paymill_id"
+    t.string   "name"
+    t.float    "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "restaurants", :force => true do |t|
@@ -72,6 +80,15 @@ ActiveRecord::Schema.define(:version => 20130502181903) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "number"
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "plan_id"
+    t.string   "email"
+    t.string   "name"
+    t.string   "paymill_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "taggings", :force => true do |t|
