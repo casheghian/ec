@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529081750) do
+ActiveRecord::Schema.define(:version => 20130529084358) do
 
   create_table "categorizations", :force => true do |t|
     t.integer  "cuisine_id"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20130529081750) do
     t.string   "address"
     t.string   "city"
     t.string   "zip"
+    t.string   "client_id"
   end
 
   create_table "taggings", :force => true do |t|

@@ -1,4 +1,9 @@
 class SubscriptionsController < ApplicationController
+
+  def index
+    @subscription = Subscription.all
+  end
+
   def new
     plan = Plan.find(params[:plan_id])
     @subscription = plan.subscriptions.build
@@ -15,5 +20,15 @@ class SubscriptionsController < ApplicationController
 
   def show
     @subscription = Subscription.find(params[:id])
+  end
+
+  def destroy
+    @subscription = Subscription.find(params[:id])
+    @subscription.destroy
+
+    respond_to do |format|
+      format.html { redirect_to subscriptions_url }
+      format.json { head :no_content }
+    end
   end
 end
