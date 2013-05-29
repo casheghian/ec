@@ -15,11 +15,8 @@ Start::Application.routes.draw do
   resources :searches
   resources :images
   resources :subscriptions
-  resources :plans
-  resources :members
-
-  get "home/index"
-
+  resources :plans 
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
