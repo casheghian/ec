@@ -25,6 +25,18 @@
     <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
+   <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+    <div class="field">
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+    <div class="field">
+    <%= f.label :zip %>
+    <%= f.text_field :zip %>
+  </div>
   <% if @subscription.paymill_card_token.present? %>
     Credit card has been provided.
   <% else %>
@@ -49,3 +61,7 @@
     <%= f.submit "Subscribe" %>
   </div>
 <% end %>
+<script type="text/javascript">
+      var PAYMILL_PUBLIC_KEY = '<%=PAYMILL_PUBLIC_KEY%>';
+  </script>
+    <%= javascript_include_tag "https://bridge.paymill.com/", "application" %>
