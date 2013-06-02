@@ -5,7 +5,8 @@ class Subscription < ActiveRecord::Base
   validates_presence_of :email
   
   attr_accessor :paymill_card_token
-  
+ 
+
   def save_with_payment
     if valid?
       client = Paymill::Client.create email: email, description: "#{name}, #{address}, #{zip}, #{city}"
@@ -15,6 +16,7 @@ class Subscription < ActiveRecord::Base
       self.client_id = client.id
       save!
   end
+  
   rescue Paymill::PaymillError => e
     logger.error "Paymill error while creating customer: #{e.message}"
     errors.add :base, "There was a problem with your credit card. Please try again."

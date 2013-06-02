@@ -11,6 +11,7 @@ Start::Application.routes.draw do
 
   get 'cuisine/:cuisine', to: 'restaurants#filter', as: :cuisine
 
+
   resources :restaurants
   resources :searches
   resources :images
